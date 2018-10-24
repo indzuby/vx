@@ -53,14 +53,11 @@
 						<button type="submit" id="signin-btn" class="btn btn-primary">SIGN IN</button>
 					</form>
 					
-					<div id="signup-link" class="col-12 pl-0">
+					<div id="signup-link" class="col-12 pl-0" @click="signup">
 						SIGN UP
 					</div>
 					
 					
-					<div id="copyright" class="col-12 pl-0">
-						© 2017 Samsung Electronics Co.,Ltd. All rights reserved.
-					</div>
 				</div>
 			</div>
 			
@@ -70,7 +67,7 @@
 
 <script>
 export default {
-	name: 'Main'
+	name: 'Login'
 	,data(){
 		return {
 			email : ''
@@ -83,6 +80,12 @@ export default {
 				console.log(res);
 			});
 		}
+		,signup(){
+			this.$router.push('Signup')
+		}
 	}
 }
 </script>
+<style>
+
+</style>

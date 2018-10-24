@@ -12,6 +12,8 @@
   "dependencies": {
     "bootstrap-vue": "^2.0.0-rc.11",
     "es6-promise": "^4.2.5",
+    "font-awesome": "^4.7.0",
+    "swiper": "^4.4.1",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1"
   },
