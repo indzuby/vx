@@ -76,7 +76,7 @@ export default {
 	}
 	,methods:{
 		login(){
-			httpCall('/login',"POST",{"id":this.email,"password":this.password},(res)=>{
+			httpCall('/login',"POST",{"email":this.email,"password":this.password},(res)=>{
 				console.log(res);
 			});
 		}

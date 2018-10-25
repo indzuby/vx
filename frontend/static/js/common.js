@@ -21,11 +21,15 @@ function httpCall(url,type,data,callback){
             }
         }
         ,success : function(res){
+            if(res.code == 0){
+                callback(res.data);
+            }else {
+                alert(res.msg);
+            }
             if(processing){
                 $(".loading").hide();
                 processing = false;
             }
-        	callback(res);
         }
     });
 }
