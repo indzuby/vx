@@ -37,7 +37,8 @@ router.post('/signup', function (req, res, next) {
 	var password = req.body.password;
 	var newUser = new db.user({
 		'email': email,
-		'password': password
+		'password': password,
+		'level' : 1
 	});
 	newUser.save(function(err){
 		var result ={code: 0,msg:''};
