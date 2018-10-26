@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="checkbox" width="18" height="18">
+  <defs>
+    <style>
+      .cls-1 { fill: #0081c6; } .cls-2 { fill: #fff; fill-rule: evenodd; }
+    </style>
+  </defs>
+  <path id="Rectangle_3_copy_3" d="M0 0h18v18H0z" data-name="Rectangle 3 copy 3" class="cls-1"/>
+  <path id="box_copy" d="M3.365 9.222l1.048-1.05 4.194 4.2-1.048 1.05zm3.136 3.13l7.184-7.185 1.075 1.075-7.183 7.185z" data-name="box copy" class="cls-2"/>
+</svg>

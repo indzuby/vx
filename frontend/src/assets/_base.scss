@@ -736,6 +736,8 @@ body{
         text-align: left;
         color: #ce2a2a;
     }
+    span {
+    }
 }
 
 .noselect {
@@ -1490,12 +1492,11 @@ input[type=checkbox]{
         content: "";
         left:0;
         //-6.5
-        margin-top: -4px;
         
         display: inline-block;
-        position: absolute;
-        
-        
+        position: relative;
+        top : 2px;
+        margin-right: 5px;
         //18px -> 14px
         width: 14px;
         height: 14px;
@@ -1508,11 +1509,8 @@ input[type=checkbox]{
         + label::before{
             content: "";
             left:0;
-            margin-top: -4px;
-            
             
             display: inline-block;
-            position: absolute;
             width: 14px;
             height: 14px;
             border-radius: 50%;
