@@ -152,7 +152,7 @@
         left : 27%;
     }
     ul.icons-sub, ul.gui-sub, ul.fonts-sub{
-        top : 42px;
+        top : 38px;
     }
     ul.motion-sub, ul.gui-sub, ul.fonts-sub{
         position: absolute;
