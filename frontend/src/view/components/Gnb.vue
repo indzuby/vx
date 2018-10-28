@@ -1,10 +1,10 @@
  <template>
     <div class="gnb-container">
         <header class="gnb">
-            <div id="main-title">
+            <a href="/"><div id="main-title">
                 <div>ONE SAMSUNG UX</div>
                 <div>DESIGN LIBRARY</div>
-            </div>
+            </div></a>
             <div class="nav">
                 <ul class="nav-tab">
                     <li class="tab">ABOUT SAMSUNG UX</li>
@@ -86,17 +86,21 @@
         position: fixed;
         top: 0px;
         left : 0px;
+        background: #f7f7f7;
+        z-index: 999;
     }
     .gnb {
         padding-top : 38px;
-        height: 146px;
+        height: 88px;
         width: 1110px;
         margin: auto;
         position: relative;
     }
     #main-title{
         position: absolute;
+        color :#212529;
         left: 0px;
+        cursor: pointer;
     }
     .profile{
         position: absolute;
