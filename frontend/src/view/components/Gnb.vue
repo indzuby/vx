@@ -7,8 +7,8 @@
             </div></a>
             <div class="nav">
                 <ul class="nav-tab">
-                    <li class="tab">ABOUT SAMSUNG UX</li>
-                    <li class="tab">ICONS
+                    <a href="/osux"><li class="tab" id="osux">ABOUT SAMSUNG UX</li></a>
+                    <a href="/icons"><li class="tab" id="icons">ICONS
                         <ul class="tab-sub icons-sub">
                             <li>Common</li>
                             <span></span>
@@ -18,8 +18,8 @@
                             <span></span>
                             <li>VD</li>
                         </ul>
-                    </li>
-                    <li class="tab">FONTS
+                    </li></a>
+                    <a href="/fonts"><li class="tab" id="fonts">FONTS
                         <ul class="tab-sub fonts-sub">
                             <li>Latin Related </li>
                             <span></span>
@@ -33,8 +33,8 @@
                             <span></span>
                             <li>African</li>
                         </ul>
-                    </li>
-                    <li class="tab">GUI
+                    </li></a>
+                    <a href="/gui"><li class="tab" id="gui">GUI
                         <ul class="tab-sub gui-sub">
                             <li>Light Theme</li>
                             <span></span>
@@ -44,8 +44,8 @@
                             <span></span>
                             <li>Controller</li>
                         </ul>
-                    </li>
-                    <li class="tab">MOTION
+                    </li></a>
+                    <a href="/motion"><li class="tab" id="motion">MOTION
                         <ul class="tab-sub motion-sub">
                             <li>About Flow</li>
                             <span></span>
@@ -53,7 +53,7 @@
                             <span></span>
                             <li>Motion Elements</li>
                         </ul>
-                    </li>
+                    </li></a>
                 </ul>
             </div>
             <div class="profile">
@@ -71,6 +71,28 @@
             active : "about"
             ,hover : ""
         }
+     }
+     ,mounted: function(){
+         console.log(this.$route);
+        $("#icons").addClass("active");
+         $(".active").removeClass("active");
+         switch(this.$route.name){
+             case "OSUX":
+                $("#osux").addClass("active");
+                break;
+            case "Icons":
+                $("#icons").addClass("active");
+                break;
+            case "Fonts":
+                $("#fonts").addClass("active");
+                break;
+            case "GUI":
+                $("#gui").addClass("active");
+                break;
+            case "Motion":
+                $("#motion").addClass("active");
+                break;
+         }
      }
      ,methods:{
          hoverEvent : function(tab){
@@ -136,7 +158,7 @@
     ul.nav-tab li:hover, ul.nav-tab li.active{
         color : #101010;
     }
-    ul.nav-tab li:hover ul.tab-sub, ul.nav-tab li.active ul.tab-sub{
+    ul.nav-tab li:hover ul.tab-sub{
         display: inline;
     }
     ul.tab-sub li {
@@ -161,6 +183,9 @@
     ul.motion-sub, ul.gui-sub, ul.fonts-sub{
         position: absolute;
         right: 24px;
+    }
+    a {
+        text-decoration: none;
     }
     
  </style>
