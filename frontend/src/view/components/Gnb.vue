@@ -151,6 +151,7 @@
     ul.tab-sub{
         display: none;
         position: absolute;
+        top : 38px;
     }
     ul.tab-sub li{
         font-size: 12px; 
@@ -177,15 +178,9 @@
         position: absolute;
         left : 27%;
     }
-    ul.icons-sub, ul.gui-sub, ul.fonts-sub{
-        top : 38px;
-    }
     ul.motion-sub, ul.gui-sub, ul.fonts-sub{
         position: absolute;
         right: 24px;
-    }
-    a {
-        text-decoration: none;
     }
     
  </style>
