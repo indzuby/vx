@@ -10,13 +10,13 @@
                     <a href="/osux"><li class="tab" id="osux">ABOUT SAMSUNG UX</li></a>
                     <a href="/icons"><li class="tab" id="icons">ICONS
                         <ul class="tab-sub icons-sub">
-                            <li>Common</li>
+                            <a href="/icons#common"><li id="common">Common</li></a>
                             <span></span>
-                            <li>IM</li>
+                            <a href="/icons#im"><li id="im">IM</li></a>
                             <span></span>
-                            <li>DA</li>
+                            <a href="/icons#da"><li id="da">DA</li></a>
                             <span></span>
-                            <li>VD</li>
+                            <a href="/icons#vd"><li id="vd">VD</li></a>
                         </ul>
                     </li></a>
                     <a href="/fonts"><li class="tab" id="fonts">FONTS
@@ -159,7 +159,7 @@
     ul.nav-tab li:hover, ul.nav-tab li.active{
         color : #101010;
     }
-    ul.nav-tab li:hover ul.tab-sub{
+    ul.nav-tab li:hover ul.tab-sub, ul.nav-tab li.active ul.tab-sub{
         display: inline;
     }
     ul.tab-sub li {

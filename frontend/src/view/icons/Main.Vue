@@ -62,12 +62,29 @@ export default {
     components :{
         Gnb
     }
+    ,created:function(){
+        let self = this;
+        $(window).on('hashchange', function() {
+            self.pageChange();
+        });
+    }
     ,mounted:function(){
-        this.navChange('common');
+        this.pageChange();
     }
     ,methods :{
-        moveCategory(category){
-            this.navChange(category);
+        pageChange(){
+            console.log(1);
+            if(location.hash.includes("im"))
+                this.navChange('im');
+            else if(location.hash.includes("da"))
+                this.navChange('da');
+            else if(location.hash.includes("vd"))
+                this.navChange('vd');
+            else if(location.hash.includes("common"))
+                this.navChange('common');
+        }
+        ,moveCategory(category){
+            location.hash = category;
         }
         ,moveSubCategory(sub){
             this.subNavChange(sub);
@@ -75,6 +92,8 @@ export default {
         ,navChange(category){
             $(".side-nav .category.active").removeClass("active");
             $(".side-nav .category#"+category).addClass("active");
+            $("ul.icons-sub li.active").removeClass("active");
+            $("ul.icons-sub li#"+category).addClass("active");
         }
         ,subNavChange(sub){
             $(".sub-nav .sub-category.active").removeClass("active");
