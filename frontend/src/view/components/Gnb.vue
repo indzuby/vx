@@ -21,17 +21,17 @@
                     </li></a>
                     <a href="/fonts"><li class="tab" id="fonts">FONTS
                         <ul class="tab-sub fonts-sub">
-                            <li>Latin Related </li>
+                            <a href="/fonts#latin_related"><li id="latin_related">Latin Related </li></a>
                             <span></span>
-                            <li>Middle East Asian</li>
+                            <a href="/fonts#middle_east_asian"><li id="middle_east_asian">Middle East Asian</li></a>
                             <span></span>
-                            <li>North East Asian</li>
+                            <a href="/fonts#north_east_asian"><li id="north_east_asian">North East Asian</li></a>
                             <span></span>
-                            <li>South East Asian</li>
+                            <a href="/fonts#south_east_asian"><li id="south_east_asian">South East Asian</li></a>
                             <span></span>
-                            <li>South West Asia</li>
+                            <a href="/fonts#south_west_asian"><li id="south_west_asian">South West Asian</li></a>
                             <span></span>
-                            <li>African</li>
+                            <a href="/fonts#african"><li id="african">African</li></a>
                         </ul>
                     </li></a>
                     <a href="/gui"><li class="tab" id="gui">GUI
@@ -113,7 +113,7 @@
     }
     .gnb {
         padding-top : 38px;
-        height: 88px;
+        height: 130px;
         width: 1110px;
         margin: auto;
         position: relative;

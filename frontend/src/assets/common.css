@@ -85,8 +85,14 @@ li.category ul.sub-nav li.sub-category:hover, li.category ul.sub-nav li.sub-cate
     /* background: white; */
     margin : 0px;
 }
+.download p.text{
+    text-align: center;
+    line-height: 36px;
+    font-size: 18px;
+    font-weight: 700;
+}
 .btn-white{
-    border : 4px;
+    border-radius : 2px !important;
     width : 235px;
 	color: #0081c6;
     height: 66px;
@@ -125,4 +131,17 @@ a {
 }
 a:hover{
     text-decoration: none;
+}
+.side-container{
+    display: inline-block;
+    vertical-align: top;
+}
+.content-container{
+    display: inline-block;
+    width: calc(100% - 250px);
+    height: 800px;;
+    position: relative;
+}
+.serach-container {
+    width : calc(100% - 250px);
 }

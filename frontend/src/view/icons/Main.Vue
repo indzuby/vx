@@ -36,19 +36,9 @@
                 <div class="serach-container">
                     <input type="text" class="serach" id="search-input" placeholder="SEARCH">
                 </div>
-                <b-dropdown class="download" no-caret variant="white" ref="labels_drop">
-                    <template slot="button-content">
-                        <span class="text" >DOWNLOADS</span>
-                    </template>
-                    <div class="btn-white">
-                        <p class="title">All Languages</p>
-                        <p class="content">FULL PACKAGE_DEVICE.ZIP</p>
+                    <div class="btn-white download">
+                        <p class="text">DOWNLOADS</p>
                     </div>
-                    <div class="btn-white">
-                        <p class="title">All Languages</p>
-                        <p class="content">FULL PACKAGE_MARCOMM.ZIP</p>
-                    </div>
-                </b-dropdown>
             </div>
         </div>
     </div>
@@ -73,7 +63,6 @@ export default {
     }
     ,methods :{
         pageChange(){
-            console.log(1);
             if(location.hash.includes("im"))
                 this.navChange('im');
             else if(location.hash.includes("da"))
@@ -84,6 +73,9 @@ export default {
                 this.navChange('common');
         }
         ,moveCategory(category){
+            if($(event.target).hasClass("category")){
+                $(".sub-nav .sub-category.active").removeClass("active");
+            }
             location.hash = category;
         }
         ,moveSubCategory(sub){
@@ -98,25 +90,11 @@ export default {
         ,subNavChange(sub){
             $(".sub-nav .sub-category.active").removeClass("active");
             $(".sub-nav .sub-category#"+sub).addClass("active");
-
         }
     }
 }
 </script>
 
 <style scoped>
-    .side-container{
-        display: inline-block;
-        vertical-align: top;
-    }
-    .content-container{
-        display: inline-block;
-        width: calc(100% - 250px);
-        height: 800px;;
-        position: relative;
-    }
-    .serach-container {
-        width : calc(100% - 250px);
-    }
 </style>
 
