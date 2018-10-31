@@ -8,50 +8,50 @@
             <div class="nav">
                 <ul class="nav-tab">
                     <a href="/osux"><li class="tab" id="osux">ABOUT SAMSUNG UX</li></a>
-                    <a href="/icons"><li class="tab" id="icons">ICONS
-                        <ul class="tab-sub icons-sub">
-                            <a href="/icons#common"><li id="common">Common</li></a>
+                    <a href="/icons#common"><li class="tab" id="icons">ICONS
+                        <ul class="sub-nav icons-sub">
+                            <a class="sub-tab" href="/icons#common"><li class="sub-tab" id="common">Common</li></a>
                             <span></span>
-                            <a href="/icons#im"><li id="im">IM</li></a>
+                            <a class="sub-tab" href="/icons#im"><li class="sub-tab" id="im">IM</li></a>
                             <span></span>
-                            <a href="/icons#da"><li id="da">DA</li></a>
+                            <a class="sub-tab" href="/icons#da"><li class="sub-tab" id="da">DA</li></a>
                             <span></span>
-                            <a href="/icons#vd"><li id="vd">VD</li></a>
+                            <a class="sub-tab" href="/icons#vd"><li class="sub-tab" id="vd">VD</li></a>
                         </ul>
                     </li></a>
-                    <a href="/fonts"><li class="tab" id="fonts">FONTS
-                        <ul class="tab-sub fonts-sub">
-                            <a href="/fonts#latin_related"><li id="latin_related">Latin Related </li></a>
+                    <a href="/fonts#latin_related"><li class="tab" id="fonts">FONTS
+                        <ul class="sub-nav fonts-sub">
+                            <a class="sub-tab" href="/fonts#latin_related"><li class="sub-tab" id="latin_related">Latin Related </li></a>
                             <span></span>
-                            <a href="/fonts#middle_east_asian"><li id="middle_east_asian">Middle East Asian</li></a>
+                            <a class="sub-tab" href="/fonts#middle_east_asian"><li class="sub-tab" id="middle_east_asian">Middle East Asian</li></a>
                             <span></span>
-                            <a href="/fonts#north_east_asian"><li id="north_east_asian">North East Asian</li></a>
+                            <a class="sub-tab" href="/fonts#north_east_asian"><li class="sub-tab" id="north_east_asian">North East Asian</li></a>
                             <span></span>
-                            <a href="/fonts#south_east_asian"><li id="south_east_asian">South East Asian</li></a>
+                            <a class="sub-tab" href="/fonts#south_east_asian"><li class="sub-tab" id="south_east_asian">South East Asian</li></a>
                             <span></span>
-                            <a href="/fonts#south_west_asian"><li id="south_west_asian">South West Asian</li></a>
+                            <a class="sub-tab" href="/fonts#south_west_asian"><li class="sub-tab" id="south_west_asian">South West Asian</li></a>
                             <span></span>
-                            <a href="/fonts#african"><li id="african">African</li></a>
+                            <a class="sub-tab" href="/fonts#african"><li class="sub-tab" id="african">African</li></a>
                         </ul>
                     </li></a>
                     <a href="/gui"><li class="tab" id="gui">GUI
-                        <ul class="tab-sub gui-sub">
-                            <li>Light Theme</li>
+                        <ul class="sub-nav gui-sub">
+                            <a class="sub-tab" href="/gui#light_theme"><li class="sub-tab">Light Theme</li></a>
                             <span></span>
-                            <li>Dark Theme</li>
+                            <a class="sub-tab" href="/gui#dark_theme"><li class="sub-tab">Dark Theme</li></a>
                             <span></span>
-                            <li>Component Grid System</li>
+                            <a class="sub-tab" href="/gui#component_grid_system"><li class="sub-tab">Component Grid System</li></a>
                             <span></span>
-                            <li>Controller</li>
+                            <a class="sub-tab" href="/gui#controller"><li class="sub-tab">Controller</li></a>
                         </ul>
                     </li></a>
                     <a href="/motion"><li class="tab" id="motion">MOTION
-                        <ul class="tab-sub motion-sub">
-                            <li>About Flow</li>
+                        <ul class="sub-nav motion-sub">
+                            <a class="sub-tab" href="/motion#about_flow"><li class="sub-tab">About Flow</li></a>
                             <span></span>
-                            <li>Motion Principles</li>
+                            <a class="sub-tab" href="/motion#motion_principles"><li class="sub-tab">Motion Principles</li></a>
                             <span></span>
-                            <li>Motion Elements</li>
+                            <a class="sub-tab" href="/motion#motion_elements"><li class="sub-tab">Motion Elements</li></a>
                         </ul>
                     </li></a>
                 </ul>
@@ -78,7 +78,7 @@
         let self = this;
         self.activeTab();
         $(".nav-tab li.tab").mouseover(function(event){
-            if($(event.target).hasClass("tab")){
+            if($(event.target).hasClass("tab") || $(event.target).hasClass("sub-tab") || $(event.target).hasClass("sub-nav")){
                 $(".nav-tab li.tab.active").removeClass("active"); 
             }
         });
@@ -156,27 +156,27 @@
         font-size: 24px;
         padding-right: 34px;
     }
-    ul.tab-sub{
+    ul.sub-nav{
         display: none;
         position: absolute;
         top : 38px;
     }
-    ul.tab-sub li{
+    ul.sub-nav li{
         font-size: 12px; 
     }
     ul.nav-tab li:hover, ul.nav-tab li.active{
         color : #101010;
     }
-    ul.nav-tab li:hover ul.tab-sub, ul.nav-tab li.active ul.tab-sub{
+    ul.nav-tab li:hover ul.sub-nav, ul.nav-tab li.active ul.sub-nav{
         display: inline;
     }
-    ul.tab-sub li {
+    ul.sub-nav li {
         padding-top : 2px;
         padding-bottom: 2px;
         padding-right: 11px;
         padding-left: 11px;
     }
-    ul.tab-sub span{
+    ul.sub-nav span{
         display: inline-block;
         border-right : 1px #949494 solid;
         width: 1px;

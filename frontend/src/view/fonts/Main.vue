@@ -16,20 +16,20 @@
                             <li @click="moveSubCategory('georgian')" class="sub-category" id="georgian">Georgian</li>
                         </ul>
                     </li>
-                    <li @click="moveCategory('middle_east_asian')" class="active category" id="middle_east_asian">MIDDLE EAST ASIAN
+                    <li @click="moveCategory('middle_east_asian')" class="category" id="middle_east_asian">MIDDLE EAST ASIAN
                         <ul class="sub-nav">
                             <li @click="moveSubCategory('arabic')" class="sub-category" id="arabic">Arabic (Urdu, Farsi)</li>
                             <li @click="moveSubCategory('hebrew')" class="sub-category" id="hebrew">Hebrew</li>
                         </ul>
                     </li>
-                    <li @click="moveCategory('north_east_asian')" class="active category" id="north_east_asian">NORTH EAST ASIAN
+                    <li @click="moveCategory('north_east_asian')" class="category" id="north_east_asian">NORTH EAST ASIAN
                         <ul class="sub-nav">
                             <li @click="moveSubCategory('korean')" class="sub-category" id="korean">Korean</li>
                             <li @click="moveSubCategory('simplified_chinese')" class="sub-category" id="simplified_chinese">Simplified Chinese<br>(China)</li>
                             <li @click="moveSubCategory('traditional_chinese')" class="sub-category" id="traditional_chinese">Traditional Chinese<br>(H.K. / Taiwan)</li>
                         </ul>
                     </li>
-                    <li @click="moveCategory('south_east_asian')" class="active category" id="south_east_asian">SOUTH EAST ASIAN
+                    <li @click="moveCategory('south_east_asian')" class="category" id="south_east_asian">SOUTH EAST ASIAN
                         <ul class="sub-nav">
                             <li @click="moveSubCategory('thai')" class="sub-category" id="thai">Thai</li>
                             <li @click="moveSubCategory('lao')" class="sub-category" id="lao">Lao</li>
@@ -37,7 +37,7 @@
                             <li @click="moveSubCategory('khmer')" class="sub-category" id="khmer">Khmer</li>
                         </ul>
                     </li>
-                    <li @click="moveCategory('south_west_asian')" class="active category" id="south_west_asian">SOUTH WEST ASIAN
+                    <li @click="moveCategory('south_west_asian')" class="category" id="south_west_asian">SOUTH WEST ASIAN
                         <ul class="sub-nav">
                             <li @click="moveSubCategory('devanagari')" class="sub-category" id="devanagari">Devanagari<br>(Hindi, Nepali, Marathi)</li>
                             <li @click="moveSubCategory('bangla')" class="sub-category" id="bangla">Bangla<br>(Bengali, Assamese)</li>
@@ -52,7 +52,7 @@
                             <li @click="moveSubCategory('sinhala')" class="sub-category" id="sinhala">Sinhala</li>
                         </ul>
                     </li>
-                    <li @click="moveCategory('african')" class="active category" id="african">AFRICAN
+                    <li @click="moveCategory('african')" class="category" id="african">AFRICAN
                         <ul class="sub-nav">
                             <li @click="moveSubCategory('ethipoic')" class="sub-category" id="ethipoic">Ethiopic</li>
                         </ul>

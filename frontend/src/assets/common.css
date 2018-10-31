@@ -89,15 +89,16 @@ li.category ul.sub-nav li.sub-category:hover, li.category ul.sub-nav li.sub-cate
     text-align: center;
     line-height: 36px;
     font-size: 18px;
-    font-weight: 700;
+    font-weight: 500;
 }
 .btn-white{
     border-radius : 2px !important;
     width : 235px;
 	color: #0081c6;
+    font-size: 18px;
+    font-weight: 500;
     height: 66px;
     box-shadow: 0 0 8.6px 0.5px rgba(31, 31, 31, 0.19);
-    font-weight: 600;
     background: white;
     margin-bottom: 5px;
     cursor: pointer;
