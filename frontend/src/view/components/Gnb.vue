@@ -72,31 +72,39 @@
             ,hover : ""
         }
      }
+     ,created:function(){
+     }
      ,mounted: function(){
-         console.log(this.$route);
-        $("#icons").addClass("active");
-         $(".active").removeClass("active");
-         switch(this.$route.name){
-             case "OSUX":
-                $("#osux").addClass("active");
-                break;
-            case "Icons":
-                $("#icons").addClass("active");
-                break;
-            case "Fonts":
-                $("#fonts").addClass("active");
-                break;
-            case "GUI":
-                $("#gui").addClass("active");
-                break;
-            case "Motion":
-                $("#motion").addClass("active");
-                break;
-         }
+        let self = this;
+        self.activeTab();
+        $(".nav-tab li.tab").mouseover(function(event){
+            if($(event.target).hasClass("tab")){
+                $(".nav-tab li.tab.active").removeClass("active"); 
+            }
+        });
+        $(".nav-tab li.tab").mouseout(function(event){
+            self.activeTab();
+        });
      }
      ,methods:{
-         hoverEvent : function(tab){
-             this.hover = tab;
+         activeTab(){
+            switch(this.$route.name){
+                case "OSUX":
+                    $("#osux").addClass("active");
+                    break;
+                case "Icons":
+                    $("#icons").addClass("active");
+                    break;
+                case "Fonts":
+                    $("#fonts").addClass("active");
+                    break;
+                case "GUI":
+                    $("#gui").addClass("active");
+                    break;
+                case "Motion":
+                    $("#motion").addClass("active");
+                    break;
+            }
          }
      }
  }
