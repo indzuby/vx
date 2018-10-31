@@ -140,7 +140,7 @@ a:hover{
 .content-container{
     display: inline-block;
     width: calc(100% - 250px);
-    height: 800px;;
+    min-height: 800px;
     position: relative;
 }
 .serach-container {

@@ -36,22 +36,23 @@
                     </li></a>
                     <a href="/gui"><li class="tab" id="gui">GUI
                         <ul class="sub-nav gui-sub">
-                            <a class="sub-tab" href="/gui#light_theme"><li class="sub-tab">Light Theme</li></a>
+                            <a class="sub-tab" href="/gui#light_theme"><li class="sub-tab" id="light_theme">Light Theme</li></a>
                             <span></span>
-                            <a class="sub-tab" href="/gui#dark_theme"><li class="sub-tab">Dark Theme</li></a>
+                            <a class="sub-tab" href="/gui#dark_theme"><li class="sub-tab" id="dark_theme">Dark Theme</li></a>
                             <span></span>
-                            <a class="sub-tab" href="/gui#component_grid_system"><li class="sub-tab">Component Grid System</li></a>
+                            <a class="sub-tab" href="/gui#component_grid_system"><li class="sub-tab" id="component_grid_system">Component Grid System</li></a>
                             <span></span>
-                            <a class="sub-tab" href="/gui#controller"><li class="sub-tab">Controller</li></a>
+                            <a class="sub-tab" href="/gui#controller"><li class="sub-tab" id="controller">Controller</li></a>
                         </ul>
                     </li></a>
                     <a href="/motion#about_flow"><li class="tab" id="motion">MOTION
                         <ul class="sub-nav motion-sub">
                             <a class="sub-tab" href="/motion#about_flow"><li class="sub-tab" id="about_flow">About Flow</li></a>
                             <span></span>
-                            <a class="sub-tab" href="/motion#motion_principles"><li class="sub-tab" id="motion_principles">Motion Principles</li></a>
+                            <a class="sub-tab" href="/motion#motion_basics"><li class="sub-tab" id="motion_basics">Motion Basics</li></a>
+                            <!-- <a class="sub-tab" href="/motion#motion_principles"><li class="sub-tab" id="motion_principles">Motion Principles</li></a>
                             <span></span>
-                            <a class="sub-tab" href="/motion#motion_elements"><li class="sub-tab" id="motion_elements">Motion Elements</li></a>
+                            <a class="sub-tab" href="/motion#motion_elements"><li class="sub-tab" id="motion_elements">Motion Elements</li></a> -->
                         </ul>
                     </li></a>
                 </ul>
