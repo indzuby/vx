@@ -45,13 +45,13 @@
                             <a class="sub-tab" href="/gui#controller"><li class="sub-tab">Controller</li></a>
                         </ul>
                     </li></a>
-                    <a href="/motion"><li class="tab" id="motion">MOTION
+                    <a href="/motion#about_flow"><li class="tab" id="motion">MOTION
                         <ul class="sub-nav motion-sub">
-                            <a class="sub-tab" href="/motion#about_flow"><li class="sub-tab">About Flow</li></a>
+                            <a class="sub-tab" href="/motion#about_flow"><li class="sub-tab" id="about_flow">About Flow</li></a>
                             <span></span>
-                            <a class="sub-tab" href="/motion#motion_principles"><li class="sub-tab">Motion Principles</li></a>
+                            <a class="sub-tab" href="/motion#motion_principles"><li class="sub-tab" id="motion_principles">Motion Principles</li></a>
                             <span></span>
-                            <a class="sub-tab" href="/motion#motion_elements"><li class="sub-tab">Motion Elements</li></a>
+                            <a class="sub-tab" href="/motion#motion_elements"><li class="sub-tab" id="motion_elements">Motion Elements</li></a>
                         </ul>
                     </li></a>
                 </ul>
