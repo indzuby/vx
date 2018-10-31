@@ -6,7 +6,7 @@
                 <p class="side-title">GUI</p>
                 <div class="side-divider"></div>
                 <div class="btn-white download">
-                    <p class="text">DOWNLOADS</p>
+                    <p class="text">DOWNLOADS ▾</p>
                 </div>
                 <div class="about-gui">
                     <img class="gui-img" src="/static/images/gui_main.png">

@@ -37,7 +37,7 @@
                     <input type="text" class="serach" id="search-input" placeholder="SEARCH">
                 </div>
                     <div class="btn-white download">
-                        <p class="text">DOWNLOADS</p>
+                        <p class="text">DOWNLOADS ▾</p>
                     </div>
             </div>
         </div>

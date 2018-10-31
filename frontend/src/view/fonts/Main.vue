@@ -65,7 +65,7 @@
                 </div>
                 <b-dropdown class="download" no-caret variant="white" ref="labels_drop">
                     <template slot="button-content">
-                        <span class="text" >DOWNLOADS</span>
+                        <span class="text" >DOWNLOADS ▾</span>
                     </template>
                     <div class="btn-white">
                         <p class="title">All Languages</p>
