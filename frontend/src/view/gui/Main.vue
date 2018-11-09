@@ -92,6 +92,8 @@ export default {
                 this.scrollChange('component_grid_system');
             else if(location.hash.includes("controller"))
                 this.scrollChange('controller');
+            else 
+                window.scrollTo(0,100);
         }
         ,scrollChange(category){
             var h = $(".gui-content#"+category).position().top;
@@ -108,6 +110,7 @@ export default {
 <style scoped>
     .content-container{
         width: 100%;
+        margin-left: 0px;
     }
     .gui-img{
         margin-left: 44px;

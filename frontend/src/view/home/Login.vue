@@ -3,7 +3,7 @@
 		<header id="account-header">
 			<div class="container">
 				<div class="row">
-					<div class="navbar-title">SAMSUNG ICONS</div>
+					<div class="navbar-title">ONE SAMSUNG UX<br>DESIGN LIBRARY</div>
 				</div>
 			
 				<div class="row">
@@ -77,7 +77,7 @@ export default {
 	,methods:{
 		login(){
 			httpCall('/login',"POST",{"email":this.email,"password":this.password},(res)=>{
-				console.log(res);
+				location.href="/";
 			});
 		}
 		,signup(){

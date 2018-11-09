@@ -22,7 +22,7 @@ function httpCall(url,type,data,callback){
         }
         ,success : function(res){
             if(res.code == 0){
-                callback(res.data);
+                callback(res);
             }else {
                 alert(res.msg);
             }

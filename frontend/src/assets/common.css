@@ -29,6 +29,7 @@ p{
     padding-right : 94px;
 }
 .side-container{
+    position: fixed;
     width: 245px;
 }
 .side-title {
@@ -142,7 +143,67 @@ a:hover{
     width: calc(100% - 250px);
     min-height: 800px;
     position: relative;
+    margin-left: 250px;
 }
 .serach-container {
     width : calc(100% - 250px);
+}
+
+.content-title{
+    font-size: 35.8px;
+    font-weight: 500;
+    color : #666666;
+}
+.content-sub-title{
+    font-size: 24.4px;
+    font-weight: 700;
+    color : #666666;
+    margin-top: 45px;
+}
+.content-description{
+    color : #666666;
+    font-size: 16px;
+    font-weight: 400;
+    margin-top: 24px;
+}
+.content-description > .quotation{
+    font-weight: 600;
+}
+.liner-video{
+    display: inline-block;
+}
+.liner-video p{
+    text-align: center;
+    font-weight: 300;
+    font-size: 12px;
+    margin-top:12px;
+}
+.video-title{
+    color : #666666;
+    font-size: 18.3px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+.video{
+    width: 100%;
+}
+.video-half{
+    display: block;
+    margin: auto;
+    width:50%;
+}
+.content:not(#what_is_flow){
+    margin-top: 105px;
+}
+.half-container{
+    position: relative;
+    width: 100%;
+    margin-top : 42px;
+}
+.half-content{
+    display: inline-block;
+    width: calc(50% - 12px);
+}
+.half-content.right{
+    float : right;
 }

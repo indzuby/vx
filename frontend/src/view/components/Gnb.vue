@@ -34,7 +34,7 @@
                             <a class="sub-tab" href="/fonts#african"><li class="sub-tab" id="african">African</li></a>
                         </ul>
                     </li></a>
-                    <a href="/gui"><li class="tab" id="gui">GUI
+                    <a href="/gui#about"><li class="tab" id="gui">GUI
                         <ul class="sub-nav gui-sub">
                             <a class="sub-tab" href="/gui#light_theme"><li class="sub-tab" id="light_theme">Light Theme</li></a>
                             <span></span>
@@ -49,7 +49,7 @@
                         <ul class="sub-nav motion-sub">
                             <a class="sub-tab" href="/motion#about_flow"><li class="sub-tab" id="about_flow">About Flow</li></a>
                             <span></span>
-                            <a class="sub-tab" href="/motion#motion_basics"><li class="sub-tab" id="motion_basics">Motion Basics</li></a>
+                            <a class="sub-tab" href="/motion#motion_direction"><li class="sub-tab" id="motion_direction">Motion Direction</li></a>
                             <!-- <a class="sub-tab" href="/motion#motion_principles"><li class="sub-tab" id="motion_principles">Motion Principles</li></a>
                             <span></span>
                             <a class="sub-tab" href="/motion#motion_elements"><li class="sub-tab" id="motion_elements">Motion Elements</li></a> -->

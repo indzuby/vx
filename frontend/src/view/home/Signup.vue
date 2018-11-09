@@ -1,27 +1,54 @@
 <template>
-    <div class="container">
-        <div class="row justify-content-md-center">
-            <form id="signup-form"  autocomplete="off" @submit.prevent="signup">
-                <div class="form-group">
-                    <label for="sign-input-email">Email address</label>
-                    <input pattern="[\w.%+-]+@samsung\.com" v-model="email" type="email" id="sign-input-email" class="form-control" name="username" placeholder="singleID@samsung.com">
-                     <small class="form-text text-muted">싱글 계정으로 가입해주세요</small>
-                </div>
-                
-                
-                <div class="form-group">
-                    <input type="password" class="form-control" v-model="password" name="password" placeholder="Password">
-                </div>
-                <div align="right">Already signed up? 
-                    <a href="/">Sign In</a>Now!
-                </div>
-                
-                <div class="text-right">
-                    <button type="submit" class="btn btn-default">Sign Up</button>
-                </div>
-            </form>
-        </div>
-    </div>
+	<div>
+		<header id="account-header">
+			<div class="container">
+				<div class="row">
+					<div class="navbar-title">ONE SAMSUNG UX<br>DESIGN LIBRARY</div>
+				</div>
+			
+				<div class="row">
+				<div class="divider"></div>
+				</div>
+			</div>
+		</header>
+
+		
+		<section class="description">
+			<div class="container">
+				<div class="row">
+					
+					<div class="col-12 pl-0">Create a New</div>
+					<div class="col-12 pl-0">Account</div>
+					
+				</div>
+				
+			</div>
+		</section><!--Enter your ID-->
+		<section id="account-section">
+			<div class="container">
+				<div class="row">
+					<form id="login-form" autocomplete="off" @submit.prevent="signup">
+						<div class="form-group">
+						<input pattern="[\w.%+-]+@samsung\.com" v-model="email" type="email" id="input-username" class="form-control vi-input" placeholder="ID" name="username" required title="id@samsung.com 형태로 입력해주세요">
+						</div>
+						<div class="form-group">
+							<input pattern=".{6,}" type="password" v-model="password" id="input-password" class="form-control vi-input" placeholder="PASSWORD" name="password" required title="6자리 이상 암호로 입력해주세요">
+						</div>
+                        <div class="form-group">
+							<input pattern=".{6,}" type="password" v-model="password_re" id="input-password-re" class="form-control vi-input" placeholder="PASSWORD 확인" name="password_re" required title="6자리 이상 암호로 입력해주세요">
+                        </div>
+                        <div align="right">Already signed up? 
+                            <a href="/login">Sign In</a> here
+                        </div>
+						
+						<button type="submit" id="signin-btn" class="btn btn-primary">SIGN UP</button>
+					</form>
+					
+				</div>
+			</div>
+			
+		</section><!-- ID/PW -->
+	</div>
 </template>
 
 <script>
@@ -30,13 +57,19 @@ export default {
 	,data(){
 		return {
 			email : ''
-			,password : ''
+            ,password : ''
+            ,password_re : ''
 		}
 	}
 	,methods:{
 		signup(){
+            if(this.password !== this.password_re) {
+                return alert("패스워드가 일치하지않습니다.");
+            }
 			httpCall('/signup',"POST",{"email":this.email,"password":this.password},(res)=>{
-				console.log(res);
+				if(confirm("가입에 성공하였습니다. 로그인해주세요.")){
+                    location.href="/login";
+                }
 			});
 		}
 	}

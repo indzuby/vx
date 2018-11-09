@@ -8,6 +8,7 @@ var mongoose = require('mongoose');
 var session = require('express-session');
 
 var index = require('./routes/index');
+var view = require('./routes/view')
 
 var app = express();
 
@@ -21,11 +22,8 @@ mongoose_db.once('open', function() {
 });
 
 global.db = require('./db/schema.js');
+app.use(require('connect-history-api-fallback')())
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.engine('html', require('ejs').renderFile);
-app.set('view engine', 'html');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -53,7 +51,11 @@ app.use(function(req, res, next) {
     next();
 });
 
+
 app.use('/api', index);
+app.use('/', view);
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
