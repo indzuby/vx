@@ -93,11 +93,11 @@ export default {
             else if(location.hash.includes("controller"))
                 this.scrollChange('controller');
             else 
-                window.scrollTo(0,100);
+                $('html, body').animate({scrollTop: 100}, 'fast');
         }
         ,scrollChange(category){
             var h = $(".gui-content#"+category).position().top;
-            window.scrollTo(0,h+100);
+            $('html, body').animate({scrollTop: h+100}, 'fast');
         }
         ,navChange(category){
             $("ul.gui-sub li.active").removeClass("active");

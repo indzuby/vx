@@ -493,9 +493,10 @@ export default {
                 // location.hash="light_theme";
                 self.navChange("motion_direction");
             }
-            $(".content").each(function(element){
+            $($(".content").get().reverse()).each(function(element){
                 if(window.scrollY+50 >= $(this).position().top){
                     self.subNavChange($(this).attr("id"));
+                    return false;
                 }
             })
         })
@@ -512,20 +513,22 @@ export default {
                 this.navChange('motion_direction');
                 h = $(".main-content#motion_direction").position().top;
             }
-            window.scrollTo(0,h);
+            $('html, body').animate({scrollTop: h+150}, 'fast');
         }
         ,moveCategory(category){
             if($(event.target).hasClass("category")){
                 $(".sub-nav .sub-category.active").removeClass("active");
             }
+            if(location.hash === category){
+                var h = $(".main-content#"+category).position().top;
+                $('html, body').animate({scrollTop: h+150}, 'fast');
+            }
             location.hash = category;
-            var h = $(".main-content#"+category).position().top;
-            window.scrollTo(0,h);
         }
         ,moveSubCategory(sub){
             this.subNavChange(sub);
             var h = $(".content#"+sub).position().top;
-            window.scrollTo(0,h);
+            $('html, body').animate({scrollTop: h+200}, 'fast');
 
         }
         ,navChange(category){
