@@ -162,22 +162,32 @@ a:hover{
 }
 .content-description{
     color : #666666;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 400;
     margin-top: 24px;
 }
 .content-description > .quotation{
     font-weight: 600;
 }
-.liner-video{
+.linear-video{
     display: inline-block;
 }
-.liner-video p{
+.center-video{
+    margin : auto;
+    display: block;
+    width: 360px;
+}
+.linear-video p, .half-content p, .center-video p{
     text-align: center;
     font-weight: 300;
     font-size: 12px;
     margin-top:12px;
 }
+.linear-video p.left{
+    text-align: left;
+    padding-left: 32px;
+}
+
 .video-title{
     color : #666666;
     font-size: 18.3px;
@@ -187,11 +197,15 @@ a:hover{
 .video{
     width: 100%;
 }
+.video.one{
+    margin-top: 32px;
+}
 .video-half{
     display: block;
     margin: auto;
     width:50%;
 }
+
 .content:not(#what_is_flow){
     margin-top: 105px;
 }

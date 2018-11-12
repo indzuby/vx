@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <router-view/>
-      <div id="copyright" class="col-12 pl-0">
+      <div id="copyright">
         Copyright© 2018 Samsung All rights reserved. | For questions, please <a href="mailto:seohee17.kim@samsung.com">click here</a>
       </div>
   </div>
