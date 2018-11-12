@@ -205,10 +205,6 @@ a:hover{
     margin: auto;
     width:50%;
 }
-
-.content:not(#what_is_flow){
-    margin-top: 105px;
-}
 .half-container{
     position: relative;
     width: 100%;

@@ -546,5 +546,8 @@ export default {
 .content-container{
     margin-top:160px;
 }
+.content:not(#what_is_flow){
+     margin-top:105px;
+}
 </style>
 
