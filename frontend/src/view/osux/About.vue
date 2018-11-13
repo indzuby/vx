@@ -1,7 +1,7 @@
 <template>
     <div>
         <Gnb />
-        <div class="main-container">
+        <div class="main-container" style="margin-top: 105px;">
             <div class="main-title">
                 <p>One Samung UX</p>
                 <p>Dis about becoming one</p>
@@ -13,7 +13,7 @@
                 <p>It is now crucial more and ever to provide consistency, continuous and harmonious experience </p>
                 <p>with intelligence across all Samsung products and services and aim towards holistic multi device experience</p>
             </div>
-            <img class="landing-img" src="/static/images/about_osux.png">
+            <img class="landing-img" src="/static/images/about_ux principle_01.jpg">
             <div class="main-title">
                 <p>One Samung UX principle</p>
             </div>
@@ -21,7 +21,7 @@
                 <p>Below is Samsung’s six UX Principles and a graph of how they work together.<p>
                 <p>You can download the full version explanation pdf file here</p>
             </div>
-            <img class="landing-img" src="/static/images/about_osux_2.png">
+            <img class="landing-img" src="/static/images/about_ux principle_02.jpg">
         </div>
     </div>
     

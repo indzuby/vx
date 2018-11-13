@@ -1,7 +1,7 @@
 <template>
     <div>
         <Gnb />
-        <div class="main-container">
+        <div class="main-container" style="margin-top: 105px;">
             <div class="main-title">
                 <p>Welcome to One Samung UX</p>
                 <p>Design Library</p>
@@ -11,7 +11,7 @@
                 <p>You can view and download the latest version of Samsung icon sets,</p>
                 <p>OneFunction Fonts, GUI templates and Samsung Motion guidlines.</p>
             </div>
-            <img class="landing-img" src="/static/images/landing.png">
+            <img class="landing-img" src="/static/images/landing_maing.jpg">
         </div>
     </div>
     

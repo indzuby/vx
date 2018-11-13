@@ -76,6 +76,74 @@
                         <p class="content">FULL PACKAGE_MARCOMM.ZIP</p>
                     </div>
                 </b-dropdown>
+                <div class="font-container" style="margin-top: 115px;">
+                    <div class="main-title" style="text-align:left;">Samsung One Font</div>
+                    <div class="main-description" style="text-align:left; margin-top: 24px;">
+                        SamsungOne is a family of scripts covering 26 writing systems, more 400 languages, <br>
+                        and over 25,000 glyphs, creating a truly global typeface. <br>
+                        Choose between Device & Marcomm (Print, Web, Video) fonts when downloading
+                    </div>
+                    <div class="category-item" id="latin_related">
+                        <p>Latin Related</p>
+                        <div class="items">
+                            <img src="/static/images/fonts/font_main_lat_01.jpg">
+                            <img src="/static/images/fonts/font_main_lat_02.jpg">
+                            <img src="/static/images/fonts/font_main_lat_03.jpg">
+                            <img src="/static/images/fonts/font_main_lat_04.jpg">
+                            <img src="/static/images/fonts/font_main_lat_05.jpg">
+                        </div>
+                    </div>
+                    <div class="category-item" id="latin_related">
+                        <p>MIDDLE EAST ASIAN</p>
+                        <div class="items">
+                            <img src="/static/images/fonts/font_main_mideast_01.jpg">
+                            <img src="/static/images/fonts/font_main_mideast_02.jpg">
+                        </div>
+                    </div>
+                    <div class="category-item" id="latin_related">
+                        <p>NORTH EAST ASIAN</p>
+                        <div class="items">
+                            <img src="/static/images/fonts/font_main_northeast_01.jpg">
+                            <img src="/static/images/fonts/font_main_northeast_02.jpg">
+                            <img src="/static/images/fonts/font_main_northeast_03.jpg">
+                        </div>
+                    </div>
+                    <div class="category-item" id="latin_related">
+                        <p>SOUTH EAST ASIAN</p>
+                        <div class="items">
+                            <img src="/static/images/fonts/font_main_southeast_01.jpg">
+                            <img src="/static/images/fonts/font_main_southeast_02.jpg">
+                            <img src="/static/images/fonts/font_main_southeast_03.jpg">
+                            <img src="/static/images/fonts/font_main_southeast_04.jpg">
+                        </div>
+                    </div>
+                    <div class="category-item" id="latin_related">
+                        <p>SOUTH WEST ASIAN</p>
+                        <div class="items">
+                            <img src="/static/images/fonts/font_main_south_west_01.jpg">
+                            <img src="/static/images/fonts/font_main_south_west_02.jpg">
+                            <img src="/static/images/fonts/font_main_south_west_03.jpg">
+                            <img src="/static/images/fonts/font_main_south_west_04.jpg">
+                            <img src="/static/images/fonts/font_main_south_west_05.jpg">
+                        </div>
+                        <div class="items">
+                            <img src="/static/images/fonts/font_main_south_west_06.jpg">
+                            <img src="/static/images/fonts/font_main_south_west_07.jpg">
+                            <img src="/static/images/fonts/font_main_south_west_08.jpg">
+                            <img src="/static/images/fonts/font_main_south_west_09.jpg">
+                            <img src="/static/images/fonts/font_main_south_west_10.jpg">
+                        </div>
+                        <div class="items">
+                            <img src="/static/images/fonts/font_main_south_west_11.jpg">
+                        </div>
+                    </div>
+                    <div class="category-item" id="latin_related">
+                        <p>AFRICAN</p>
+                        <div class="items">
+                            <img src="/static/images/fonts/font_main_africa_01.jpg">
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -138,5 +206,19 @@ export default {
 </script>
 
 <style scoped>
+.category-item{
+    margin-top:48px;
+}
+.category-item p{
+    font-size: 14px;
+    color :rgba(0,0,0,0.8);
+    font-weight: 600;
+}
+.category-item .items{
+    margin-top: 18px;
+}
+.category-item .items img:not(:first-child){
+    margin-left: 68px;
+}
 </style>
 
