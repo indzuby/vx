@@ -1,0 +1,42 @@
+[
+    {
+        "name": "Latin",
+        "category": "Latin Related",
+        "downloadDevice": "/staic/assets/fonts/Latin Related/Latin/SamsungOneUILatin.zip",
+        "downloadMarcomm": "/staic/assets/fonts/Latin Related/Latin/SamsungOneLatin.zip",
+        "order": 1,
+        "thumbnail" : "/staic/images/fonts/font_main_lat_01.jpg"
+    }
+    ,{
+        "name": "Cyrillc",
+        "category": "Latin Related",
+        "downloadDevice": "/staic/assets/fonts/Latin Related/Cyrillc/SamsungOneUILatin.zip",
+        "downloadMarcomm": "/staic/assets/fonts/Latin Related/Cyrillc/SamsungOneLatin.zip",
+        "order": 2,
+        "thumbnail" : "/staic/images/fonts/font_main_lat_02.jpg"
+    }
+    ,{
+        "name": "Greek",
+        "category": "Latin Related",
+        "downloadDevice": "/staic/assets/fonts/Latin Related/Greek/SamsungOneUILatin.zip",
+        "downloadMarcomm": "/staic/assets/fonts/Latin Related/Greek/SamsungOneLatin.zip",
+        "order": 3,
+        "thumbnail" : "/staic/images/fonts/font_main_lat_03.jpg"
+    }
+    ,{
+        "name": "Armenian",
+        "category": "Latin Related",
+        "downloadDevice": "/staic/assets/fonts/Latin Related/Armenian/SamsungOneUILatin.zip",
+        "downloadMarcomm": "/staic/assets/fonts/Latin Related/Armenian/SamsungOneLatin.zip",
+        "order": 4,
+        "thumbnail" : "/staic/images/fonts/font_main_lat_04.jpg"
+    }
+    ,{
+        "name": "Georgian",
+        "category": "Latin Related",
+        "downloadDevice": "/staic/assets/fonts/Latin Related/Georgian/SamsungOneUILatin.zip",
+        "downloadMarcomm": "/staic/assets/fonts/Latin Related/Georgian/SamsungOneLatin.zip",
+        "order": 5,
+        "thumbnail" : "/staic/images/fonts/font_main_lat_05.jpg"
+    }
+]

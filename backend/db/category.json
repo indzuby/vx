@@ -1,0 +1,52 @@
+[
+    {
+        "name" : "LATIN RELATED"
+        ,"type" : "FONTS"
+        ,"order" : 1
+    }
+    ,{
+        "name" : "MIDDLE EAST ASIAN"
+        ,"type" : "FONTS"
+        ,"order" : 2
+    }
+    ,{
+        "name" : "NORTH EAST ASIAN"
+        ,"type" : "FONTS"
+        ,"order" : 3
+    }
+    ,{
+        "name" : "SOUTH EAST ASIAN"
+        ,"type" : "FONTS"
+        ,"order" : 4
+    }
+    ,{
+        "name" : "SOUTH WEST ASIAN"
+        ,"type" : "FONTS"
+        ,"order" : 5
+    }
+    ,{
+        "name" : "AFRICAN"
+        ,"type" : "FONTS"
+        ,"order" : 6
+    }
+    ,{
+        "name" : "Convergence"
+        ,"type" : "ICONS"
+        ,"order" : 1
+    }
+    ,{
+        "name" : "IM Specific"
+        ,"type" : "ICONS"
+        ,"order" : 2
+    }
+    ,{
+        "name" : "DA Specific"
+        ,"type" : "ICONS"
+        ,"order" : 3
+    }
+    ,{
+        "name" : "VD Specific"
+        ,"type" : "ICONS"
+        ,"order" : 4
+    }
+]
