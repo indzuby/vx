@@ -294,15 +294,15 @@
                         <div class="half-container">
                             <div class="linear-video" style="width:360px;">
                                 <video controls preload="metadata" class="video">
-                                    <source src="/static/assets/motion/5_1_Movement_Stretch_1.mp4" type="video/mp4">
+                                    <source src="/static/assets/motion/6_component_splash_m.mp4" type="video/mp4">
                                 </video>
-                                <p>&lt;뮤직서비스 - 탭 전환될 때의 텐션감 있는 모션&gt;</p>
+                                <p>&lt;뮤직서비스 - 스플래시 모션&gt;</p>
                             </div>
                             <div class="linear-video" style="width:360px; float:right;">
                                 <video controls preload="metadata" class="video">
-                                    <source src="/static/assets/motion/5_1_Movement_Stretch_2.mp4" type="video/mp4">
+                                    <source src="/static/assets/motion/6_component_splash_g.mp4" type="video/mp4">
                                 </video>
-                                <p>&lt;뮤직서비스 - 페이지 네비게이션 모션&gt;</p>
+                                <p>&lt;갤러리서비스 - 스플래시 모션&gt;</p>
                             </div>
                         </div>
                         

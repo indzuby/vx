@@ -11,7 +11,7 @@
                 <p>You can view and download the latest version of Samsung icon sets,</p>
                 <p>OneFunction Fonts, GUI templates and Samsung Motion guidlines.</p>
             </div>
-            <img class="landing-img" src="/static/images/landing_maing.jpg">
+            <img class="landing-img" src="/static/images/landing_maing img.jpg">
         </div>
     </div>
     

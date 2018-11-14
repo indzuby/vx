@@ -217,6 +217,9 @@ export default {
 .category-item .items{
     margin-top: 18px;
 }
+.category-item .items img{
+    cursor: pointer;
+}
 .category-item .items img:not(:first-child){
     margin-left: 68px;
 }
