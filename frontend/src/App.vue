@@ -14,6 +14,13 @@ import '@/assets/app.scss'
 
 export default {
   name: 'App'
+  
+    ,created:function(){
+        console.log(this.$session);
+        if (this.$route.name !=="Login" && this.$route.name !=="Signup" && !this.$session.exists()) {
+            location.href="/login";
+        }
+    }
 }
 </script>
 

@@ -13,3 +13,4 @@ yarn-error.log*
 *.njsproj
 *.sln
 frontend/static/assets/fonts/
+*.mp4

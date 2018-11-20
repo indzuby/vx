@@ -45,6 +45,17 @@
           top : calc(50% - 16px);
           left : calc(50% - 16px);
       }
+        @-webkit-keyframes rotating {
+            from{
+                -webkit-transform: rotate(0deg);
+            }
+            to{
+                -webkit-transform: rotate(360deg);
+            }
+        }
+        .rotating {
+            -webkit-animation: rotating 1.5s linear infinite;
+        }
   </style>
   </head>
   <body>
