@@ -16,9 +16,17 @@ export default {
   name: 'App'
   
     ,created:function(){
-        console.log(this.$session);
-        if (this.$route.name !=="Login" && this.$route.name !=="Signup" && !this.$session.exists()) {
-            location.href="/login";
+      this.loginCheck();
+    },mounted:function(){
+      this.loginCheck();
+    },updated:function(){ 
+      this.loginCheck();
+    }
+    ,methods:{
+        loginCheck(){
+          if (this.$route.name !=="Login" && this.$route.name !=="Signup" && !this.$session.exists()) {
+              location.href="/login";
+          }
         }
     }
 }

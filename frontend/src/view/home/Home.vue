@@ -24,12 +24,6 @@ export default {
     components :{
         Gnb
     }
-    ,created:function(){
-        
-        if (!this.$session.exists()) {
-            location.href="/login";
-        }
-    }
 }
 </script>
 

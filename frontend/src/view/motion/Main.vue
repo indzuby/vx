@@ -172,7 +172,7 @@
                             EaseOut means to start fast and gradually stop.<br>
                             This is used to express big or dynamic movement.
                         </div>
-                        <div class="linear-video">
+                        <div class="linear-video one">
                             <video controls preload="metadata" class="video one" id="easing_easeout" autoplay style="margin-top:50px;">
                                 <source src="/static/assets/motion/4_Easing_EaseOut.mp4" type="video/mp4">
                             </video>
@@ -185,13 +185,13 @@
                             easeInOut means gradual acceleration and stop.<br>
                             This is used to express smooth movement. 
                         </div>
-                        <div class="linear-video">
+                        <div class="linear-video one">
                             <video controls preload="metadata" class="video one" id="easing_easeInout" autoplay style="margin-top:50px;">
                                 <source src="/static/assets/motion/4_Easing_easeInOut.mp4" type="video/mp4">
                             </video>
                             <p class="left">&lt;Music – Entering easing&gt;</p>
                         </div>
-                        <div class="linear-video">
+                        <div class="linear-video one">
                             <video controls preload="metadata" class="video one" id="easing_easeInout2" autoplay style="margin-top:78px;">
                                 <source src="/static/assets/motion/4_Easing_easeInOut2.mp4" type="video/mp4">
                             </video>
@@ -204,7 +204,7 @@
                             No Ease means movement with no tension.<br>
                             This is used for simple graphics or text transition
                         </div>
-                        <div class="linear-video">
+                        <div class="linear-video one">
                             <video controls preload="metadata" class="video one" id="easing_linear_noease" autoplay style="margin-top:78px;">
                                 <source src="/static/assets/motion/4_Easing_Linear_noEase.mp4" type="video/mp4">
                             </video>

@@ -1,5 +1,6 @@
  <template>
     <div class="gnb-container">
+        <p v-if="isAdmin" class="admin-tab">관리자 모드로 실행중입니다.</p>
         <header class="gnb">
             <a href="/"><div id="main-title">
                 <div>ONE SAMSUNG UX</div>
@@ -57,9 +58,16 @@
                     </li></a>
                 </ul>
             </div>
-            <div class="profile">
-                <img src="/static/images/profile.png" height="48px" width="auto">
-            </div>
+            <b-dropdown class="profile" no-caret variant="link" right>
+                <template slot="button-content">
+                    <img src="/static/images/profile.png" height="48px" width="auto">
+                </template>
+                <div class="profile-drop">
+                    <p>비밀번호 변경</p>
+                    <p v-if="isAdmin">관리자 권한 부여</p>
+                    <p @click="logout">로그아웃</p>
+                </div>
+            </b-dropdown>
             
         </header> <!-- Header -->
     </div>
@@ -72,6 +80,11 @@
             active : "about"
             ,hover : ""
         }
+     }
+     ,computed:{
+         isAdmin(){
+             return this.$session.get("admin");
+         }
      }
      ,created:function(){
      }
@@ -106,6 +119,10 @@
                     $("#motion").addClass("active");
                     break;
             }
+         },logout(){
+             this.$session.destroy();
+             alert("로그아웃 되었습니다.");
+             this.$router.push('/Login');
          }
      }
  }
@@ -191,6 +208,23 @@
         position: absolute;
         right: 24px;
     }
-    
+    .admin-tab{
+        width: 100%;
+        height: 32px;
+        text-align: center;
+        font-weight: 500;
+        background: rgba(0,0,0,0.7);
+        color : white;
+        line-height: 32px;
+    }
+    .profile-drop{
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        line-height: 48px;
+        background: white;
+    }
+    .profile-drop p:not(:last-child){
+        border-bottom: 1px solid #ccc;
+    }
  </style>
  

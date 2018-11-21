@@ -1,31 +1,31 @@
 [
     {
-        "name" : "LATIN RELATED"
+        "name" : "Latin Related"
         ,"type" : "FONTS"
         ,"order" : 1
     }
     ,{
-        "name" : "MIDDLE EAST ASIAN"
+        "name" : "Middle East Asian"
         ,"type" : "FONTS"
         ,"order" : 2
     }
     ,{
-        "name" : "NORTH EAST ASIAN"
+        "name" : "North East Asian"
         ,"type" : "FONTS"
         ,"order" : 3
     }
     ,{
-        "name" : "SOUTH EAST ASIAN"
+        "name" : "South East Asian"
         ,"type" : "FONTS"
         ,"order" : 4
     }
     ,{
-        "name" : "SOUTH WEST ASIAN"
+        "name" : "South West Asian"
         ,"type" : "FONTS"
         ,"order" : 5
     }
     ,{
-        "name" : "AFRICAN"
+        "name" : "African"
         ,"type" : "FONTS"
         ,"order" : 6
     }

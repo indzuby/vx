@@ -1,7 +1,6 @@
 .main-container{
     width: 100%;
-    
-    padding-top : 156px;
+    padding-top : 188px;
 }
 .main-title{
     color : rgba(0,0,0,0.8);
@@ -103,6 +102,9 @@ li.category ul.sub-nav li.sub-category:hover, li.category ul.sub-nav li.sub-cate
     margin-bottom: 5px;
     cursor: pointer;
 }
+.btn-transparent{
+    background: transparent;
+}
 .btn-white:active{
     background: #ececec;
 }
@@ -144,6 +146,9 @@ a:hover{
     position: relative;
     margin-left: 250px;
 }
+.content-container .content{
+    width: 100%;
+}
 .serach-container {
     width : calc(100% - 250px);
 }
@@ -170,6 +175,9 @@ a:hover{
 }
 .linear-video{
     display: inline-block;
+}
+.linear-video.one{
+    display: block;
 }
 .center-video{
     margin : auto;

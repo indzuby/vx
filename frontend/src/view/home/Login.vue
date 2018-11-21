@@ -77,8 +77,8 @@ export default {
 	,methods:{
 		login(){
 			httpCall('/login',"POST",{"email":this.email,"password":this.password},(res)=>{
-              	this.$session.start();
-              	this.$session.set('email', this.email);
+				this.$session.start();
+              	this.$session.set('admin', res.admin);
 				location.href="/";
 			});
 		}
