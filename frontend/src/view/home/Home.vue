@@ -1,6 +1,5 @@
 <template>
     <div>
-        <Gnb />
         <div class="main-container" style="margin-top: 105px;">
             <div class="main-title">
                 <p>Welcome to One Samung UX</p>
@@ -18,11 +17,9 @@
 </template>
 
 <script>
-import Gnb from '@/view/components/Gnb'
 import '@/assets/common.css'
 export default {
     components :{
-        Gnb
     }
 }
 </script>

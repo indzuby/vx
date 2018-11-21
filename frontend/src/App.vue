@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+        <Gnb v-if="gnb"/>
     <router-view/>
       <div id="copyright">
         Copyright© 2018 Samsung All rights reserved. | For questions, please <a href="mailto:seohee17.kim@samsung.com">click here</a>
@@ -8,6 +9,7 @@
 </template>
 
 <script>
+import Gnb from '@/view/components/Gnb'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import '@/assets/app.scss'
@@ -15,8 +17,25 @@ import '@/assets/app.scss'
 export default {
   name: 'App'
   
+    ,components :{
+        Gnb
+    }
+    ,data(){
+      return {
+        gnb : false
+      }
+    }
     ,created:function(){
       this.loginCheck();
+      switch(this.$route.name){
+            case "Login":
+            case "Signup":
+                this.gnb = false;
+                break;
+            default:
+                this.gnb = true;
+                break;
+        }
     },mounted:function(){
       this.loginCheck();
     },updated:function(){ 

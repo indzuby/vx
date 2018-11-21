@@ -1,6 +1,5 @@
 <template>
     <div>
-        <Gnb />
         <div class="main-container">
             <div class="content-container">
                 <p class="side-title">GUI</p>
@@ -49,11 +48,9 @@
 </template>
 
 <script>
-import Gnb from '@/view/components/Gnb'
 import '@/assets/common.css'
 export default {
     components :{
-        Gnb
     }
     ,created:function(){
         let self = this;

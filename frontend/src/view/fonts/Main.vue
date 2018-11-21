@@ -1,15 +1,13 @@
 <template>
     <div>
-        <Gnb />
-
         <div class="main-container">
             <div class="side-container">
                 <p class="side-title">FONTS</p>
                 <div class="side-divider"></div>
                 <ul class="side-nav">
-                    <li v-for="category in categories" :key="category._id" @click="moveCategory(category._id)" class="category" :id="category._id">{{category.name}}
+                    <li v-for="category in categories" :key="category._id" @click="moveCategory(category._id)" class="category" :id="category._id" :class="{active : hash =='#'+category._id}">{{category.name}}
                         <ul class="sub-nav">
-                            <li  v-for="font in category.fonts" :key="font._id" @click="moveSubCategory(font._id)" class="sub-category" id="font._id">{{font.name}}</li>
+                            <li v-for="font in category.fonts" :key="font._id" @click="moveSubCategory(font._id)" class="sub-category" id="font._id">{{font.name}}</li>
                         </ul>
                     </li>
                 </ul>
@@ -52,13 +50,11 @@
 </template>
 
 <script>
-import Gnb from '@/view/components/Gnb'
 import '@/assets/common.css'
 import Item from './item'
 export default {
     components :{
-        Gnb
-        ,Item
+        Item
     }
     ,data(){
         return {
@@ -74,23 +70,14 @@ export default {
         });
         this.getCategory();
     }
-    ,mounted:function(){
-        this.pageChange();
+    ,computed:{
+        hash(){
+            return location.hash;
+        }
     }
     ,methods :{
         pageChange(){
-            if(location.hash.includes("latin_related"))
-                this.navChange('latin_related');
-            else if(location.hash.includes("middle_east_asian"))
-                this.navChange('middle_east_asian');
-            else if(location.hash.includes("north_east_asian"))
-                this.navChange('north_east_asian');
-            else if(location.hash.includes("south_east_asian"))
-                this.navChange('south_east_asian');
-            else if(location.hash.includes("south_west_asian"))
-                this.navChange('south_west_asian');
-            else if(location.hash.includes("african"))
-                this.navChange('african');
+            this.navChange(location.hash);
         }
         ,moveCategory(category){
             if($(event.target).hasClass("category")){
@@ -103,9 +90,9 @@ export default {
         }
         ,navChange(category){
             $(".side-nav .category.active").removeClass("active");
-            $(".side-nav .category#"+category).addClass("active");
+            $(".side-nav .category"+category).addClass("active");
             $("ul.fonts-sub li.active").removeClass("active");
-            $("ul.fonts-sub li#"+category).addClass("active");
+            $("ul.fonts-sub li"+category).addClass("active");
         }
         ,subNavChange(sub){
             $(".sub-nav .sub-category.active").removeClass("active");
@@ -114,6 +101,7 @@ export default {
         }
         ,getCategory(){
             httpCall("/fonts","get",null,(res)=>{
+                // console.log(res);
                 this.categories = res.data;
                 this.list = res.data;
             })

@@ -11,49 +11,34 @@
                     <a href="/osux"><li class="tab" id="osux">ABOUT SAMSUNG UX</li></a>
                     <a href="/icons#common"><li class="tab" id="icons">ICONS
                         <ul class="sub-nav icons-sub">
-                            <a class="sub-tab" href="/icons#common"><li class="sub-tab" id="common">Common</li></a>
-                            <span></span>
-                            <a class="sub-tab" href="/icons#im"><li class="sub-tab" id="im">IM</li></a>
-                            <span></span>
-                            <a class="sub-tab" href="/icons#da"><li class="sub-tab" id="da">DA</li></a>
-                            <span></span>
-                            <a class="sub-tab" href="/icons#vd"><li class="sub-tab" id="vd">VD</li></a>
+                            <a class="sub-tab" href="/icons#common"><li class="sub-tab" id="common">Common</li><span></span></a>
+                            <a class="sub-tab" href="/icons#im"><li class="sub-tab" id="im">IM</li><span></span></a>
+                            <a class="sub-tab" href="/icons#da"><li class="sub-tab" id="da">DA</li><span></span></a>
+                            <a class="sub-tab" href="/icons#vd"><li class="sub-tab" id="vd">VD</li><span></span></a>
                         </ul>
                     </li></a>
                     <a href="/fonts#latin_related"><li class="tab" id="fonts">FONTS
                         <ul class="sub-nav fonts-sub">
-                            <a class="sub-tab" href="/fonts#latin_related"><li class="sub-tab" id="latin_related">Latin Related </li></a>
-                            <span></span>
-                            <a class="sub-tab" href="/fonts#middle_east_asian"><li class="sub-tab" id="middle_east_asian">Middle East Asian</li></a>
-                            <span></span>
-                            <a class="sub-tab" href="/fonts#north_east_asian"><li class="sub-tab" id="north_east_asian">North East Asian</li></a>
-                            <span></span>
-                            <a class="sub-tab" href="/fonts#south_east_asian"><li class="sub-tab" id="south_east_asian">South East Asian</li></a>
-                            <span></span>
-                            <a class="sub-tab" href="/fonts#south_west_asian"><li class="sub-tab" id="south_west_asian">South West Asian</li></a>
-                            <span></span>
-                            <a class="sub-tab" href="/fonts#african"><li class="sub-tab" id="african">African</li></a>
+                            <a class="sub-tab" href="/fonts#latin_related"><li class="sub-tab" id="latin_related">Latin Related</li><span></span></a>
+                            <a class="sub-tab" href="/fonts#middle_east_asian"><li class="sub-tab" id="middle_east_asian">Middle East Asian</li><span></span></a>
+                            <a class="sub-tab" href="/fonts#north_east_asian"><li class="sub-tab" id="north_east_asian">North East Asian</li><span></span></a>
+                            <a class="sub-tab" href="/fonts#south_east_asian"><li class="sub-tab" id="south_east_asian">South East Asian</li><span></span></a>
+                            <a class="sub-tab" href="/fonts#south_west_asian"><li class="sub-tab" id="south_west_asian">South West Asian</li><span></span></a>
+                            <a class="sub-tab" href="/fonts#african"><li class="sub-tab" id="african">African</li><span></span></a>
                         </ul>
                     </li></a>
                     <a href="/gui#about"><li class="tab" id="gui">GUI
                         <ul class="sub-nav gui-sub">
-                            <a class="sub-tab" href="/gui#light_theme"><li class="sub-tab" id="light_theme">Light Theme</li></a>
-                            <span></span>
-                            <a class="sub-tab" href="/gui#dark_theme"><li class="sub-tab" id="dark_theme">Dark Theme</li></a>
-                            <span></span>
-                            <a class="sub-tab" href="/gui#component_grid_system"><li class="sub-tab" id="component_grid_system">Component Grid System</li></a>
-                            <span></span>
-                            <a class="sub-tab" href="/gui#controller"><li class="sub-tab" id="controller">Controller</li></a>
+                            <a class="sub-tab" href="/gui#light_theme"><li class="sub-tab" id="light_theme">Light Theme</li><span></span></a>
+                            <a class="sub-tab" href="/gui#dark_theme"><li class="sub-tab" id="dark_theme">Dark Theme</li><span></span></a>
+                            <a class="sub-tab" href="/gui#component_grid_system"><li class="sub-tab" id="component_grid_system">Component Grid System</li><span></span></a>
+                            <a class="sub-tab" href="/gui#controller"><li class="sub-tab" id="controller">Controller</li><span></span></a>
                         </ul>
                     </li></a>
                     <a href="/motion#about_flow"><li class="tab" id="motion">MOTION
                         <ul class="sub-nav motion-sub">
-                            <a class="sub-tab" href="/motion#about_flow"><li class="sub-tab" id="about_flow">About Flow</li></a>
-                            <span></span>
-                            <a class="sub-tab" href="/motion#motion_direction"><li class="sub-tab" id="motion_direction">Motion Direction</li></a>
-                            <!-- <a class="sub-tab" href="/motion#motion_principles"><li class="sub-tab" id="motion_principles">Motion Principles</li></a>
-                            <span></span>
-                            <a class="sub-tab" href="/motion#motion_elements"><li class="sub-tab" id="motion_elements">Motion Elements</li></a> -->
+                            <a class="sub-tab" href="/motion#about_flow"><li class="sub-tab" id="about_flow">About Flow</li><span></span></a>
+                            <a class="sub-tab" href="/motion#motion_direction"><li class="sub-tab" id="motion_direction">Motion Direction</li><span></span></a>
                         </ul>
                     </li></a>
                 </ul>
@@ -77,8 +62,6 @@
  export default {
      data(){
         return {
-            active : "about"
-            ,hover : ""
         }
      }
      ,computed:{
@@ -86,7 +69,7 @@
              return this.$session.get("admin");
          }
      }
-     ,created:function(){
+     ,created: function(){
      }
      ,mounted: function(){
         let self = this;
@@ -194,7 +177,7 @@
         padding-right: 11px;
         padding-left: 11px;
     }
-    ul.sub-nav span{
+    ul.sub-nav a:not(:last-child) span{
         display: inline-block;
         border-right : 1px #949494 solid;
         width: 1px;
