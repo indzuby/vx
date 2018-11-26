@@ -48,7 +48,49 @@
                     </div>
                 </div>
             </div>
+            <div class="add-btn" v-b-modal="'add-modal'">
+                <img src="/static/images/add.png">
+            </div>
         </div>
+        <b-modal id="add-modal" title="새로운 폰트를 추가합니다." hide-footer ref="addMoal">
+            <div>
+            <b-form @submit="addFontsubmit" @reset="onReset">
+                  <b-form-group horizontal
+                :label-cols="3"
+                label-size="sm"
+                label="Category"
+                label-for="category">
+                    <b-form-select v-model="addFont.category" size="sm" id="category">
+                        <option :value="null" selected>Please select an category</option>
+                        <option v-for="category in categories" :key="category._id" :value="category.name">{{category.name}}</option>
+                    </b-form-select>
+                  </b-form-group>
+                  <b-form-group horizontal
+                :label-cols="3"
+                label-size="sm"
+                label="Font name"
+                label-for="font_name">
+                    <b-form-input id="font_name" v-model="addFont.name" type="text" placeholder="Enter font name" size="sm"></b-form-input>
+                  </b-form-group>
+                  <b-form-group horizontal
+                :label-cols="3"
+                label-size="sm"
+                label="Device file"
+                label-for="device_file">
+                    <b-form-file id="device_file" v-model="addFont.device_file" size="sm" plain accept=".zip"></b-form-file>
+                  </b-form-group>
+                  <b-form-group horizontal
+                :label-cols="3"
+                label-size="sm"
+                label="Marcomm file"
+                label-for="device_file">
+                    <b-form-file id="device_file" v-model="addFont.marcomm_file" size="sm" plain accept=".zip"></b-form-file>
+                  </b-form-group>
+                <b-button type="submit" variant="primary">Add</b-button>
+                <b-button type="reset" variant="danger">Cacnel</b-button>
+            </b-form>
+            </div>
+        </b-modal>
     </div>
     
 </template>
@@ -65,6 +107,12 @@ export default {
             categories :[]
             ,list :[]
             ,keyword : ''
+            ,addFont: {
+                category : null
+                ,device_file : null
+                ,marcomm_file : null
+                ,name : null
+            }
         }
     }
     ,created:function(){
@@ -109,6 +157,19 @@ export default {
                 this.categories = res.data;
                 this.list = res.data;
             })
+        },addFontsubmit(evt){
+            alert(JSON.stringify(this.addFont));
+        }
+        , onReset (evt) {
+            evt.preventDefault();
+            /* Reset our form values */
+            this.addFont = {
+                category : null
+                ,device_file : null
+                ,marcomm_file : null
+                ,name : null
+            };
+            this.$refs.addMoal.hide();
         }
     }
 }

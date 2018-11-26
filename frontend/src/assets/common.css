@@ -244,3 +244,16 @@ a:hover{
 .popover span:hover{
     color : #666666;
 }
+.add-btn{
+    border-radius: 40px;
+    background: white;
+    position: fixed;
+    right : 80px;
+    bottom : 80px;
+    width:80px;
+    height: 80px;
+    line-height: 80px;
+    text-align: center;
+    box-shadow: 2.5px 4.3px 13px 0 rgba(31, 31, 31, 0.21);
+    cursor: pointer;
+}

@@ -21,6 +21,7 @@ export default {
     .font-item{
         display: inline-block;
         width : 19%;
+        cursor: pointer;
     }
 </style>
 
