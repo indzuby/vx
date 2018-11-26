@@ -20,14 +20,18 @@
                         <template slot="button-content">
                             <span class="text" >DOWNLOADS ▾</span>
                         </template>
-                        <div class="btn-white">
-                            <p class="title">All Languages</p>
-                            <p class="content">FULL PACKAGE_DEVICE.ZIP</p>
-                        </div>
-                        <div class="btn-white">
-                            <p class="title">All Languages</p>
-                            <p class="content">FULL PACKAGE_MARCOMM.ZIP</p>
-                        </div>
+                        <a href="/static/assets/fonts.zip" download="fonts.zip">
+                            <div class="btn-white">
+                                <p class="title">All Languages</p>
+                                <p class="content">FULL PACKAGE_DEVICE.ZIP</p>
+                            </div>
+                        </a>
+                        <a href="/static/assets/fonts.zip" download="fonts.zip">
+                            <div class="btn-white">
+                                <p class="title">All Languages</p>
+                                <p class="content">FULL PACKAGE_MARCOMM.ZIP</p>
+                            </div>
+                        </a>
                     </b-dropdown>
                 <div class="font-container" style="margin-top: 115px;">
                     <div class="main-title" style="text-align:left;">Samsung One Font</div>

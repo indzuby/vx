@@ -14,3 +14,4 @@ yarn-error.log*
 *.sln
 frontend/static/assets/fonts/
 *.mp4
+*.zip

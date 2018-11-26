@@ -224,3 +224,23 @@ a:hover{
 .half-content.right{
     float : right;
 }
+.popover{        
+    box-shadow: 2.5px 4.3px 13px 0 rgba(31, 31, 31, 0.21);
+    height : 38px;
+    border-radius: 16px;
+    margin: 0px;
+}
+.popover .arrow{
+    display: none;
+}
+.popover span{
+    font-weight: 600;
+    font-size: 12px;
+    margin-left: 5px;
+    margin-right: 5px;
+    cursor: pointer;
+    color: black;
+}
+.popover span:hover{
+    color : #666666;
+}
