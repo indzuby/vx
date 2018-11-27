@@ -41,6 +41,9 @@ export default {
         width : 19%;
         cursor: pointer;
     }
+    .font-item img{
+        width: 58%;
+    }
 </style>
 
 

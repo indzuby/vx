@@ -31,14 +31,22 @@ var iconSchema = new Schema({
   'thumbnail' : String
 });
 
+var fileSchema = new Schema({
+  'name': {type : String , index:{unique:true}},
+  'url' : String,
+  'type' :String,
+});
+
 var font = mongoose.model('font', fontSchema);
 var icon = mongoose.model('icon', iconSchema);
 var category = mongoose.model('category', categorySchema);
 var user = mongoose.model('user', userSchema);
+var file = mongoose.model('file',fileSchema);
 
 module.exports = {
   'font' : font,
   'icon' : icon,
   'category' : category,
-  'user': user
+  'user': user,
+  'file':file
 };

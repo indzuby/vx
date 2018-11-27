@@ -78,14 +78,3 @@ mongoose_db.once('open', function() {
         })
     });
 });
-// category.insertMany(categoryData,function(error,docs){
-//     console.log(docs);
-// });
-
-// font.insertMany(fontsData,function(error,docs){
-//     console.log(docs);
-// });
-
-// icon.insertMany(iconsData,function(error,docs){
-//     console.log(error);
-// });

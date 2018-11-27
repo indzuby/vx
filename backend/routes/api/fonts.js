@@ -5,7 +5,7 @@ var async = require('async');
 var multer = require('multer')
 const path = require('path');
 var fs = require('fs');
-var fontPath = 'uploads/fonts/';
+var fontPath = 'uploads/';
 
 
 const upload = multer({
@@ -14,10 +14,21 @@ const upload = multer({
       cb(null, fontPath);
     },
     filename: function (req, file, cb) {
-      cb(null, new Date().valueOf() + path.extname(file.originalname));
+      cb(null, new Date().valueOf()+"_"+file.fieldname+ path.extname(file.originalname));
     }
   }),
 });
+
+const package_upload = multer({
+	storage: multer.diskStorage({
+	  destination: function (req, file, cb) {
+		cb(null, fontPath);
+	  },
+	  filename: function (req, file, cb) {
+		cb(null, file.fieldname + path.extname(file.originalname));
+	  }
+	}),
+  });
 
 router.get('/',function(req,res,next){
 	db.category.find({
@@ -56,28 +67,118 @@ router.get('/',function(req,res,next){
 })
 router.post('/',upload.fields([{ name: 'thumbnail' }, { name: 'downloadDevice' }, { name: 'downloadMarcomm' }]),function(req,res,next){
 	var isEdit = false;
+	var type = 'FONTS';
 	var result ={code: 0,msg:''};
 	if(req.body.font_id!==undefined && req.body.font_id!==undefined && req.body.font_id!==''){
 		isEdit = true;
 	}
+
 	console.log(isEdit);
 	if(isEdit){
-		db.font.findById(req.body.font_id,function(err,font){
-			font.name = req.body.name;
-			font.category = req.body.category;
-			font.order = req.body.order;
-
-			if(req.files.thumbnail!==null && req.files.thumbnail!==undefined){
-				font.thumbnail = "/api/"+fontPath+req.files.downloadDevice[0].filename;
+		async.waterfall([
+			function(cb){
+				db.font.findById(req.body.font_id,function(err,font){
+					if(err) {
+						cb(err)
+					}else {
+						font.name = req.body.name;
+						font.category = req.body.category;
+						font.order = req.body.order;
+						cb(null,font);
+					}
+				});
+			},function(font,cb){
+				console.log("thumb");
+				if(req.files.thumbnail!==null && req.files.thumbnail!==undefined){
+					var url = "/api/"+fontPath+req.files.thumbnail[0].filename;
+					if(font.thumbnail!==null && font.thumbnail!==undefined && font.thumbnail!==''){
+						fileDelete(font.thumbnail,function(err){
+							if(err){
+								cb(err);
+							}else {
+								font.thumbnail = url;
+								var file = db.file({
+									'name' : req.files.thumbnail[0].path
+									,'url' : url
+									,'type' : type
+								})
+								file.save(function(err){
+									if(err)
+										cb(err);
+									else 
+										cb(null,font);
+								});
+							}
+						});
+					}
+				}else {
+					cb(null,font);
+				}
 			}
-			if(req.files.downloadDevice!==null && req.files.downloadDevice!==undefined){
-				font.downloadDevice = "/api/"+fontPath+req.files.downloadDevice[0].filename;
+			,function(font,cb){
+				if(req.files.downloadDevice!==null && req.files.downloadDevice!==undefined){
+					var url = "/api/"+fontPath+req.files.downloadDevice[0].filename;
+					if(font.downloadDevice!==null && font.downloadDevice!==undefined && font.downloadDevice!==''){
+						fileDelete(font.downloadDevice,function(err){
+							if(err){
+								cb(err);
+							}else {
+								font.downloadDevice = url;
+								var file = db.file({
+									'name' : req.files.downloadDevice[0].path
+									,'url' : url
+									,'type' : type
+								})
+								file.save(function(err){
+									if(err)
+										cb(err);
+									else 
+										cb(null,font);
+								});
+							}
+						});
+					}
+				}else {
+					cb(null,font);
+				}
 			}
-			if(req.files.downloadMarcomm!==null && req.files.downloadMarcomm!==undefined){
-				font.downloadMarcomm = "/api/"+fontPath+req.files.downloadMarcomm[0].filename;
+			,function(font,cb){
+				if(req.files.downloadMarcomm!==null && req.files.downloadMarcomm!==undefined){
+					var url = "/api/"+fontPath+req.files.downloadMarcomm[0].filename;
+					if(font.downloadMarcomm!==null && font.downloadMarcomm!==undefined && font.downloadMarcomm!==''){
+						fileDelete(font.downloadMarcomm,function(err){
+							if(err){
+								cb(err);
+							}else {
+								font.downloadMarcomm = url;
+								var file = db.file({
+									'name' : req.files.downloadMarcomm[0].path
+									,'url' : url
+									,'type' : type
+								})
+								file.save(function(err){
+									if(err)
+										cb(err);
+									else 
+										cb(null,font);
+								});
+							}
+						});
+					}
+				}else {
+					cb(null,font);
+				}
 			}
-			fontSave(font,res,isEdit);
-		});
+			,function(font,cb){
+				fontSave(font,res,isEdit);
+			}
+			,function(err){
+				result.code = 4002;
+				result.msg = "등록중 에러가 발생하였습니다. 새로고침 후 다시 시도해주세요.";
+				result.json(result);	
+			}
+		])
+		
 	}else {
 		db.font.count({
 			'category' : req.body.category
@@ -92,36 +193,218 @@ router.post('/',upload.fields([{ name: 'thumbnail' }, { name: 'downloadDevice' }
 				result.msg = "폰트 미리보기 이미지를 반드시 등록해주세요.";
 				res.json(result);
 			}else {
-				newFont.thumbnail = "/api/"+fontPath+req.files.thumbnail[0].filename;
+				var url = "/api/"+fontPath+req.files.thumbnail[0].filename;
+				newFont.thumbnail = url;
+				var file = db.file({
+					'name' : req.files.thumbnail[0].path
+					,'url' : url
+					,'type' : type
+				})
+				file.save(function(err){});
 			}
 			if(req.files.downloadDevice!==null && req.files.downloadDevice!==undefined){
-				newFont.downloadDevice = "/api/"+fontPath+req.files.downloadDevice[0].filename;
+				var url = "/api/"+fontPath+req.files.downloadDevice[0].filename;
+				newFont.downloadDevice = url;
+				var file = db.file({
+					'name' : req.files.downloadDevice[0].path
+					,'url' : url
+					,'type' : type
+				})
+				file.save(function(err){});
 			}
 			if(req.files.downloadMarcomm!==null && req.files.downloadMarcomm!==undefined){
-				newFont.downloadMarcomm = "/api/"+fontPath+req.files.downloadMarcomm[0].filename;
+				var url = "/api/"+fontPath+req.files.downloadMarcomm[0].filename;
+				newFont.downloadMarcomm = url;
+				var file = db.file({
+					'name' : req.files.downloadMarcomm[0].path
+					,'url' : url
+					,'type' : type
+				})
+				file.save(function(err){});
 			}
 			fontSave(newFont,res,isEdit);
 		})
 	}
 })
+router.post('/package',package_upload.fields([{ name: 'packageDevice' }, { name: 'packageMarcomm' }]),function(req,res,next){
+
+	var result ={code: 0,msg:'업로드되었습니다.'};
+	
+	async.waterfall([
+		function(cb){
+			if(req.files.packageDevice!==null && req.files.packageDevice!==undefined){
+				var url = "/api/"+fontPath+req.files.packageDevice[0].filename;
+				db.file.find({'type':'PACKAGE_DEVICE'}).exec(function(err,data){
+					var file ;
+					if(data.length>0) {
+						fileDelete(file.url);
+						file = data[0];
+						file.name = req.files.packageDevice[0].path;
+						file.url = url;
+					}else {
+						file = db.file({
+							'name' : req.files.packageDevice[0].path
+							,'url' : url
+							,'type':'PACKAGE_DEVICE'
+						});
+					}
+					cb(null,file);
+				})
+			}else {
+				cb(null)
+			}
+		}
+		,function(file,cb){
+			if(file!=null){
+				file.save(function(err){
+					var result ={code: 0,msg:''};
+					if(err){
+						cb(err);
+					}else {
+						cb(null);
+					}
+				})
+			}else {
+				cb(null);
+			}
+		}
+		,function(cb){
+			if(req.files.packageMarcomm!==null && req.files.packageMarcomm!==undefined){
+				var url = "/api/"+fontPath+req.files.packageMarcomm[0].filename;
+				db.file.find({'type':'PACKAGE_MARCOMM'}).exec(function(err,data){
+					var file ;
+					if(data.length>0) {
+						fileDelete(file.url);
+						file = data[0];
+						file.name = req.files.packageMarcomm[0].path;
+						file.url = url;
+					}else {
+						file = db.file({
+							'name' : req.files.packageMarcomm[0].path
+							,'url' : url
+							,'type':'PACKAGE_DEVICE'
+						});
+					}
+				})
+			}else {
+				cb(null);
+			}
+		}
+		,function(file,cb){
+			if(file!=null){
+				file.save(function(err){
+					var result ={code: 0,msg:''};
+					if(err){
+						cb(err);
+					}else {
+						result.code = 0;
+						result.msg="업로드에 성공하였습니다.";
+						res.json(result);
+					}
+				})
+			}else {
+				result.code = 0;
+				result.msg="업로드에 성공하였습니다.";
+				res.json(result);
+			}
+		}
+		,function(err){
+			result.code = 4020;
+			result.msg="업로드에 실패하였습니다. 새로고침 후 다시 시도해주세요.";
+			res.json(result);
+		}
+	])
+
+	fileDelete(url);
+	var file = db.file({
+		'name' : req.files.packageDevice[0].path
+		,'url' : url
+	})
+	file.save(function(err){})
+
+	res.json(result);
+	
+});
 
 router.delete('/',function(req,res,next){
 	var id = req.body.id;
-	db.font.remove({
-		'_id' : id
-	}).exec(function(err,data){
-		var result ={code: 0,msg:''};
-		if(err){
+
+	
+	async.waterfall([
+		function(cb){
+			db.font.findById(id,function(err,font){
+				if(err){
+					cb(err);	
+				}
+				cb(null,font);
+			})
+		},function(font,cb){
+			fileDelete(font.thumbnail,function(err){
+				if(err)
+					cb(err);
+				else
+					cb(null,font);
+			});
+			
+		}
+		,function(font,cb){
+			fileDelete(font.downloadDevice,function(err){
+				if(err)
+					cb(err);
+				else
+					cb(null,font);
+			});
+		}
+		,function(font,cb){
+			fileDelete(font.downloadMarcomm,function(err){
+				if(err)
+					cb(err);
+				else
+					cb(null,font);
+			});
+		}
+		,function(font,cb){
+			font.remove(function(err,data){
+				var result ={code: 0,msg:''};
+				if(err){
+					cb(err);
+				}else {
+					result.code = 0;
+					result.msg = "삭제에 성공하였습니다.";
+					res.json(result);
+				}
+			});
+		},function(err){
 			result.code = 4020;
 			result.msg="삭제에 실패하였습니다. 새로고침 후 다시 시도해주세요.";
-		}else {
-			result.code = 0;
-			result.msg = "삭제에 성공하였습니다.";
+			res.json(result);
 		}
-		res.json(result);
-	});
+	])
+
 });
 
+function fileDelete(url,cb){
+	db.file.find({
+		'url' : url
+	}).exec(function(err,file){
+		console.log(url);
+		if(err){
+			cb(err);
+		}
+		else if(file.length>0){
+			fs.unlinkSync(file[0].name);
+			db.file.remove({'url' :url},function(err){
+				if(err)
+					cb(err);
+				else {
+					cb(null);
+				}
+			});
+		}else {
+			cb(null);
+		}
+	});
+}
 
 function fontSave(font,res,isEdit){
 	var result ={code: 0,msg:''};
@@ -154,6 +437,6 @@ function fontFind(item,doneCallback){
 	});
 }	
 
-router.use("/files", express.static('uploads/fonts'));
+router.use("/files", express.static('uploads'));
 
 module.exports = router;

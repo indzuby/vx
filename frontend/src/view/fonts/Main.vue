@@ -33,6 +33,16 @@
                                 <p class="content">FULL PACKAGE_MARCOMM.ZIP</p>
                             </div>
                         </a>
+                        <div v-if="isAdmin" v-b-modal="'add-package-modal'" @>
+                            <div class="btn-gray" @click="uploadPackage('DEVICE')">
+                                <p class="title">All Languages</p>
+                                <p class="content">UPLOAD DEVICE PACKAGE</p>
+                            </div>
+                            <div class="btn-gray" @click="uploadPackage('MARCOMM')" v-b-modal="'add-package-modal'">
+                                <p class="title">All Languages</p>
+                                <p class="content">UPLOAD MARCOMM PACKAGE</p>
+                            </div>
+                        </div>
                     </b-dropdown>
                 <div class="font-container" style="margin-top: 115px;">
                     <div class="main-title" style="text-align:left;">Samsung One Font</div>
@@ -136,6 +146,23 @@
             </b-form>
             </div>
         </b-modal>
+
+        
+        <b-modal id="add-package-modal" :title="packageTitle" hide-footer ref="addModal">
+            <div>
+            <b-form @reset="onReset" method="POST" enctype="multipart/form-data" id="font-package-form"> 
+                <b-form-group horizontal
+                :label-cols="3"
+                label-size="sm"
+                label="Package file"
+                label-for="downloadDevice">
+                    <b-form-file id="downloadDevice" v-model="addFont.downloadDevice" size="sm" plain accept=".zip" :name="packageName"></b-form-file>
+                  </b-form-group>
+                <b-button type="button" variant="primary" @click="uploadPackageSubmit">Save</b-button>
+                <b-button type="reset" variant="info">Cacnel</b-button>
+            </b-form>
+            </div>
+        </b-modal>
     </div>
     
 </template>
@@ -165,6 +192,7 @@ export default {
                 ,isEdit : false
                 ,order : null
             }
+            ,uploadPackageType : "DEVICE"
         }
     }
     ,created:function(){
@@ -192,7 +220,18 @@ export default {
                 return "폰트를 수정합니다.";
             else
                 return "새로운 폰트를 추가합니다.";
-
+        }
+        ,packageTitle(){
+            if(this.uploadPackageType=="DEVICE")
+                return "DEVICE PACKAGE를 업로드합니다.";
+            else
+                return "MARCOMM PACKAGE를 업로드합니다.";
+        }
+        ,packageName(){
+            if(this.uploadPackageType=="DEVICE")
+                return "packageDevice";
+            else
+                return "packageMarcomm";
         }
     }
     ,methods :{
@@ -285,6 +324,16 @@ export default {
             });
         },deleteFont(){
             httpCall("/fonts","DELETE",{"id":this.addFont.font_id},(data)=>{
+                alert(data.msg);
+                location.reload();
+            });
+        }
+        ,uploadPackage(type){
+            this.uploadPackageType = type;
+        }
+        ,uploadPackageSubmit(){
+                
+            httpFormData("/fonts/package","#font-package-form",{},(data)=>{
                 alert(data.msg);
                 location.reload();
             });
