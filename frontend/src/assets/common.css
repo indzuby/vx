@@ -27,8 +27,11 @@ p{
     padding-right : 94px;
 }
 .side-container{
+    z-index: 1000;
     position: fixed;
     width: 245px;
+    height: 75%;
+    overflow: none;
 }
 .side-title {
     font-weight: 700;
@@ -48,6 +51,11 @@ ul,li{
     padding : 0px;
     margin : 0px;
     cursor: pointer;
+}
+.side-nav{
+    overflow: auto;
+    max-height: 75%;
+    position: relative;
 }
 
 .side-nav li.category{

@@ -42,7 +42,7 @@
 							<div class="form-check">
 							<span></span>
 							<label class="form-check-label">
-								<input id="checkbox-id" class="form-check-input" type="checkbox">
+								<input id="checkbox-id" class="form-check-input" type="checkbox" v-model="remember">
 								<label for="checkbox-id"></label>
 								Remember my ID
 							</label>
@@ -72,13 +72,26 @@ export default {
 		return {
 			email : ''
 			,password : ''
+			,remember : false
+		}
+	}
+	,created:function(){
+		this.remember = this.$session.get("remember")
+		if(this.remember) {
+			this.email = this.$session.get("email");
+			this.password = this.$session.get("password");
 		}
 	}
 	,methods:{
 		login(){
 			httpCall('/login',"POST",{"email":this.email,"password":this.password},(res)=>{
 				this.$session.start();
-              	this.$session.set('admin', res.admin);
+				  this.$session.set('admin', res.admin);
+				if(this.remember){
+					this.$session.set("remember",true);
+					this.$session.set("email",this.email);
+					this.$session.set("password",this.password);
+				}
 				location.href="/";
 			});
 		}

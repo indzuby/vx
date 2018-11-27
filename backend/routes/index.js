@@ -64,79 +64,12 @@ router.post('/logout', function (req, res, next) {
 	});
 });
 
+var category = require("./api/category");
+var fonts = require("./api/fonts");
 
+router.use("/category",category);
+router.use("/fonts",fonts);
 
-
-router.get('/category/:type',function(req,res,next){
-	var type = req.params.type.toUpperCase();
-	db.category.find({
-		'type' : type
-	}).sort({
-		"order" : 1
-	}).exec(function(err,data){
-		var result ={code: 0,msg:''};
-		if (!err) {
-			result.code = 0;
-			result.data = data;
-			res.json(result);
-		}else {
-			result.code = 3001;
-			result.msg = "서버에서 에러가 발생하였습니다.";
-			res.json(result);
-		}
-	});
-
-})
-
-
-router.get('/fonts',function(req,res,next){
-	db.category.find({
-		'type' : "FONTS"
-	}).sort({
-		"order" : 1
-	}).exec(function(err,data){
-		var result ={code: 0,msg:''};
-		var categories = [];
-		if (!err && data.length) {
-			data.forEach(function(item){
-				categories.push({
-					'_id' : item.name.replace(/ /gi,"_").toLowerCase()
-					,'name' : item.name
-					,'fonts' : []
-				});
-			})
-			async.each(categories,fontFind,function(err){
-				if(err){
-					console.log(err);
-					result.code = 3002;
-					result.msg = err;
-				}else {
-					result.code = 0;
-					result.data = categories;
-				}
-				res.json(result);
-			});
-		}else {
-			result.code = 3001;
-			result.msg = "서버에서 에러가 발생하였습니다.";
-			res.json(result);
-		}
-	});
-
-})
-function fontFind(item,doneCallback){
-	db.font.find({
-		'category' : item.name
-	}).sort({
-		"order" : 1	
-	}).exec(function(err,data){
-		if (!err) {
-			item.fonts = data;
-			doneCallback(null);	
-		}else if(error){
-			doneCallback(new Error("font error"));
-		}
-	});
-}	
+router.use("/uploads", express.static('uploads'));
 
 module.exports = router;

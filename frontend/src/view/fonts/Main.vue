@@ -5,12 +5,13 @@
                 <p class="side-title">FONTS</p>
                 <div class="side-divider"></div>
                 <ul class="side-nav">
-                    <li v-for="category in categories" :key="category._id" @click="moveCategory(category._id)" class="category" :id="category._id" :class="{active : hash =='#'+category._id}">{{category.name}}
+                    <li v-for="category in categories" :key="category._id" @click="moveCategory(category._id)" class="category" :id="category._id" :class="{active : hash =='#'+category._id}">{{category.name}}<img class="edit-category" src="/static/images/edit.png" v-b-modal="'add-category-modal'" @click="categoryModal(true,category)" v-if="isAdmin">
                         <ul class="sub-nav">
                             <li v-for="font in category.fonts" :key="font._id" @click="moveSubCategory(font._id)" class="sub-category" id="font._id">{{font.name}}</li>
                         </ul>
                     </li>
                 </ul>
+                <img class="add-category" src="/static/images/add.png" v-b-modal="'add-category-modal'" @click="categoryModal(false)" v-if="isAdmin">
             </div>
             <div class="content-container">
                 <div class="serach-container">
@@ -43,24 +44,25 @@
                     <div v-for="category in list" :key="category._id" class="category-item" :id="category._id">
                         <p>{{category.name}}</p>
                         <div class="items">
-                            <Item v-for="font in category.fonts" :key="font._id" :font="font"/>
+                            <Item v-for="font in category.fonts" :key="font._id" :font="font" @editFont="editFont"/>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="add-btn" v-b-modal="'add-modal'">
+            <div class="add-btn" v-b-modal="'add-font-modal'" v-if="isAdmin" @click="editFont(false)">
                 <img src="/static/images/add.png">
             </div>
         </div>
-        <b-modal id="add-modal" title="새로운 폰트를 추가합니다." hide-footer ref="addMoal">
+        <b-modal id="add-font-modal" title="새로운 폰트를 추가합니다." hide-footer ref="addModal">
             <div>
-            <b-form @submit="addFontsubmit" @reset="onReset">
+                <b-alert show variant="danger">형식에 맞는 파일을 입력해주세요.</b-alert>
+            <b-form @reset="onReset" id="font-form" method="POST" enctype="multipart/form-data">
                   <b-form-group horizontal
                 :label-cols="3"
                 label-size="sm"
                 label="Category"
                 label-for="category">
-                    <b-form-select v-model="addFont.category" size="sm" id="category">
+                    <b-form-select v-model="addFont.category" size="sm" id="category" name="category">
                         <option :value="null" selected>Please select an category</option>
                         <option v-for="category in categories" :key="category._id" :value="category.name">{{category.name}}</option>
                     </b-form-select>
@@ -70,24 +72,67 @@
                 label-size="sm"
                 label="Font name"
                 label-for="font_name">
-                    <b-form-input id="font_name" v-model="addFont.name" type="text" placeholder="Enter font name" size="sm"></b-form-input>
+                    <b-form-input id="font_name" v-model="addFont.name" type="text" placeholder="Enter font name" size="sm" name="name"></b-form-input>
+                  </b-form-group>
+                      <b-form-group horizontal
+                :label-cols="3"
+                label-size="sm"
+                label="Order"
+                v-show="addFont.isEdit"
+                label-for="font_order">
+                    <b-form-input id="font_order" v-model="addFont.order" type="text" placeholder="Enter order number" size="sm" name="order"></b-form-input>
+                  </b-form-group>
+                  <b-form-group horizontal
+                :label-cols="3"
+                label-size="sm"
+                label="Thumbnail file"
+                label-for="thumbnail">
+                    <b-form-file id="thumbnail" v-model="addFont.thumbnail" size="sm" plain accept="image/*" name="thumbnail"></b-form-file>
                   </b-form-group>
                   <b-form-group horizontal
                 :label-cols="3"
                 label-size="sm"
                 label="Device file"
-                label-for="device_file">
-                    <b-form-file id="device_file" v-model="addFont.device_file" size="sm" plain accept=".zip"></b-form-file>
+                label-for="downloadDevice">
+                    <b-form-file id="downloadDevice" v-model="addFont.downloadDevice" size="sm" plain accept=".zip" name="downloadDevice"></b-form-file>
                   </b-form-group>
                   <b-form-group horizontal
                 :label-cols="3"
                 label-size="sm"
                 label="Marcomm file"
-                label-for="device_file">
-                    <b-form-file id="device_file" v-model="addFont.marcomm_file" size="sm" plain accept=".zip"></b-form-file>
+                label-for="downloadMarcomm">
+                    <b-form-file id="downloadMarcomm" v-model="addFont.downloadMarcomm" size="sm" plain accept=".zip" name="downloadMarcomm"></b-form-file>
                   </b-form-group>
-                <b-button type="submit" variant="primary">Add</b-button>
-                <b-button type="reset" variant="danger">Cacnel</b-button>
+                <input v-model="addFont.font_id" type="hidden"  name="font_id">
+
+                <b-button type="button" @click="addFontsubmit" variant="primary">Save</b-button>
+                <b-button type="reset" variant="info">Cacnel</b-button>
+                <b-button type="reset" variant="danger" class="pull-right" v-if="addFont.isEdit" @click="deleteFont">Remove</b-button>
+            </b-form>
+            </div>
+        </b-modal>
+
+        <b-modal id="add-category-modal" :title="categoryEdit" hide-footer ref="addModal">
+            <div>
+            <b-form @submit="addCategorySubmit" @reset="onReset">
+                  <b-form-group horizontal
+                :label-cols="3"
+                label-size="sm"
+                label="Category name"
+                label-for="font_name">
+                    <b-form-input id="font_name" v-model="addCategory.name" type="text" placeholder="Enter Category name" size="sm"></b-form-input>
+                  </b-form-group>
+                      <b-form-group horizontal
+                :label-cols="3"
+                label-size="sm"
+                label="Order"
+                v-if="addCategory.isEdit"
+                label-for="font_name">
+                    <b-form-input id="font_name" v-model="addCategory.order" type="text" placeholder="Enter order number" size="sm"></b-form-input>
+                  </b-form-group>
+                <b-button type="submit" variant="primary">Save</b-button>
+                <b-button type="reset" variant="info">Cacnel</b-button>
+                <b-button type="reset" variant="danger" class="pull-right" v-if="addCategory.isEdit" @click="deleteCategory">Remove</b-button>
             </b-form>
             </div>
         </b-modal>
@@ -109,9 +154,16 @@ export default {
             ,keyword : ''
             ,addFont: {
                 category : null
-                ,device_file : null
-                ,marcomm_file : null
+                ,thumbnail:null
+                ,downloadDevice : null
+                ,downloadMarcomm : null
                 ,name : null
+                ,isEdit : false
+            }
+            ,addCategory : {
+                name : null
+                ,isEdit : false
+                ,order : null
             }
         }
     }
@@ -125,6 +177,22 @@ export default {
     ,computed:{
         hash(){
             return location.hash;
+        }
+        ,isAdmin(){
+            return this.$session.get("admin");
+        }
+        ,categoryEdit(){
+            if(this.addCategory.isEdit)
+                return "카테고리를 수정합니다.";
+            else
+                return "새로운 카테고리를 추가합니다.";
+        }
+        ,fontEdit(){
+            if(this.addFont.isEdit)
+                return "폰트를 수정합니다.";
+            else
+                return "새로운 폰트를 추가합니다.";
+
         }
     }
     ,methods :{
@@ -157,19 +225,69 @@ export default {
                 this.categories = res.data;
                 this.list = res.data;
             })
-        },addFontsubmit(evt){
-            alert(JSON.stringify(this.addFont));
         }
-        , onReset (evt) {
-            evt.preventDefault();
+        , onReset () {
             /* Reset our form values */
             this.addFont = {
                 category : null
-                ,device_file : null
-                ,marcomm_file : null
+                ,thumbnail:null
+                ,downloadDevice : null
+                ,downloadMarcomm : null
                 ,name : null
+                ,isEdit : false
             };
-            this.$refs.addMoal.hide();
+            this.addCategory = {
+                name : null
+                ,isEdit : false
+                ,order : null
+            }
+            this.$refs.addModal.hide();
+        }
+        ,categoryModal(isEdit,category){
+            this.addCategory.isEdit = isEdit;
+            if(isEdit){
+                this.addCategory.name = category.name;
+                this.addCategory.category_id = category.category_id;
+                this.addCategory.order = category.order;
+            }else 
+                this.onReset();
+        }
+        ,addCategorySubmit(){
+            var method = "POST";
+            if(!this.addCategory.isEdit){
+                method = "POST";
+            }else {
+                method = "PATCH"
+            }
+            httpCall("/category/fonts",method,this.addCategory,(data)=>{
+                alert(data.msg);
+                location.reload();
+            });
+        },deleteCategory(){
+            httpCall("/category","DELETE",{"id":this.addCategory.category_id},(data)=>{
+                alert(data.msg);
+                location.reload();
+            });
+        }
+        ,editFont(isEdit,font){
+            this.addFont.isEdit = isEdit;
+            if(isEdit){
+                this.addFont.category = font.category;
+                this.addFont.name = font.name;
+                this.addFont.font_id = font._id;
+                this.addFont.order = font.order;
+            }else 
+                this.onReset();
+        },addFontsubmit(){
+            httpFormData("/fonts","#font-form",{},(data)=>{
+                alert(data.msg);
+                location.reload();
+            });
+        },deleteFont(){
+            httpCall("/fonts","DELETE",{"id":this.addFont.font_id},(data)=>{
+                alert(data.msg);
+                location.reload();
+            });
         }
     }
 }
@@ -192,6 +310,16 @@ export default {
 }
 .category-item .items img:not(:first-child){
     margin-left: 68px;
+}
+.add-category{
+    margin-top : 20px;
+    width : 24px;
+    cursor: pointer;
+}
+.edit-category{
+    width : 16px;
+    position: absolute;
+    right : 48px;
 }
 </style>
 

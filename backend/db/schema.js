@@ -9,7 +9,7 @@ var userSchema = new Schema({
 
 
 var fontSchema = new Schema({
-  'name': String,
+  'name': {type : String , index:{unique:true}},
   'category': String,
   'downloadDevice': String,
   'downloadMarcomm': String,
@@ -18,13 +18,13 @@ var fontSchema = new Schema({
 });
 
 var categorySchema = new Schema({
-  'name': String,
+  'name': {type : String , index:{unique:true}},
   'order': String,
   'type' : String
 });
 
 var iconSchema = new Schema({
-  'name': String,
+  'name': {type : String , index:{unique:true}},
   'category': String,
   'download': String,
   'order': Number,

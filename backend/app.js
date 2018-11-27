@@ -56,10 +56,10 @@ app.use(function(req, res, next) {
     next();
 });
 
-
 app.use('/api', index);
 app.use('/', view);
 
+// require("./routes/api.js")(app)
 
 // app.listen(3000);
 module.exports = app;
