@@ -226,6 +226,45 @@ router.post('/',upload.fields([{ name: 'thumbnail' }, { name: 'downloadDevice' }
 		})
 	}
 })
+router.get('/package',function(req,res,next){
+	var result ={code: 0,data:{device:'',marcomm:''},msg:''};
+	async.parallel({
+		'device' : (cb) => {
+			db.file.find({
+				'type' : 'PACKAGE_DEVICE'
+			}).exec(function(err,data){
+				if(err){
+					cb(err);
+				}else {
+					if(data.length>0)
+						result.data.device = data[0];
+					cb(null);
+				}
+			})
+		}
+		,'marcomm' : (cb) => {
+			db.file.find({
+				'type' : 'PACKAGE_MARCOMM'
+			}).exec(function(err,data){
+				if(err){
+					cb(err);
+				}else {
+					if(data.length>0)
+						result.data.marcomm = data[0];
+					cb(null);
+				}
+			})
+		}
+	},(err) => {
+		if (err) {
+			result.code = 5037;
+			result.msg = "패키지 파일을 찾을수 없습니다.";
+		}else {
+			result.code = 0;
+		}
+		res.json(result);
+	})
+})
 router.post('/package',package_upload.fields([{ name: 'packageDevice' }, { name: 'packageMarcomm' }]),function(req,res,next){
 
 	var result ={code: 0,msg:'업로드되었습니다.'};
@@ -237,7 +276,6 @@ router.post('/package',package_upload.fields([{ name: 'packageDevice' }, { name:
 				db.file.find({'type':'PACKAGE_DEVICE'}).exec(function(err,data){
 					var file ;
 					if(data.length>0) {
-						fileDelete(file.url);
 						file = data[0];
 						file.name = req.files.packageDevice[0].path;
 						file.url = url;
@@ -251,7 +289,7 @@ router.post('/package',package_upload.fields([{ name: 'packageDevice' }, { name:
 					cb(null,file);
 				})
 			}else {
-				cb(null)
+				cb(null,null)
 			}
 		}
 		,function(file,cb){
@@ -274,7 +312,6 @@ router.post('/package',package_upload.fields([{ name: 'packageDevice' }, { name:
 				db.file.find({'type':'PACKAGE_MARCOMM'}).exec(function(err,data){
 					var file ;
 					if(data.length>0) {
-						fileDelete(file.url);
 						file = data[0];
 						file.name = req.files.packageMarcomm[0].path;
 						file.url = url;
@@ -282,12 +319,13 @@ router.post('/package',package_upload.fields([{ name: 'packageDevice' }, { name:
 						file = db.file({
 							'name' : req.files.packageMarcomm[0].path
 							,'url' : url
-							,'type':'PACKAGE_DEVICE'
+							,'type':'PACKAGE_MARCOMM'
 						});
 					}
+					cb(null,file);
 				})
 			}else {
-				cb(null);
+				cb(null,null);
 			}
 		}
 		,function(file,cb){
@@ -314,15 +352,6 @@ router.post('/package',package_upload.fields([{ name: 'packageDevice' }, { name:
 			res.json(result);
 		}
 	])
-
-	fileDelete(url);
-	var file = db.file({
-		'name' : req.files.packageDevice[0].path
-		,'url' : url
-	})
-	file.save(function(err){})
-
-	res.json(result);
 	
 });
 

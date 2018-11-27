@@ -21,13 +21,13 @@
                         <template slot="button-content">
                             <span class="text" >DOWNLOADS ▾</span>
                         </template>
-                        <a href="/static/assets/fonts.zip" download="fonts.zip">
+                        <a :href="devicePackage" download="FULL_PACKAGE_DEVICE.zip">
                             <div class="btn-white">
                                 <p class="title">All Languages</p>
                                 <p class="content">FULL PACKAGE_DEVICE.ZIP</p>
                             </div>
                         </a>
-                        <a href="/static/assets/fonts.zip" download="fonts.zip">
+                        <a :href="marcommPackage" download="FULL_PACKAGE_MARCOMM.zip">
                             <div class="btn-white">
                                 <p class="title">All Languages</p>
                                 <p class="content">FULL PACKAGE_MARCOMM.ZIP</p>
@@ -192,6 +192,8 @@ export default {
                 ,isEdit : false
                 ,order : null
             }
+            ,devicePackage:null
+            ,marcommPackage :null
             ,uploadPackageType : "DEVICE"
         }
     }
@@ -201,6 +203,7 @@ export default {
             self.pageChange();
         });
         this.getCategory();
+        this.getPackage();
     }
     ,computed:{
         hash(){
@@ -336,6 +339,12 @@ export default {
             httpFormData("/fonts/package","#font-package-form",{},(data)=>{
                 alert(data.msg);
                 location.reload();
+            });
+        }
+        ,getPackage(){
+            httpCall('/fonts/package',"GET",null,(res)=>{
+                this.devicePackage = res.data.device.url;
+                this.marcommPackage = res.data.marcomm.url;
             });
         }
     }
