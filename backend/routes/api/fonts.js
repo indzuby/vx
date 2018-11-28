@@ -107,7 +107,7 @@ router.post('/',upload.fields([{ name: 'thumbnail' }, { name: 'downloadDevice' }
 					}else {
 						font.name = req.body.name;
 						font.category = req.body.category;
-						font.order = req.body.order;
+						font.order = parseInt(req.body.order);
 						cb(null,font);
 					}
 				});
@@ -204,13 +204,19 @@ router.post('/',upload.fields([{ name: 'thumbnail' }, { name: 'downloadDevice' }
 		])
 		
 	}else {
-		db.font.count({
+		db.font.find({
 			'category' : req.body.category
-		}).exec(function(err,count){
+		}).sort({
+			"order" : -1
+		}).limit(1).exec(function(err,data){
+			var count = 0 ;
+			if(data!=null && data.length>0){
+				count = data[0].order;
+			}
 			var newFont = db.font({
 				'name' : req.body.name
 				,'category' : req.body.category
-				,'order':count+1
+				,'order':parseInt(count)+1
 			})
 			if(req.files.thumbnail===null || req.files.thumbnail===undefined){
 				result.code = 4008;

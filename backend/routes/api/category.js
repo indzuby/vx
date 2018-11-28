@@ -92,7 +92,7 @@ router.patch('/:type',function(req,res,next){
 			res.json(result);
 		}else {
 			cate.name = name;
-			cate.order = order;
+			cate.order = parseInt(order);
 			cate.save(function(err,cate2){
 				if(err){
 					result.code = 3040;
