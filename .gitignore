@@ -17,4 +17,5 @@ frontend/static/assets/fonts/
 *.zip
 frontend/static/assets/icons/
 backend/uploads/
+backend/public/
 *.wmv
