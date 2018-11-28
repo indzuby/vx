@@ -35,7 +35,7 @@
                         </div>
                         
                         <video controls preload="metadata" class="video one" id="flow_1010" autoplay>
-                            <source src="/static/assets/motion/FLOW_1010.mp4" type="video/mp4">
+                            <source src="/api/uploads/motion/FLOW_1010.mp4" type="video/mp4">
                         </video>
                     </div>
                     <div class="content" id="values_and_6_principles">
@@ -52,13 +52,13 @@
                             <div class="half-content">
                                 <div class="video-title">Borderless Expand</div>
                                 <video controls preload="metadata" class="video">
-                                    <source src="/static/assets/motion/B_Borderless Expand.mp4" type="video/mp4">
+                                    <source src="/api/uploads/motion/B_Borderless Expand.mp4" type="video/mp4">
                                 </video>
                             </div>
                             <div class="half-content right">
                                 <div class="video-title">Natural Sequence</div>
                                 <video controls preload="metadata" class="video">
-                                    <source src="/static/assets/motion/B_Natural Sequence.mp4" type="video/mp4">
+                                    <source src="/api/uploads/motion/B_Natural Sequence.mp4" type="video/mp4">
                                 </video>
                             </div>
                         </div>
@@ -72,13 +72,13 @@
                             <div class="half-content">
                                 <div class="video-title">Forecast & Feedback</div>
                                 <video controls preload="metadata" class="video">
-                                    <source src="/static/assets/motion/B_Forecast_Feedback.mp4" type="video/mp4">
+                                    <source src="/api/uploads/motion/B_Forecast_Feedback.mp4" type="video/mp4">
                                 </video>
                             </div>
                             <div class="half-content right">
                                 <div class="video-title">Create Relationship</div>
                                 <video controls preload="metadata" class="video">
-                                    <source src="/static/assets/motion/B_Create Relationship.mp4" type="video/mp4">
+                                    <source src="/api/uploads/motion/B_Create Relationship.mp4" type="video/mp4">
                                 </video>
                             </div>
                         </div>
@@ -92,13 +92,13 @@
                             <div class="half-content">
                                 <div class="video-title">Enhancing Comprehension</div>
                                 <video controls preload="metadata" class="video">
-                                    <source src="/static/assets/motion/B_Enhancing Comprehension.mp4" type="video/mp4">
+                                    <source src="/api/uploads/motion/B_Enhancing Comprehension.mp4" type="video/mp4">
                                 </video>
                             </div>
                             <div class="half-content right">
                                 <div class="video-title">Memorable Impression</div>
                                 <video controls preload="metadata" class="video">
-                                    <source src="/static/assets/motion/B_Memorable Impression.mp4" type="video/mp4">
+                                    <source src="/api/uploads/motion/B_Memorable Impression.mp4" type="video/mp4">
                                 </video>
                             </div>
                         </div>
@@ -120,13 +120,13 @@
                         <div class="half-container">
                             <div class="linear-video" style="width:360px;">
                                 <video controls preload="metadata" class="video">
-                                    <source src="/static/assets/motion/2_1_Duration_Exits and closing_01.mp4" type="video/mp4">
+                                    <source src="/api/uploads/motion/2_1_Duration_Exits and closing_01.mp4" type="video/mp4">
                                 </video>
                                 <p>&lt;Music – Back button reaction&gt;</p>
                             </div>
                             <div class="linear-video" style="width:360px; float : right;">
                                 <video controls preload="metadata" class="video">
-                                    <source src="/static/assets/motion/2_1_Duration_Exits and closing_02.mp4" type="video/mp4">
+                                    <source src="/api/uploads/motion/2_1_Duration_Exits and closing_02.mp4" type="video/mp4">
                                 </video>
                                 <p>&lt;Music – Back button reaction&gt;</p>
                             </div>
@@ -141,19 +141,19 @@
                         <div class="half-container">
                             <div class="linear-video" style="width:145px;">
                                 <video controls preload="metadata" class="video">
-                                    <source src="/static/assets/motion/2_2_Duration_Area_Watch.mp4" type="video/mp4">
+                                    <source src="/api/uploads/motion/2_2_Duration_Area_Watch.mp4" type="video/mp4">
                                 </video>
                                 <p>&lt;Small&gt;</p>
                             </div>
                             <div class="linear-video" style="width:147px; margin-left : 40px;">
                                 <video controls preload="metadata" class="video">
-                                    <source src="/static/assets/motion/2_2_Duration_Area_Mobile.mp4" type="video/mp4">
+                                    <source src="/api/uploads/motion/2_2_Duration_Area_Mobile.mp4" type="video/mp4">
                                 </video>
                                 <p>&lt;Medium&gt;</p>
                             </div>
                             <div class="linear-video" style="width:478px; margin-left : 40px;">
                                 <video controls preload="metadata" class="video">
-                                    <source src="/static/assets/motion/2_2_Duration_Area_TV.mp4" type="video/mp4">
+                                    <source src="/api/uploads/motion/2_2_Duration_Area_TV.mp4" type="video/mp4">
                                 </video>
                                 <p>&lt;Large&gt;</p>
                             </div>
@@ -173,7 +173,7 @@
                         </div>
                         <div class="linear-video one">
                             <video controls preload="metadata" class="video one" id="easing_easeout" autoplay style="margin-top:50px;">
-                                <source src="/static/assets/motion/4_Easing_EaseOut.mp4" type="video/mp4">
+                                <source src="/api/uploads/motion/4_Easing_EaseOut.mp4" type="video/mp4">
                             </video>
                             <p class="left">&lt;Music – Transition to lyrics page&gt;</p>
                         </div>
@@ -186,13 +186,13 @@
                         </div>
                         <div class="linear-video one">
                             <video controls preload="metadata" class="video one" id="easing_easeInout" autoplay style="margin-top:50px;">
-                                <source src="/static/assets/motion/4_Easing_easeInOut.mp4" type="video/mp4">
+                                <source src="/api/uploads/motion/4_Easing_easeInOut.mp4" type="video/mp4">
                             </video>
                             <p class="left">&lt;Music – Entering easing&gt;</p>
                         </div>
                         <div class="linear-video one">
                             <video controls preload="metadata" class="video one" id="easing_easeInout2" autoplay style="margin-top:78px;">
-                                <source src="/static/assets/motion/4_Easing_easeInOut2.mp4" type="video/mp4">
+                                <source src="/api/uploads/motion/4_Easing_easeInOut2.mp4" type="video/mp4">
                             </video>
                             <p class="left">&lt;Music – Entering easing&gt;</p>
                         </div>
@@ -205,20 +205,20 @@
                         </div>
                         <div class="linear-video one">
                             <video controls preload="metadata" class="video one" id="easing_linear_noease" autoplay style="margin-top:78px;">
-                                <source src="/static/assets/motion/4_Easing_Linear_noEase.mp4" type="video/mp4">
+                                <source src="/api/uploads/motion/4_Easing_Linear_noEase.mp4" type="video/mp4">
                             </video>
                             <p>&lt;Easing graph comparison&gt;</p>
                         </div>
                         <div class="half-container" style="margin-top:58px;">
                             <div class="linear-video" style="width:360px;">
                                 <video controls preload="metadata" class="video" height="360px">
-                                    <source src="/static/assets/motion/4_Easing_Linear_요소단순이동.mp4" type="video/mp4">
+                                    <source src="/api/uploads/motion/4_Easing_Linear_요소단순이동.mp4" type="video/mp4">
                                 </video>
                                 <p>&lt;No easing - position change&gt;</p>
                             </div>
                             <div class="linear-video" style="width:360px; float : right;">
                                 <video controls preload="metadata" class="video" height="360px">
-                                    <source src="/static/assets/motion/Easing_simpleText_music.mp4" type="video/mp4">
+                                    <source src="/api/uploads/motion/Easing_simpleText_music.mp4" type="video/mp4">
                                 </video>
                                 <p>&lt;No easing - Text Transition&gt;</p>
                             </div>
@@ -238,13 +238,13 @@
                         <div class="half-container">
                             <div class="linear-video" style="width:360px;">
                                 <video controls preload="metadata" class="video">
-                                    <source src="/static/assets/motion/Movement_stretch_music.mp4" type="video/mp4">
+                                    <source src="/api/uploads/motion/Movement_stretch_music.mp4" type="video/mp4">
                                 </video>
                                 <p>&lt;Music – Tab indicator transition&gt;</p>
                             </div>
                             <div class="linear-video" style="width:360px; float:right;">
                                 <video controls preload="metadata" class="video">
-                                    <source src="/static/assets/motion/5_1_Movement_Stretch_2.mp4" type="video/mp4">
+                                    <source src="/api/uploads/motion/5_1_Movement_Stretch_2.mp4" type="video/mp4">
                                 </video>
                                 <p>&lt;Music – Page indicator navigation&gt;</p>
                             </div>
@@ -259,13 +259,13 @@
                         <div class="half-container">
                             <div class="linear-video" style="width:360px;">
                                 <video controls preload="metadata" class="video">
-                                    <source src="/static/assets/motion/8_2_Interactions_LongPress.mp4" type="video/mp4">
+                                    <source src="/api/uploads/motion/8_2_Interactions_LongPress.mp4" type="video/mp4">
                                 </video>
                                 <p>&lt;Gallery– Edit mode - Long press&gt;</p>
                             </div>
                             <div class="linear-video" style="width:360px; float:right;">
                                 <video controls preload="metadata" class="video">
-                                    <source src="/static/assets/motion/8_1_Interactions_Tap.mp4" type="video/mp4">
+                                    <source src="/api/uploads/motion/8_1_Interactions_Tap.mp4" type="video/mp4">
                                 </video>
                                 <p>&lt;Gallery– Selecting images - Tap&gt;</p>
                             </div>
@@ -279,7 +279,7 @@
                         </div>
                         <div class="center-video" style="margin-top:58px;">
                             <video controls preload="metadata" class="video">
-                                <source src="/static/assets/motion/5_2_Movement_Arc.mp4" type="video/mp4">
+                                <source src="/api/uploads/motion/5_2_Movement_Arc.mp4" type="video/mp4">
                             </video>
                             <p>&lt;Music – Transition to player&gt;</p>
                         </div>
@@ -292,7 +292,7 @@
                         </div>
                         <div class="center-video" style="margin-top:58px;">
                             <video controls preload="metadata" class="video">
-                                <source src="/static/assets/motion/Movement_scale_music.mp4" type="video/mp4">
+                                <source src="/api/uploads/motion/Movement_scale_music.mp4" type="video/mp4">
                             </video>
                             <p>&lt;Gallery– Selecting picture&gt;</p>
                         </div>
@@ -305,7 +305,7 @@
                         </div>
                         <div class="center-video" style="margin-top:58px;">
                             <video controls preload="metadata" class="video">
-                                <source src="/static/assets/motion/Movement_Parallax_music.mp4" type="video/mp4">
+                                <source src="/api/uploads/motion/Movement_Parallax_music.mp4" type="video/mp4">
                             </video>
                             <p>&lt;Music– Parallax effect on album cover image&gt;</p>
                         </div>
@@ -324,13 +324,13 @@
                         <div class="half-container">
                             <div class="linear-video" style="width:360px;">
                                 <video controls preload="metadata" class="video">
-                                    <source src="/static/assets/motion/6_component_splash_m.mp4" type="video/mp4">
+                                    <source src="/api/uploads/motion/6_component_splash_m.mp4" type="video/mp4">
                                 </video>
                                 <p>&lt;Music – Splash screen&gt;</p>
                             </div>
                             <div class="linear-video" style="width:360px; float:right;">
                                 <video controls preload="metadata" class="video">
-                                    <source src="/static/assets/motion/6_component_splash_g.mp4" type="video/mp4">
+                                    <source src="/api/uploads/motion/6_component_splash_g.mp4" type="video/mp4">
                                 </video>
                                 <p>&lt;Gallery – Splash screen&gt;</p>
                             </div>
@@ -344,7 +344,7 @@
                         </div>
                         <div class="center-video" style="margin-top:58px;">
                             <video controls preload="metadata" class="video">
-                                <source src="/static/assets/motion/6_component_onboarding.mp4" type="video/mp4">
+                                <source src="/api/uploads/motion/6_component_onboarding.mp4" type="video/mp4">
                             </video>
                             <p>&lt;Music– Onboarding illustration&gt;</p>
                         </div>
@@ -359,7 +359,7 @@
                         </div>
                         <div class="center-video" style="margin-top:58px;">
                             <video controls preload="metadata" class="video">
-                                <source src="/static/assets/motion/6_component_Page Control.mp4" type="video/mp4">
+                                <source src="/api/uploads/motion/6_component_Page Control.mp4" type="video/mp4">
                             </video>
                             <p>&lt;Music – Horizontal page navigation&gt;</p>
                         </div>
@@ -379,13 +379,13 @@
                         <div class="half-container">
                             <div class="linear-video" style="width:360px;">
                                 <video controls preload="metadata" class="video">
-                                    <source src="/static/assets/motion/7_Transition_EnteringScene_m.mp4" type="video/mp4">
+                                    <source src="/api/uploads/motion/7_Transition_EnteringScene_m.mp4" type="video/mp4">
                                 </video>
                                 <p>&lt;Music – Entering transition&gt;</p>
                             </div>
                             <div class="linear-video" style="width:360px; float:right;">
                                 <video controls preload="metadata" class="video">
-                                    <source src="/static/assets/motion/7_Transition_EnteringScene_g.mp4" type="video/mp4">
+                                    <source src="/api/uploads/motion/7_Transition_EnteringScene_g.mp4" type="video/mp4">
                                 </video>
                                 <p>&lt;Gallery– Entering transition&gt;</p>
                             </div>
@@ -400,13 +400,13 @@
                         <div class="half-container">
                             <div class="linear-video" style="width:360px;">
                                 <video controls preload="metadata" class="video">
-                                    <source src="/static/assets/motion/7_Transition_ColorEffect_m.mp4" type="video/mp4">
+                                    <source src="/api/uploads/motion/7_Transition_ColorEffect_m.mp4" type="video/mp4">
                                 </video>
                                 <p>&lt;Music – Background color effect&gt;</p>
                             </div>
                             <div class="linear-video" style="width:360px; float:right;">
                                 <video controls preload="metadata" class="video">
-                                    <source src="/static/assets/motion/7_Transition_ColorEffect_g.mp4" type="video/mp4">
+                                    <source src="/api/uploads/motion/7_Transition_ColorEffect_g.mp4" type="video/mp4">
                                 </video>
                                 <p>&lt;Gallery– After deleting images&gt;</p>
                             </div>
@@ -421,13 +421,13 @@
                         <div class="half-container">
                             <div class="linear-video" style="width:360px;">
                                 <video controls preload="metadata" class="video">
-                                    <source src="/static/assets/motion/Movement_Cascade_music.mp4" type="video/mp4">
+                                    <source src="/api/uploads/motion/Movement_Cascade_music.mp4" type="video/mp4">
                                 </video>
                                 <p>&lt;Music – List cascading&gt;</p>
                             </div>
                             <div class="linear-video" style="width:360px; float:right;">
                                 <video controls preload="metadata" class="video">
-                                    <source src="/static/assets/motion/7_Transition_CascadeEffect_g.mp4" type="video/mp4">
+                                    <source src="/api/uploads/motion/7_Transition_CascadeEffect_g.mp4" type="video/mp4">
                                 </video>
                                 <p>&lt;Gallery–Tile cascading&gt;</p>
                             </div>
@@ -446,7 +446,7 @@
                         </div>
                         <div class="center-video" style="margin-top:58px;">
                             <video controls preload="metadata" class="video">
-                                <source src="/static/assets/motion/8_1_Interactions_Tap.mp4" type="video/mp4">
+                                <source src="/api/uploads/motion/8_1_Interactions_Tap.mp4" type="video/mp4">
                             </video>
                             <p>&lt;갤러리서비스 - 편집모드에서 선택된 요소를 알려주는 모션&gt;</p>
                         </div>
@@ -459,7 +459,7 @@
                         </div>
                         <div class="center-video" style="margin-top:58px;">
                             <video controls preload="metadata" class="video">
-                                <source src="/static/assets/motion/8_2_Interactions_LongPress.mp4" type="video/mp4">
+                                <source src="/api/uploads/motion/8_2_Interactions_LongPress.mp4" type="video/mp4">
                             </video>
                             <p>&lt;뮤직서비스 - 음악이 플레이 될 때의 일렁이는 모션&gt;</p>
                         </div>
@@ -472,7 +472,7 @@
                         </div>
                         <div class="center-video" style="margin-top:58px;">
                             <video controls preload="metadata" class="video">
-                                <source src="/static/assets/motion/8_3_Interactions_Swipe.mp4" type="video/mp4">
+                                <source src="/api/uploads/motion/8_3_Interactions_Swipe.mp4" type="video/mp4">
                             </video>
                             <p>&lt;뮤직서비스 - 컨텐츠의 정보를 확인할 때 모션&gt;</p>
                         </div>
@@ -485,7 +485,7 @@
                         </div>
                         <div class="center-video" style="margin-top:58px;">
                             <video controls preload="metadata" class="video">
-                                <source src="/static/assets/motion/8_4_Interactions_Scrolling.mp4" type="video/mp4">
+                                <source src="/api/uploads/motion/8_4_Interactions_Scrolling.mp4" type="video/mp4">
                             </video>
                             <p>&lt;갤러리서비스 - 썸네일의 정보를 제공받는 모션&gt;</p>
                         </div>
@@ -498,7 +498,7 @@
                         </div>
                         <div class="center-video" style="margin-top:58px;">
                             <video controls preload="metadata" class="video">
-                                <source src="/static/assets/motion/8_5_Interactions_Pinch.mp4" type="video/mp4">
+                                <source src="/api/uploads/motion/8_5_Interactions_Pinch.mp4" type="video/mp4">
                             </video>
                             <p>&lt;갤러리서비스 - 확대, 축소를 통해 정보를 확인하는 모션&gt;</p>
                         </div>
