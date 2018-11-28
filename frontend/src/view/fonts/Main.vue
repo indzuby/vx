@@ -255,6 +255,9 @@ export default {
             $(".side-nav .category"+category).addClass("active");
             $("ul.fonts-sub li.active").removeClass("active");
             $("ul.fonts-sub li"+category).addClass("active");
+            if($(".category-item"+category).position()!==undefined && $(".category-item"+category).position()!==null){
+                $('html, body').animate({scrollTop: $(".category-item"+category).position().top+50}, 'fast');
+            }
         }
         ,subNavChange(sub){
             $(".sub-nav .sub-category.active").removeClass("active");
