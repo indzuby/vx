@@ -3,26 +3,45 @@ var express = require('express');
 var router = express.Router();
 var async = require('async');
 
-router.get('/:type',function(req,res,next){
-	var type = req.params.type.toUpperCase();
-	db.category.find({
-		'type' : type
-	}).sort({
-		"order" : 1
-	}).exec(function(err,data){
-		var result ={code: 0,msg:''};
-		if (!err) {
-			result.code = 0;
-			result.data = data;
-			res.json(result);
-		}else {
-			result.code = 3001;
-			result.msg = "서버에서 에러가 발생하였습니다.";
-			res.json(result);
-		}
-	});
 
-})
+// router.get('/:type',function(req,res,next){
+// 	var keyword = req.query.keyword;
+// 	var findQuery = {
+// 		'type' : "FONTS"
+// 	};
+
+// 	if(keyword!==undefined && keyword!==null){
+// 		var regex = new RegExp(keyword,"i");
+// 		findQuery.$or = [
+// 			{"name":{$regex : regex}}
+// 		];
+// 	}
+// 	db.category.find(findQuery).sort({
+// 		"order" : 1
+// 	}).exec(function(err,data){
+// 		var result ={code: 0,msg:''};
+// 		if (!err) {
+// 			var categories = [];
+// 			data.forEach(function(item){
+// 				categories.push({
+// 					'_id' : item.name.replace(/ /gi,"_").toLowerCase()
+// 					,'category_id' : item._id
+// 					,'order' : item.order
+// 					,'name' : item.name
+// 					,'fonts' : []
+// 				});
+// 			})
+// 			result.code = 0;
+// 			result.data = categories;
+// 			res.json(result);
+// 		}else {
+// 			result.code = 3001;
+// 			result.msg = "서버에서 에러가 발생하였습니다.";
+// 			res.json(result);
+// 		}
+// 	});
+
+// })
 
 
 router.post('/:type',function(req,res,next){

@@ -5,7 +5,7 @@
                 <p class="side-title">FONTS</p>
                 <div class="side-divider"></div>
                 <ul class="side-nav">
-                    <li v-for="category in categories" :key="category._id" @click="moveCategory(category._id)" class="category" :id="category._id" :class="{active : hash =='#'+category._id}">{{category.name}}<img class="edit-category" src="/static/images/edit.png" v-b-modal="'add-category-modal'" @click="categoryModal(true,category)" v-if="isAdmin">
+                    <li v-for="category in categories" v-if="category.fonts.length>0" :key="category._id" @click="moveCategory(category._id)" class="category" :id="category._id" :class="{active : hash =='#'+category._id}">{{category.name}}<img class="edit-category" src="/static/images/edit.png" v-b-modal="'add-category-modal'" @click="categoryModal(true,category)" v-if="isAdmin">
                         <ul class="sub-nav">
                             <li v-for="font in category.fonts" :key="font._id" @click="moveSubCategory(font._id)" class="sub-category" id="font._id">{{font.name}}</li>
                         </ul>
@@ -15,7 +15,7 @@
             </div>
             <div class="content-container">
                 <div class="serach-container">
-                    <input type="text" class="serach" id="search-input" placeholder="SEARCH" v-model="keyword">
+                    <input type="text" class="serach" id="search-input" placeholder="SEARCH" v-model="keyword" v-on:keyup.13="searchByKeyword">
                     </div>
                     <b-dropdown class="download" no-caret variant="white" ref="labels_drop">
                         <template slot="button-content">
@@ -51,8 +51,8 @@
                         and over 25,000 glyphs, creating a truly global typeface. <br>
                         Choose between Device & Marcomm (Print, Web, Video) fonts when downloading
                     </div>
-                    <div v-for="category in list" :key="category._id" class="category-item" :id="category._id">
-                        <p>{{category.name}}</p>
+                    <div v-for="category in categories" :key="category._id" class="category-item" :id="category._id">
+                        <p v-if="category.fonts.length>0">{{category.name}}</p>
                         <div class="items">
                             <Item v-for="font in category.fonts" :key="font._id" :font="font" @editFont="editFont"/>
                         </div>
@@ -263,9 +263,7 @@ export default {
         }
         ,getCategory(){
             httpCall("/fonts","get",null,(res)=>{
-                // console.log(res);
                 this.categories = res.data;
-                this.list = res.data;
             })
         }
         , onReset () {
@@ -346,6 +344,11 @@ export default {
                 this.devicePackage = res.data.device.url;
                 this.marcommPackage = res.data.marcomm.url;
             });
+        }
+        ,searchByKeyword(){
+            httpCall("/fonts","get",{"keyword":this.keyword},(res)=>{
+                this.categories = res.data;
+            })
         }
     }
 }

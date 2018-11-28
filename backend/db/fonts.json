@@ -2,216 +2,216 @@
     {
         "name": "Latin",
         "category": "Latin Related",
-        "downloadDevice": "/static/assets/fonts/Latin Related/Latin/SamsungOneUILatin.zip",
-        "downloadMarcomm": "/static/assets/fonts/Latin Related/Latin/SamsungOneLatin.zip",
+        "downloadDevice": "/api/uploads/Latin Related/Latin/SamsungOneUILatin.zip",
+        "downloadMarcomm": "/api/uploads/Latin Related/Latin/SamsungOneLatin.zip",
         "order": 1,
-        "thumbnail" : "/static/images/fonts/font_main_lat_01.jpg"
+        "thumbnail" : "/api/uploads/font_main_lat_01.jpg"
     }
     ,{
         "name": "Cyrillc",
         "category": "Latin Related",
-        "downloadDevice": "/static/assets/fonts/Latin Related/Cyrillc/SamsungOneUICyrillc.zip",
-        "downloadMarcomm": "/static/assets/fonts/Latin Related/Cyrillc/SamsungOneCyrillc.zip",
+        "downloadDevice": "/api/uploads/Latin Related/Cyrillc/SamsungOneUICyrillc.zip",
+        "downloadMarcomm": "/api/uploads/Latin Related/Cyrillc/SamsungOneCyrillc.zip",
         "order": 2,
-        "thumbnail" : "/static/images/fonts/font_main_lat_02.jpg"
+        "thumbnail" : "/api/uploads/font_main_lat_02.jpg"
     }
     ,{
         "name": "Greek",
         "category": "Latin Related",
-        "downloadDevice": "/static/assets/fonts/Latin Related/Greek/SamsungOneUIGreek.zip",
-        "downloadMarcomm": "/static/assets/fonts/Latin Related/Greek/SamsungOneGreek.zip",
+        "downloadDevice": "/api/uploads/Latin Related/Greek/SamsungOneUIGreek.zip",
+        "downloadMarcomm": "/api/uploads/Latin Related/Greek/SamsungOneGreek.zip",
         "order": 3,
-        "thumbnail" : "/static/images/fonts/font_main_lat_03.jpg"
+        "thumbnail" : "/api/uploads/font_main_lat_03.jpg"
     }
     ,{
         "name": "Armenian",
         "category": "Latin Related",
-        "downloadDevice": "/static/assets/fonts/Latin Related/Armenian/SamsungOneUIArmenian.zip",
-        "downloadMarcomm": "/static/assets/fonts/Latin Related/Armenian/SamsungOneArmenian.zip",
+        "downloadDevice": "/api/uploads/Latin Related/Armenian/SamsungOneUIArmenian.zip",
+        "downloadMarcomm": "/api/uploads/Latin Related/Armenian/SamsungOneArmenian.zip",
         "order": 4,
-        "thumbnail" : "/static/images/fonts/font_main_lat_04.jpg"
+        "thumbnail" : "/api/uploads/font_main_lat_04.jpg"
     }
     ,{
         "name": "Georgian",
         "category": "Latin Related",
-        "downloadDevice": "/static/assets/fonts/Latin Related/Georgian/SamsungOneUIGeorgian.zip",
-        "downloadMarcomm": "/static/assets/fonts/Latin Related/Georgian/SamsungOneGeorgian.zip",
+        "downloadDevice": "/api/uploads/Latin Related/Georgian/SamsungOneUIGeorgian.zip",
+        "downloadMarcomm": "/api/uploads/Latin Related/Georgian/SamsungOneGeorgian.zip",
         "order": 5,
-        "thumbnail" : "/static/images/fonts/font_main_lat_05.jpg"
+        "thumbnail" : "/api/uploads/font_main_lat_05.jpg"
     }
     
     
     ,{
         "name": "Arabic (Urdu,Farsi)",
         "category": "Middle East Asian",
-        "downloadDevice": "/static/assets/fonts/Middle East Asian/Arabic/SamsungOneUIArabic.zip",
-        "downloadMarcomm": "/static/assets/fonts/Middle East Asian/Arabic/SamsungOneArabic.zip",
+        "downloadDevice": "/api/uploads/Middle East Asian/Arabic/SamsungOneUIArabic.zip",
+        "downloadMarcomm": "/api/uploads/Middle East Asian/Arabic/SamsungOneArabic.zip",
         "order": 1,
-        "thumbnail" : "/static/images/fonts/font_main_mideast_01.jpg"
+        "thumbnail" : "/api/uploads/font_main_mideast_01.jpg"
     }
     ,{
         "name": "Hebrew",
         "category": "Middle East Asian",
-        "downloadDevice": "/static/assets/fonts/Middle East Asian/Hebrew/SamsungOneUIHebrew.zip",
-        "downloadMarcomm": "/static/assets/fonts/Middle East Asian/Hebrew/SamsungOneHebrew.zip",
+        "downloadDevice": "/api/uploads/Middle East Asian/Hebrew/SamsungOneUIHebrew.zip",
+        "downloadMarcomm": "/api/uploads/Middle East Asian/Hebrew/SamsungOneHebrew.zip",
         "order": 2,
-        "thumbnail" : "/static/images/fonts/font_main_mideast_02.jpg"
+        "thumbnail" : "/api/uploads/font_main_mideast_02.jpg"
     }
     
     ,{
         "name": "Korean",
         "category": "North East Asian",
-        "downloadDevice": "/static/assets/fonts/North East Asian/Korean/SamsungOneUIKorean.zip",
-        "downloadMarcomm": "/static/assets/fonts/North East Asian/Korean/SamsungOneKorean.zip",
+        "downloadDevice": "/api/uploads/North East Asian/Korean/SamsungOneUIKorean.zip",
+        "downloadMarcomm": "/api/uploads/North East Asian/Korean/SamsungOneKorean.zip",
         "order": 1,
-        "thumbnail" : "/static/images/fonts/font_main_northeast_01.jpg"
+        "thumbnail" : "/api/uploads/font_main_northeast_01.jpg"
     }
     ,{
         "name": "Simplified Chinese (China)",
         "category": "North East Asian",
-        "downloadDevice": "/static/assets/fonts/North East Asian/SCN_Simplified Chinese/SamsungOneUISCN.zip",
-        "downloadMarcomm": "/static/assets/fonts/North East Asian/SCN_Simplified Chinese/SamsungOneSCN.zip",
+        "downloadDevice": "/api/uploads/North East Asian/SCN_Simplified Chinese/SamsungOneUISCN.zip",
+        "downloadMarcomm": "/api/uploads/North East Asian/SCN_Simplified Chinese/SamsungOneSCN.zip",
         "order": 2,
-        "thumbnail" : "/static/images/fonts/font_main_northeast_02.jpg"
+        "thumbnail" : "/api/uploads/font_main_northeast_02.jpg"
     }
     ,{
         "name": "Traditiona Chinese (H.k. / Taiwan)",
         "category": "North East Asian",
-        "downloadDevice": "/static/assets/fonts/North East Asian/TCN_Traditional Chinese/SamsungOneUITCN.zip",
-        "downloadMarcomm": "/static/assets/fonts/North East Asian/TCN_Traditional Chinese/SamsungOneTCN.zip",
+        "downloadDevice": "/api/uploads/North East Asian/TCN_Traditional Chinese/SamsungOneUITCN.zip",
+        "downloadMarcomm": "/api/uploads/North East Asian/TCN_Traditional Chinese/SamsungOneTCN.zip",
         "order": 3,
-        "thumbnail" : "/static/images/fonts/font_main_northeast_03.jpg"
+        "thumbnail" : "/api/uploads/font_main_northeast_03.jpg"
     }
     
     
     ,{
         "name": "Devanagari (Hindi, Nepali, Marathi)",
         "category": "South West Asian",
-        "downloadDevice": "/static/assets/fonts/South West Asian/Devanagari/SamsungOneUIDevanagari.zip",
-        "downloadMarcomm": "/static/assets/fonts/South West Asian/Devanagari/SamsungOneDevanagari.zip",
+        "downloadDevice": "/api/uploads/South West Asian/Devanagari/SamsungOneUIDevanagari.zip",
+        "downloadMarcomm": "/api/uploads/South West Asian/Devanagari/SamsungOneDevanagari.zip",
         "order": 1,
-        "thumbnail" : "/static/images/fonts/font_main_south_west_01.jpg"
+        "thumbnail" : "/api/uploads/font_main_south_west_01.jpg"
     }
     ,{
         "name": "Bangla (Bengali, Assamese)",
         "category": "South West Asian",
-        "downloadDevice": "/static/assets/fonts/South West Asian/Bangla/SamsungOneUIBangla.zip",
-        "downloadMarcomm": "/static/assets/fonts/South West Asian/Bangla/SamsungOneBangla.zip",
+        "downloadDevice": "/api/uploads/South West Asian/Bangla/SamsungOneUIBangla.zip",
+        "downloadMarcomm": "/api/uploads/South West Asian/Bangla/SamsungOneBangla.zip",
         "order": 2,
-        "thumbnail" : "/static/images/fonts/font_main_south_west_02.jpg"
+        "thumbnail" : "/api/uploads/font_main_south_west_02.jpg"
     }
     ,{
         "name": "Gujarati",
         "category": "South West Asian",
-        "downloadDevice": "/static/assets/fonts/South West Asian/Gujarati/SamsungOneUIGujarati.zip",
-        "downloadMarcomm": "/static/assets/fonts/South West Asian/Gujarati/SamsungOneGujarati.zip",
+        "downloadDevice": "/api/uploads/South West Asian/Gujarati/SamsungOneUIGujarati.zip",
+        "downloadMarcomm": "/api/uploads/South West Asian/Gujarati/SamsungOneGujarati.zip",
         "order": 3,
-        "thumbnail" : "/static/images/fonts/font_main_south_west_03.jpg"
+        "thumbnail" : "/api/uploads/font_main_south_west_03.jpg"
     }
     ,{
         "name": "Tamil",
         "category": "South West Asian",
-        "downloadDevice": "/static/assets/fonts/South West Asian/Tamil/SamsungOneUITamil.zip",
-        "downloadMarcomm": "/static/assets/fonts/South West Asian/Tamil/SamsungOneTamil.zip",
+        "downloadDevice": "/api/uploads/South West Asian/Tamil/SamsungOneUITamil.zip",
+        "downloadMarcomm": "/api/uploads/South West Asian/Tamil/SamsungOneTamil.zip",
         "order": 4,
-        "thumbnail" : "/static/images/fonts/font_main_south_west_04.jpg"
+        "thumbnail" : "/api/uploads/font_main_south_west_04.jpg"
     }
     ,{
         "name": "Malaylam",
         "category": "South West Asian",
-        "downloadDevice": "/static/assets/fonts/South West Asian/Malayalam/SamsungOneUIMalayalam.zip",
-        "downloadMarcomm": "/static/assets/fonts/South West Asian/Malayalam/SamsungOneMalayalam.zip",
+        "downloadDevice": "/api/uploads/South West Asian/Malayalam/SamsungOneUIMalayalam.zip",
+        "downloadMarcomm": "/api/uploads/South West Asian/Malayalam/SamsungOneMalayalam.zip",
         "order": 5,
-        "thumbnail" : "/static/images/fonts/font_main_south_west_05.jpg"
+        "thumbnail" : "/api/uploads/font_main_south_west_05.jpg"
     }
     ,{
         "name": "Telugu",
         "category": "South West Asian",
-        "downloadDevice": "/static/assets/fonts/South West Asian/Telugu/SamsungOneUITelugu.zip",
-        "downloadMarcomm": "/static/assets/fonts/South West Asian/Telugu/SamsungOneTelugu.zip",
+        "downloadDevice": "/api/uploads/South West Asian/Telugu/SamsungOneUITelugu.zip",
+        "downloadMarcomm": "/api/uploads/South West Asian/Telugu/SamsungOneTelugu.zip",
         "order": 6,
-        "thumbnail" : "/static/images/fonts/font_main_south_west_06.jpg"
+        "thumbnail" : "/api/uploads/font_main_south_west_06.jpg"
     }
     ,{
         "name": "Kannada",
         "category": "South West Asian",
-        "downloadDevice": "/static/assets/fonts/South West Asian/Kannada/SamsungOneUIKannada.zip",
-        "downloadMarcomm": "/static/assets/fonts/South West Asian/Kannada/SamsungOneKannada.zip",
+        "downloadDevice": "/api/uploads/South West Asian/Kannada/SamsungOneUIKannada.zip",
+        "downloadMarcomm": "/api/uploads/South West Asian/Kannada/SamsungOneKannada.zip",
         "order": 7,
-        "thumbnail" : "/static/images/fonts/font_main_south_west_07.jpg"
+        "thumbnail" : "/api/uploads/font_main_south_west_07.jpg"
     }
     ,{
         "name": "Gurmukhi (Punjabi)",
         "category": "South West Asian",
-        "downloadDevice": "/static/assets/fonts/South West Asian/Gurmukhi/SamsungOneUIGurmukhi.zip",
-        "downloadMarcomm": "/static/assets/fonts/South West Asian/Gurmukhi/SamsungOneGurmukhi.zip",
+        "downloadDevice": "/api/uploads/South West Asian/Gurmukhi/SamsungOneUIGurmukhi.zip",
+        "downloadMarcomm": "/api/uploads/South West Asian/Gurmukhi/SamsungOneGurmukhi.zip",
         "order": 8,
-        "thumbnail" : "/static/images/fonts/font_main_south_west_08.jpg"
+        "thumbnail" : "/api/uploads/font_main_south_west_08.jpg"
     }
     ,{
         "name": "Odia (Oriya)",
         "category": "South West Asian",
-        "downloadDevice": "/static/assets/fonts/South West Asian/Odia/SamsungOneUIOdia.zip",
-        "downloadMarcomm": "/static/assets/fonts/South West Asian/Odia/SamsungOneOdia.zip",
+        "downloadDevice": "/api/uploads/South West Asian/Odia/SamsungOneUIOdia.zip",
+        "downloadMarcomm": "/api/uploads/South West Asian/Odia/SamsungOneOdia.zip",
         "order": 9,
-        "thumbnail" : "/static/images/fonts/font_main_south_west_09.jpg"
+        "thumbnail" : "/api/uploads/font_main_south_west_09.jpg"
     }
     ,{
         "name": "OlChiki",
         "category": "South West Asian",
-        "downloadDevice": "/static/assets/fonts/South West Asian/OlChiki/SamsungOneUIOlChiki.zip",
-        "downloadMarcomm": "/static/assets/fonts/South West Asian/OlChiki/SamsungOneOlChiki.zip",
+        "downloadDevice": "/api/uploads/South West Asian/OlChiki/SamsungOneUIOlChiki.zip",
+        "downloadMarcomm": "/api/uploads/South West Asian/OlChiki/SamsungOneOlChiki.zip",
         "order": 10,
-        "thumbnail" : "/static/images/fonts/font_main_south_west_10.jpg"
+        "thumbnail" : "/api/uploads/font_main_south_west_10.jpg"
     }
     ,{
         "name": "Sinhala",
         "category": "South West Asian",
-        "downloadDevice": "/static/assets/fonts/South West Asian/Sinhala/SamsungOneUISinhala.zip",
-        "downloadMarcomm": "/static/assets/fonts/South West Asian/Sinhala/SamsungOneSinhala.zip",
+        "downloadDevice": "/api/uploads/South West Asian/Sinhala/SamsungOneUISinhala.zip",
+        "downloadMarcomm": "/api/uploads/South West Asian/Sinhala/SamsungOneSinhala.zip",
         "order": 11,
-        "thumbnail" : "/static/images/fonts/font_main_south_west_11.jpg"
+        "thumbnail" : "/api/uploads/font_main_south_west_11.jpg"
     }
 
     
     ,{
         "name": "Thai",
         "category": "South East Asian",
-        "downloadDevice": "/static/assets/fonts/South East Asian/Thai/SamsungOneUIThai.zip",
-        "downloadMarcomm": "/static/assets/fonts/South East Asian/Thai/SamsungOneThai.zip",
+        "downloadDevice": "/api/uploads/South East Asian/Thai/SamsungOneUIThai.zip",
+        "downloadMarcomm": "/api/uploads/South East Asian/Thai/SamsungOneThai.zip",
         "order": 1,
-        "thumbnail" : "/static/images/fonts/font_main_southeast_01.jpg"
+        "thumbnail" : "/api/uploads/font_main_southeast_01.jpg"
     }
     ,{
         "name": "Lao",
         "category": "South East Asian",
-        "downloadDevice": "/static/assets/fonts/South East Asian/Lao/SamsungOneUILao.zip",
-        "downloadMarcomm": "/static/assets/fonts/South East Asian/Lao/SamsungOneLao.zip",
+        "downloadDevice": "/api/uploads/South East Asian/Lao/SamsungOneUILao.zip",
+        "downloadMarcomm": "/api/uploads/South East Asian/Lao/SamsungOneLao.zip",
         "order": 2,
-        "thumbnail" : "/static/images/fonts/font_main_southeast_02.jpg"
+        "thumbnail" : "/api/uploads/font_main_southeast_02.jpg"
     }
     ,{
         "name": "Myanmar",
         "category": "South East Asian",
-        "downloadDevice": "/static/assets/fonts/South East Asian/Myanmar/SamsungOneUIMyanmar.zip",
-        "downloadMarcomm": "/static/assets/fonts/South East Asian/Myanmar/SamsungOneMyanmar.zip",
+        "downloadDevice": "/api/uploads/South East Asian/Myanmar/SamsungOneUIMyanmar.zip",
+        "downloadMarcomm": "/api/uploads/South East Asian/Myanmar/SamsungOneMyanmar.zip",
         "order": 3,
-        "thumbnail" : "/static/images/fonts/font_main_southeast_03.jpg"
+        "thumbnail" : "/api/uploads/font_main_southeast_03.jpg"
     }
     ,{
         "name": "Khmer",
         "category": "South East Asian",
-        "downloadDevice": "/static/assets/fonts/South East Asian/Khmer/SamsungOneUIKhmer.zip",
-        "downloadMarcomm": "/static/assets/fonts/South East Asian/Khmer/SamsungOneKhmer.zip",
+        "downloadDevice": "/api/uploads/South East Asian/Khmer/SamsungOneUIKhmer.zip",
+        "downloadMarcomm": "/api/uploads/South East Asian/Khmer/SamsungOneKhmer.zip",
         "order": 4,
-        "thumbnail" : "/static/images/fonts/font_main_southeast_04.jpg"
+        "thumbnail" : "/api/uploads/font_main_southeast_04.jpg"
     }
     ,{
         "name": "Ethiopic",
         "category": "African",
-        "downloadDevice": "/static/assets/fonts/African/Ethiopic/SamsungOneUIEthiopic.zip",
-        "downloadMarcomm": "/static/assets/fonts/African/Ethiopic/SamsungOneEthiopic.zip",
+        "downloadDevice": "/api/uploads/African/Ethiopic/SamsungOneUIEthiopic.zip",
+        "downloadMarcomm": "/api/uploads/African/Ethiopic/SamsungOneEthiopic.zip",
         "order": 1,
-        "thumbnail" : "/static/images/fonts/font_main_africa_01.jpg"
+        "thumbnail" : "/api/uploads/font_main_africa_01.jpg"
     }
 ]

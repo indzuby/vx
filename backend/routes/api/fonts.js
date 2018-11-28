@@ -31,6 +31,18 @@ const package_upload = multer({
   });
 
 router.get('/',function(req,res,next){
+	var keyword = req.query.keyword;;
+	var findQuery = {
+		'category' : ""
+	};
+
+	if(keyword!==undefined && keyword!==null){
+		var regex = new RegExp(keyword,"i");
+		findQuery.$or = [
+			{"name":{$regex : regex}}
+			,{"category":{$regex : regex}}
+		];
+	}
 	db.category.find({
 		'type' : "FONTS"
 	}).sort({
@@ -48,7 +60,19 @@ router.get('/',function(req,res,next){
 					,'fonts' : []
 				});
 			})
-			async.each(categories,fontFind,function(err){
+			async.each(categories,function(item,callback){
+				findQuery.category = item.name
+				db.font.find(findQuery).sort({
+					"order" : 1	
+				}).exec(function(err,data){
+					if (!err) {
+						item.fonts = data;
+						callback(null);	
+					}else if(error){
+						callback(new Error("font error"));
+					}
+				});
+			},function(err){
 				if(err){
 					result.code = 3002;
 					result.msg = err;
@@ -451,21 +475,6 @@ function fontSave(font,res,isEdit){
 		res.json(result);
 	})
 }
-function fontFind(item,doneCallback){
-	db.font.find({
-		'category' : item.name
-	}).sort({
-		"order" : 1	
-	}).exec(function(err,data){
-		if (!err) {
-			item.fonts = data;
-			doneCallback(null);	
-		}else if(error){
-			doneCallback(new Error("font error"));
-		}
-	});
-}	
-
 router.use("/files", express.static('uploads'));
 
 module.exports = router;
