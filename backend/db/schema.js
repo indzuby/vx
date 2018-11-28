@@ -19,7 +19,7 @@ var fontSchema = new Schema({
 
 var categorySchema = new Schema({
   'name': {type : String , index:{unique:true}},
-  'order': String,
+  'order': Number,
   'type' : String
 });
 
