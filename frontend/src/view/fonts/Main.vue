@@ -11,7 +11,6 @@
                         </ul>
                     </li>
                 </ul>
-                <img class="add-category" src="/static/images/add.png" v-b-modal="'add-category-modal'" @click="categoryModal(false)" v-if="isAdmin">
             </div>
             <div class="content-container">
                 <div class="serach-container">
@@ -72,10 +71,19 @@
                 label-size="sm"
                 label="Category"
                 label-for="category">
-                    <b-form-select v-model="addFont.category" size="sm" id="category" name="category">
+                    <b-form-select v-model="addFont.category" size="sm" id="category">
                         <option :value="null" selected>Please select an category</option>
                         <option v-for="category in categories" :key="category._id" :value="category.name">{{category.name}}</option>
+                        <option :value="'new'">새로운 카테고리를 추가합니다.</option>
                     </b-form-select>
+                  </b-form-group>
+                   <b-form-group horizontal
+                   v-if="addFont.category == 'new'"
+                :label-cols="3"
+                label-size="sm"
+                label="Category name"
+                label-for="font_name">
+                    <b-form-input id="font_name" v-model="addFont.newCategory" type="text" placeholder="Enter New Category name" size="sm"></b-form-input>
                   </b-form-group>
                   <b-form-group horizontal
                 :label-cols="3"
@@ -296,13 +304,7 @@ export default {
                 this.onReset();
         }
         ,addCategorySubmit(){
-            var method = "POST";
-            if(!this.addCategory.isEdit){
-                method = "POST";
-            }else {
-                method = "PATCH"
-            }
-            httpCall("/category/fonts",method,this.addCategory,(data)=>{
+            httpCall("/category/fonts","PATCH",this.addCategory,(data)=>{
                 alert(data.msg);
                 location.reload();
             });
@@ -322,11 +324,23 @@ export default {
             }else 
                 this.onReset();
         },addFontsubmit(){
-            httpFormData("/fonts","#font-form",{},(data)=>{
+            var self = this;
+            if(this.addFont.category === 'new'){
+                httpCall("/category/fonts","POST",{"name":this.addFont.newCategory},(data)=>{
+                    self.addFont.category = self.addFont.newCategory;
+                    self.addFontCall();
+                });
+            }else 
+                this.addFontCall();
+        }
+        ,addFontCall(){
+            console.log(1);
+            httpFormData("/fonts","#font-form",{'category':this.addFont.category},(data)=>{
                 alert(data.msg);
                 location.reload();
             });
-        },deleteFont(){
+        }
+        ,deleteFont(){
             httpCall("/fonts","DELETE",{"id":this.addFont.font_id},(data)=>{
                 alert(data.msg);
                 location.reload();
