@@ -23,6 +23,7 @@ mongoose_db.once('open', function() {
     
     var categorySchema = new Schema({
         'name': String,
+        'category': String,
         'order': Number,
         'type' : String
     });
@@ -30,9 +31,9 @@ mongoose_db.once('open', function() {
     var iconSchema = new Schema({
         'name': String,
         'category': String,
-        'download': String,
-        'order': Number,
-        'thumbnail' : String
+        'downloadPng': String,
+        'downloadSvg': String,
+        'order': Number
     });
     
     var font = mongoose.model('font', fontSchema);
@@ -73,6 +74,7 @@ mongoose_db.once('open', function() {
 
     iconsData.forEach(function(data){
         // var c = new icon(data);
+        var c = new icon(data);
         c.save(function(err,docs){
             console.log(docs);
         })

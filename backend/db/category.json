@@ -30,23 +30,65 @@
         ,"order" : 6
     }
     ,{
-        "name" : "Convergence"
+        "name" : "COMMON"
         ,"type" : "ICONS"
         ,"order" : 1
     }
     ,{
-        "name" : "IM Specific"
+        "name" : "IM"
         ,"type" : "ICONS"
         ,"order" : 2
     }
     ,{
-        "name" : "DA Specific"
+        "name" : "DA"
         ,"type" : "ICONS"
         ,"order" : 3
     }
     ,{
-        "name" : "VD Specific"
+        "name" : "VD"
         ,"type" : "ICONS"
         ,"order" : 4
+    }
+    ,{
+        "name" : "Convergence"
+        ,"category" : "COMMON"
+        ,"type" : "SUB_ICONS"
+        ,"order" : 1
+    }
+    ,{
+        "name" : "System"
+        ,"category" : "COMMON"
+        ,"type" : "SUB_ICONS"
+        ,"order" : 2
+    }
+    ,{
+        "name" : "Weather"
+        ,"category" : "COMMON"
+        ,"type" : "SUB_ICONS"
+        ,"order" : 3
+    }
+    ,{
+        "name" : "Weather Color"
+        ,"category" : "COMMON"
+        ,"type" : "SUB_ICONS"
+        ,"order" : 4
+    }
+    ,{
+        "name" : "IM Specific"
+        ,"category" : "IM"
+        ,"type" : "SUB_ICONS"
+        ,"order" : 1
+    }
+    ,{
+        "name" : "DA Specific"
+        ,"category" : "DA"
+        ,"type" : "SUB_ICONS"
+        ,"order" : 1
+    }
+    ,{
+        "name" : "VD Specific"
+        ,"category" : "VD"
+        ,"type" : "SUB_ICONS"
+        ,"order" : 1
     }
 ]

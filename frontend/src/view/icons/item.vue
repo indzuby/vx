@@ -1,8 +1,10 @@
 <template>
-    <div class="icon-item">
-        <img :src="icon.thumbnail" :id="icon._id">
+    <div class="icon-item" :class="padding">
+        <img :src="icon.downloadPng" :id="icon._id">
+        <p>{{icon.name}}</p>
         <b-popover :target="icon._id"  triggers="click" :show.sync="show">
-            <a :href="icon.downloadDevice" :download="icon.name+'_device'"><span>Downlod</span></a> |
+            <a :href="icon.downloadPng" :download="icon.name"><span>Png</span></a> |
+            <a :href="icon.downloadSvg" :download="icon.name"><span>Svg</span></a> 
             <span v-if="isAdmin" @click="editIcon" v-b-modal="'add-icon-modal'">| <span>Edit</span></span>
         </b-popover>
     </div>
@@ -11,7 +13,7 @@
 
 <script>
 export default {
-    props:['icon']
+    props:['icon','index']
     ,data() {
         return {
             show: false
@@ -19,7 +21,7 @@ export default {
     }
     ,methods:{
         editIcon(){
-            this.$emit("editicon",true,this.icon);
+            this.$emit("editIcon",true,this.icon);
             this.show = false;
         }
     }
@@ -29,6 +31,11 @@ export default {
         }
         ,isAdmin(){
             return this.$session.get("admin");
+        },padding(){
+            if(this.index%8 == 7) {
+                return "right-0";
+            }
+            return "right";
         }
     }
 }
@@ -37,11 +44,21 @@ export default {
 <style scoped>
     .icon-item{
         display: inline-block;
-        width : 19%;
+        width : calc(12.5% - 40px);
+        margin-right: 40px;
+        margin-bottom: 40px;
         cursor: pointer;
+        text-align: center
+    }
+    .icon-item.right-0{
+        margin-right : 0px;
+    }
+    .icon-item p{
+        margin-top : 8px;
+        font-size: 8px;
     }
     .icon-item img{
-        width: 58%;
+        width: 36px;
     }
 </style>
 

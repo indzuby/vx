@@ -19,6 +19,7 @@ var fontSchema = new Schema({
 
 var categorySchema = new Schema({
   'name': {type : String , index:{unique:true}},
+  'category': String,
   'order': Number,
   'type' : String
 });
@@ -26,9 +27,9 @@ var categorySchema = new Schema({
 var iconSchema = new Schema({
   'name': {type : String , index:{unique:true}},
   'category': String,
-  'download': String,
-  'order': Number,
-  'thumbnail' : String
+  'downloadPng': String,
+  'downloadSvg': String,
+  'order': Number
 });
 
 var fileSchema = new Schema({

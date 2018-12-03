@@ -5,7 +5,7 @@ var async = require('async');
 var multer = require('multer')
 const path = require('path');
 var fs = require('fs');
-var fontPath = 'uploads/';
+var fontPath = 'uploads/fonts/';
 
 
 const upload = multer({
@@ -371,9 +371,7 @@ router.post('/package',package_upload.fields([{ name: 'packageDevice' }, { name:
 					}
 				})
 			}else {
-				result.code = 0;
-				result.msg="업로드에 성공하였습니다.";
-				res.json(result);
+				cb(new Error("업로드실패"))
 			}
 		}
 		,function(err){
@@ -481,6 +479,5 @@ function fontSave(font,res,isEdit){
 		res.json(result);
 	})
 }
-router.use("/files", express.static('uploads'));
 
 module.exports = router;

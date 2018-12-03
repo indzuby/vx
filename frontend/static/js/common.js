@@ -25,7 +25,7 @@ function httpCall(url,type,data,callback){
                 $(".loading").hide();
                 processing = false;
             }
-            if(res.code == 0){
+            if(res.code <= 0){
                 callback(res);
             }else {
                 alert(res.msg);

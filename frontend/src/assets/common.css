@@ -84,13 +84,18 @@ li.category ul.sub-nav li.sub-category{
 li.category ul.sub-nav li.sub-category:hover, li.category ul.sub-nav li.sub-category.active{
     font-weight: 700;
 }
-.download{
+.download,.uploadIcons{
     display: inline-block;
     position: absolute;
     right: 0px;
     top : -15px;
     /* background: white; */
     margin : 0px;
+}
+.uploadIcons{
+    top : 63px;
+    text-align: center;
+    line-height: 40px;
 }
 .download p.text{
     text-align: center;

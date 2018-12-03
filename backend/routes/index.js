@@ -66,9 +66,11 @@ router.post('/logout', function (req, res, next) {
 
 var category = require("./api/category");
 var fonts = require("./api/fonts");
-
+var icons = require("./api/icons");
 router.use("/category",category);
 router.use("/fonts",fonts);
+router.use("/icons",icons);
+
 
 router.use("/uploads", express.static('uploads'));
 

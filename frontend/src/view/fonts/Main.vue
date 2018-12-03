@@ -5,7 +5,7 @@
                 <p class="side-title">FONTS</p>
                 <div class="side-divider"></div>
                 <ul class="side-nav">
-                    <li v-for="category in categories" v-if="category.fonts.length>0" :key="category._id" @click="moveCategory(category._id)" class="category" :id="category._id" :class="{active : hash =='#'+category._id}">{{category.name}}<img class="edit-category" src="/static/images/edit.png" v-b-modal="'add-category-modal'" @click="categoryModal(true,category)" v-if="isAdmin">
+                    <li v-for="category in categories" v-if="category.fonts.length>0" :key="category._id" @click="moveCategory(category._id)" class="category" :id="category._id" :class="{active : hash =='#'+category._id}">{{category.name.toUpperCase()}}<img class="edit-category" src="/static/images/edit.png" v-b-modal="'add-category-modal'" @click="categoryModal(true,category)" v-if="isAdmin">
                         <ul class="sub-nav">
                             <li v-for="font in category.fonts" :key="font._id" @click="moveSubCategory(font._id)" class="sub-category" id="font._id">{{font.name}}</li>
                         </ul>
@@ -14,7 +14,7 @@
             </div>
             <div class="content-container">
                 <div class="serach-container">
-                    <input type="text" class="serach" id="search-input" placeholder="SEARCH" v-model="keyword" v-on:keyup.13="searchByKeyword">
+                    <input type="text" class="serach" id="search-input" placeholder="SEARCH" v-model="keyword" v-on:keyup="searchByKeyword">
                     </div>
                     <b-dropdown class="download" no-caret variant="white" ref="labels_drop">
                         <template slot="button-content">
@@ -62,7 +62,7 @@
                 <img src="/static/images/add.png">
             </div>
         </div>
-        <b-modal id="add-font-modal" title="새로운 폰트를 추가합니다." hide-footer ref="addModal">
+        <b-modal id="add-font-modal" :title="fontEdit" hide-footer ref="addFontModal">
             <div>
                 <b-alert show variant="danger">형식에 맞는 파일을 입력해주세요.</b-alert>
             <b-form @reset="onReset" id="font-form" method="POST" enctype="multipart/form-data">
@@ -130,7 +130,7 @@
             </div>
         </b-modal>
 
-        <b-modal id="add-category-modal" :title="categoryEdit" hide-footer ref="addModal">
+        <b-modal id="add-category-modal" :title="categoryEdit" hide-footer ref="addCategoryModal">
             <div>
             <b-form @submit="addCategorySubmit" @reset="onReset">
                   <b-form-group horizontal
@@ -156,7 +156,7 @@
         </b-modal>
 
         
-        <b-modal id="add-package-modal" :title="packageTitle" hide-footer ref="addModal">
+        <b-modal id="add-package-modal" :title="packageTitle" hide-footer ref="addPackageModal">
             <div>
             <b-form @reset="onReset" method="POST" enctype="multipart/form-data" id="font-package-form"> 
                 <b-form-group horizontal
@@ -292,7 +292,9 @@ export default {
                 ,isEdit : false
                 ,order : null
             }
-            this.$refs.addModal.hide();
+            this.$refs.addFontModal.hide();
+            this.$refs.addCategoryModal.hide();
+            this.$refs.addPackageModal.hide();
         }
         ,categoryModal(isEdit,category){
             this.addCategory.isEdit = isEdit;
@@ -398,6 +400,10 @@ export default {
     width : 16px;
     position: absolute;
     right : 48px;
+}
+.side-container{
+    z-index: 990;
+    position: absolute;
 }
 </style>
 
