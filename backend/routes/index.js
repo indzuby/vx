@@ -40,7 +40,7 @@ router.post('/signup', function (req, res, next) {
 	var newUser = new db.user({
 		'email': email,
 		'password': password,
-		'level' : 10
+		'level' : 1
 	});
 	newUser.save(function(err){
 		var result ={code: 0,msg:''};
@@ -66,9 +66,11 @@ router.post('/logout', function (req, res, next) {
 
 var category = require("./api/category");
 var fonts = require("./api/fonts");
-
+var icons = require("./api/icons");
 router.use("/category",category);
 router.use("/fonts",fonts);
+router.use("/icons",icons);
+
 
 router.use("/uploads", express.static('uploads'));
 

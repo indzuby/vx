@@ -5,7 +5,7 @@ var async = require('async');
 var multer = require('multer')
 const path = require('path');
 var fs = require('fs');
-var fontPath = 'uploads/';
+var fontPath = 'uploads/fonts/';
 
 
 const upload = multer({
@@ -31,6 +31,18 @@ const package_upload = multer({
   });
 
 router.get('/',function(req,res,next){
+	var keyword = req.query.keyword;;
+	var findQuery = {
+		'category' : ""
+	};
+
+	if(keyword!==undefined && keyword!==null){
+		var regex = new RegExp(keyword,"i");
+		findQuery.$or = [
+			{"name":{$regex : regex}}
+			,{"category":{$regex : regex}}
+		];
+	}
 	db.category.find({
 		'type' : "FONTS"
 	}).sort({
@@ -48,7 +60,19 @@ router.get('/',function(req,res,next){
 					,'fonts' : []
 				});
 			})
-			async.each(categories,fontFind,function(err){
+			async.each(categories,function(item,callback){
+				findQuery.category = item.name
+				db.font.find(findQuery).sort({
+					"order" : 1	
+				}).exec(function(err,data){
+					if (!err) {
+						item.fonts = data;
+						callback(null);	
+					}else if(error){
+						callback(new Error("font error"));
+					}
+				});
+			},function(err){
 				if(err){
 					result.code = 3002;
 					result.msg = err;
@@ -83,7 +107,7 @@ router.post('/',upload.fields([{ name: 'thumbnail' }, { name: 'downloadDevice' }
 					}else {
 						font.name = req.body.name;
 						font.category = req.body.category;
-						font.order = req.body.order;
+						font.order = parseInt(req.body.order);
 						cb(null,font);
 					}
 				});
@@ -180,13 +204,19 @@ router.post('/',upload.fields([{ name: 'thumbnail' }, { name: 'downloadDevice' }
 		])
 		
 	}else {
-		db.font.count({
+		db.font.find({
 			'category' : req.body.category
-		}).exec(function(err,count){
+		}).sort({
+			"order" : -1
+		}).limit(1).exec(function(err,data){
+			var count = 0 ;
+			if(data!=null && data.length>0){
+				count = data[0].order;
+			}
 			var newFont = db.font({
 				'name' : req.body.name
 				,'category' : req.body.category
-				,'order':count+1
+				,'order':parseInt(count)+1
 			})
 			if(req.files.thumbnail===null || req.files.thumbnail===undefined){
 				result.code = 4008;
@@ -341,9 +371,7 @@ router.post('/package',package_upload.fields([{ name: 'packageDevice' }, { name:
 					}
 				})
 			}else {
-				result.code = 0;
-				result.msg="업로드에 성공하였습니다.";
-				res.json(result);
+				cb(new Error("업로드실패"))
 			}
 		}
 		,function(err){
@@ -451,21 +479,5 @@ function fontSave(font,res,isEdit){
 		res.json(result);
 	})
 }
-function fontFind(item,doneCallback){
-	db.font.find({
-		'category' : item.name
-	}).sort({
-		"order" : 1	
-	}).exec(function(err,data){
-		if (!err) {
-			item.fonts = data;
-			doneCallback(null);	
-		}else if(error){
-			doneCallback(new Error("font error"));
-		}
-	});
-}	
-
-router.use("/files", express.static('uploads'));
 
 module.exports = router;

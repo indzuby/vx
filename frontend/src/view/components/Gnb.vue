@@ -141,11 +141,14 @@
     .nav {
         position: absolute;
         right: 60px;
-        cursor: pointer;
+        cursor: pointer;        
+        width: calc(100% - 300px);
     }
     ul.nav-tab{
         margin: 0px;
-        margin-top : 10px;
+        margin-top : 18px;
+        width: 100%;
+        text-align: right;
     }
     ul.nav-tab li{
         display: inline;
@@ -154,7 +157,7 @@
         color : #949494;
     }
     ul.nav-tab li.tab{
-        font-size: 24px;
+        font-size: 18px;
         padding-right: 34px;
     }
     ul.sub-nav{
@@ -185,7 +188,7 @@
     }
     ul.icons-sub{
         position: absolute;
-        left : 27%;
+        right : 29%;
     }
     ul.motion-sub, ul.gui-sub, ul.fonts-sub{
         position: absolute;

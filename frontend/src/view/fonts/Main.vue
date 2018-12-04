@@ -5,17 +5,16 @@
                 <p class="side-title">FONTS</p>
                 <div class="side-divider"></div>
                 <ul class="side-nav">
-                    <li v-for="category in categories" :key="category._id" @click="moveCategory(category._id)" class="category" :id="category._id" :class="{active : hash =='#'+category._id}">{{category.name}}<img class="edit-category" src="/static/images/edit.png" v-b-modal="'add-category-modal'" @click="categoryModal(true,category)" v-if="isAdmin">
+                    <li v-for="category in categories" v-if="category.fonts.length>0" :key="category._id" @click="moveCategory(category._id)" class="category" :id="category._id" :class="{active : hash =='#'+category._id}">{{category.name.toUpperCase()}}<img class="edit-category" src="/static/images/edit.png" v-b-modal="'add-category-modal'" @click="categoryModal(true,category)" v-if="isAdmin">
                         <ul class="sub-nav">
                             <li v-for="font in category.fonts" :key="font._id" @click="moveSubCategory(font._id)" class="sub-category" id="font._id">{{font.name}}</li>
                         </ul>
                     </li>
                 </ul>
-                <img class="add-category" src="/static/images/add.png" v-b-modal="'add-category-modal'" @click="categoryModal(false)" v-if="isAdmin">
             </div>
             <div class="content-container">
                 <div class="serach-container">
-                    <input type="text" class="serach" id="search-input" placeholder="SEARCH" v-model="keyword">
+                    <input type="text" class="serach" id="search-input" placeholder="SEARCH" v-model="keyword" v-on:keyup="searchByKeyword">
                     </div>
                     <b-dropdown class="download" no-caret variant="white" ref="labels_drop">
                         <template slot="button-content">
@@ -51,8 +50,8 @@
                         and over 25,000 glyphs, creating a truly global typeface. <br>
                         Choose between Device & Marcomm (Print, Web, Video) fonts when downloading
                     </div>
-                    <div v-for="category in list" :key="category._id" class="category-item" :id="category._id">
-                        <p>{{category.name}}</p>
+                    <div v-for="category in categories" :key="category._id" class="category-item" :id="category._id">
+                        <p v-if="category.fonts.length>0">{{category.name}}</p>
                         <div class="items">
                             <Item v-for="font in category.fonts" :key="font._id" :font="font" @editFont="editFont"/>
                         </div>
@@ -63,7 +62,7 @@
                 <img src="/static/images/add.png">
             </div>
         </div>
-        <b-modal id="add-font-modal" title="새로운 폰트를 추가합니다." hide-footer ref="addModal">
+        <b-modal id="add-font-modal" :title="fontEdit" hide-footer ref="addFontModal">
             <div>
                 <b-alert show variant="danger">형식에 맞는 파일을 입력해주세요.</b-alert>
             <b-form @reset="onReset" id="font-form" method="POST" enctype="multipart/form-data">
@@ -72,10 +71,19 @@
                 label-size="sm"
                 label="Category"
                 label-for="category">
-                    <b-form-select v-model="addFont.category" size="sm" id="category" name="category">
+                    <b-form-select v-model="addFont.category" size="sm" id="category">
                         <option :value="null" selected>Please select an category</option>
                         <option v-for="category in categories" :key="category._id" :value="category.name">{{category.name}}</option>
+                        <option :value="'new'">새로운 카테고리를 추가합니다.</option>
                     </b-form-select>
+                  </b-form-group>
+                   <b-form-group horizontal
+                   v-if="addFont.category == 'new'"
+                :label-cols="3"
+                label-size="sm"
+                label="Category name"
+                label-for="font_name">
+                    <b-form-input id="font_name" v-model="addFont.newCategory" type="text" placeholder="Enter New Category name" size="sm"></b-form-input>
                   </b-form-group>
                   <b-form-group horizontal
                 :label-cols="3"
@@ -122,7 +130,7 @@
             </div>
         </b-modal>
 
-        <b-modal id="add-category-modal" :title="categoryEdit" hide-footer ref="addModal">
+        <b-modal id="add-category-modal" :title="categoryEdit" hide-footer ref="addCategoryModal">
             <div>
             <b-form @submit="addCategorySubmit" @reset="onReset">
                   <b-form-group horizontal
@@ -148,7 +156,7 @@
         </b-modal>
 
         
-        <b-modal id="add-package-modal" :title="packageTitle" hide-footer ref="addModal">
+        <b-modal id="add-package-modal" :title="packageTitle" hide-footer ref="addPackageModal">
             <div>
             <b-form @reset="onReset" method="POST" enctype="multipart/form-data" id="font-package-form"> 
                 <b-form-group horizontal
@@ -255,6 +263,9 @@ export default {
             $(".side-nav .category"+category).addClass("active");
             $("ul.fonts-sub li.active").removeClass("active");
             $("ul.fonts-sub li"+category).addClass("active");
+            if($(".category-item"+category).position()!==undefined && $(".category-item"+category).position()!==null){
+                $('html, body').animate({scrollTop: $(".category-item"+category).position().top+50}, 'fast');
+            }
         }
         ,subNavChange(sub){
             $(".sub-nav .sub-category.active").removeClass("active");
@@ -263,9 +274,7 @@ export default {
         }
         ,getCategory(){
             httpCall("/fonts","get",null,(res)=>{
-                // console.log(res);
                 this.categories = res.data;
-                this.list = res.data;
             })
         }
         , onReset () {
@@ -283,7 +292,9 @@ export default {
                 ,isEdit : false
                 ,order : null
             }
-            this.$refs.addModal.hide();
+            this.$refs.addFontModal.hide();
+            this.$refs.addCategoryModal.hide();
+            this.$refs.addPackageModal.hide();
         }
         ,categoryModal(isEdit,category){
             this.addCategory.isEdit = isEdit;
@@ -295,13 +306,7 @@ export default {
                 this.onReset();
         }
         ,addCategorySubmit(){
-            var method = "POST";
-            if(!this.addCategory.isEdit){
-                method = "POST";
-            }else {
-                method = "PATCH"
-            }
-            httpCall("/category/fonts",method,this.addCategory,(data)=>{
+            httpCall("/category/fonts","PATCH",this.addCategory,(data)=>{
                 alert(data.msg);
                 location.reload();
             });
@@ -321,11 +326,23 @@ export default {
             }else 
                 this.onReset();
         },addFontsubmit(){
-            httpFormData("/fonts","#font-form",{},(data)=>{
+            var self = this;
+            if(this.addFont.category === 'new'){
+                httpCall("/category/fonts","POST",{"name":this.addFont.newCategory},(data)=>{
+                    self.addFont.category = self.addFont.newCategory;
+                    self.addFontCall();
+                });
+            }else 
+                this.addFontCall();
+        }
+        ,addFontCall(){
+            console.log(1);
+            httpFormData("/fonts","#font-form",{'category':this.addFont.category},(data)=>{
                 alert(data.msg);
                 location.reload();
             });
-        },deleteFont(){
+        }
+        ,deleteFont(){
             httpCall("/fonts","DELETE",{"id":this.addFont.font_id},(data)=>{
                 alert(data.msg);
                 location.reload();
@@ -346,6 +363,11 @@ export default {
                 this.devicePackage = res.data.device.url;
                 this.marcommPackage = res.data.marcomm.url;
             });
+        }
+        ,searchByKeyword(){
+            httpCall("/fonts","get",{"keyword":this.keyword},(res)=>{
+                this.categories = res.data;
+            })
         }
     }
 }
@@ -378,6 +400,10 @@ export default {
     width : 16px;
     position: absolute;
     right : 48px;
+}
+.side-container{
+    z-index: 990;
+    position: absolute;
 }
 </style>
 
