@@ -49,13 +49,6 @@ router.post('/:type',function(req,res,next){
 	var category = req.body.category;
 	var type = req.params.type.toUpperCase();
 
-	var newData = {
-		'name': name
-		,'type' : type
-		,'order' : parseInt(count)+1
-	};
-	if(category!==undefined && category!==null)
-		newData.category = category;
 
 	db.category.find({
 		'type' : type
@@ -66,6 +59,15 @@ router.post('/:type',function(req,res,next){
 		if(data!=null && data.length>0){
 			count = data[0].order;
 		}
+
+		var newData = {
+			'name': name
+			,'type' : type
+			,'order' : parseInt(count)+1
+		};
+		if(category!==undefined && category!==null)
+			newData.category = category;
+			
         var newCategory = db.category(newData);
         newCategory.save(function(err){
 			var result ={code: 0,msg:''};
