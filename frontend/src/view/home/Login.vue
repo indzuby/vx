@@ -76,10 +76,10 @@ export default {
 		}
 	}
 	,created:function(){
-		this.remember = this.$session.get("remember")
+		this.remember = localStorage.getItem("remember")
 		if(this.remember) {
-			this.email = this.$session.get("email");
-			this.password = this.$session.get("password");
+			this.email = localStorage.getItem("email");
+			this.password = localStorage.getItem("password");
 		}
 	}
 	,methods:{
@@ -88,9 +88,9 @@ export default {
 				this.$session.start();
 				  this.$session.set('admin', res.admin);
 				if(this.remember){
-					this.$session.set("remember",true);
-					this.$session.set("email",this.email);
-					this.$session.set("password",this.password);
+					localStorage.setItem("remember",true);
+					localStorage.setItem("email",this.email);
+					localStorage.setItem("password",this.password);
 				}
 				location.href="/";
 			});
