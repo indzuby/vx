@@ -29,13 +29,14 @@
 				<div class="row">
 					<form id="login-form" autocomplete="off" @submit.prevent="signup">
 						<div class="form-group">
-						<input pattern="[\w.%+-]+@samsung\.com" v-model="email" type="email" id="input-username" class="form-control vi-input" placeholder="ID" name="username" required title="id@samsung.com 형태로 입력해주세요">
+						<input pattern="[\w.%+-]+@samsung\.com" v-model="email" type="email" id="input-username" class="form-control vi-input" placeholder="ID" name="username" required title="id@samsung.com">
 						</div>
 						<div class="form-group">
-							<input pattern=".{6,}" type="password" v-model="password" id="input-password" class="form-control vi-input" placeholder="PASSWORD" name="password" required title="6자리 이상 암호로 입력해주세요">
+							<input pattern=".{6,}" type="password" v-model="password" id="input-password" class="form-control vi-input" placeholder="The password is more than 6 characters." name="password" required title="The password is more than 6 characters.">
 						</div>
+
                         <div class="form-group">
-							<input pattern=".{6,}" type="password" v-model="password_re" id="input-password-re" class="form-control vi-input" placeholder="PASSWORD 확인" name="password_re" required title="6자리 이상 암호로 입력해주세요">
+							<input pattern=".{6,}" type="password" v-model="password_re" id="input-password-re" class="form-control vi-input" placeholder="The password is more than 6 characters." name="password_re" required title="The password is more than 6 characters.">
                         </div>
                         <div align="right">Already signed up? 
                             <a href="/login">Sign In</a> here
@@ -64,10 +65,10 @@ export default {
 	,methods:{
 		signup(){
             if(this.password !== this.password_re) {
-                return alert("패스워드가 일치하지않습니다.");
+                return alert("Passwords do not match.");
             }
 			httpCall('/signup',"POST",{"email":this.email,"password":this.password},(res)=>{
-				if(confirm("가입에 성공하였습니다. 로그인해주세요.")){
+				if(confirm("Sign up success. Pleas login.")){
                     location.href="/login";
                 }
 			});

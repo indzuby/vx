@@ -9,6 +9,9 @@ import FontsMain from '@/view/fonts/Main'
 import GUIMain from '@/view/gui/Main'
 import MotionMain from '@/view/motion/Main'
 
+import ChangePassword from '@/view/account/ChangePassword'
+import ChangePermission from '@/view/account/ChangePermission'
+
 Vue.use(Router)
 
 export default new Router({
@@ -65,6 +68,18 @@ export default new Router({
       path: '/motion',
       name: 'Motion',
       component : MotionMain
+    }
+    ,
+    {
+      path : '/ChangePassword',
+      name : 'ChangePassword',
+      component : ChangePassword
+    }
+    ,
+    {
+      path : '/ChangePermission',
+      name : 'ChangePermission',
+      component : ChangePermission
     }
   ]
 })

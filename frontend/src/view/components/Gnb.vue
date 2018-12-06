@@ -48,8 +48,8 @@
                     <img src="/static/images/profile.png" height="48px" width="auto">
                 </template>
                 <div class="profile-drop">
-                    <p>비밀번호 변경</p>
-                    <p v-if="isAdmin">관리자 권한 부여</p>
+                    <a href="/changePassword"><p>비밀번호 변경</p></a>
+                    <a href="/changePermission"><p v-if="isAdmin">관리자 권한 부여</p></a>
                     <p @click="logout">로그아웃</p>
                 </div>
             </b-dropdown>
@@ -105,7 +105,7 @@
          },logout(){
              this.$session.destroy();
              alert("로그아웃 되었습니다.");
-             this.$router.push('/Login');
+             location.href="/Login";
          }
      }
  }
@@ -211,6 +211,9 @@
     }
     .profile-drop p:not(:last-child){
         border-bottom: 1px solid #ccc;
+    }
+    a{
+        color : black;
     }
  </style>
  

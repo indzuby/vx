@@ -86,7 +86,8 @@ export default {
 		login(){
 			httpCall('/login',"POST",{"email":this.email,"password":this.password},(res)=>{
 				this.$session.start();
-				  this.$session.set('admin', res.admin);
+				this.$session.set('admin', res.admin);
+				this.$session.set('id',res.id);
 				if(this.remember){
 					localStorage.setItem("remember",true);
 					localStorage.setItem("email",this.email);

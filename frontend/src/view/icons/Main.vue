@@ -61,7 +61,7 @@
                 label-size="sm"
                 label="Category name"
                 label-for="font_name">
-                    <b-form-input id="font_name" v-model="addIcon.newCategory" type="text" placeholder="Enter New Category name" size="sm"></b-form-input>
+                    <b-form-input id="font_name" v-model="addIcon.newUpperCategory" type="text" placeholder="Enter New Category name" size="sm"></b-form-input>
                   </b-form-group>
                   <b-form-group horizontal
                 :label-cols="3"
@@ -151,7 +151,7 @@
                   </b-form-group>
                       <b-form-group horizontal
                 :label-cols="3"
-                label-size="sm"
+                label-size="sm" 
                 label="Order"
                 v-if="addCategory.isEdit"
                 label-for="font_name">
@@ -232,7 +232,9 @@ export default {
             ,keyword : ''
             ,addIcon: {
                 category : null
+                ,newCategory : null
                 ,upperCategory : null
+                ,newUpperCategory : null
                 ,downloadPng: null
                 ,downloadSvg: null
                 ,name : null
@@ -330,7 +332,9 @@ export default {
             /* Reset our form values */
             this.addIcon = {
                 category : null
+                ,newCategory : null
                 ,upperCategory : null
+                ,newUpperCategory : null
                 ,downloadPng: null
                 ,downloadSvg: null
                 ,name : null
@@ -373,7 +377,37 @@ export default {
 
         }
         ,addIconSubmit(){
-
+            var self = this;
+            if(self.addIcon.upperCategory === 'new'){
+                self.addCategoryCall(self.addIcon.newUpperCategory,null,"icons",function(){
+                    self.addIcon.upperCategory = self.addIcon.newUpperCategory;
+                    self.checkSubcategoryCall();                  
+                })
+            }else {
+                self.checkSubcategoryCall();
+            }
+        }
+        ,checkSubcategoryCall(){
+            var self = this;
+            if(self.addIcon.category === 'new'){
+                self.addCategoryCall(self.addIcon.newCategory,self.addIcon.category,"sub_icons",function(){
+                    self.addIcon.category = self.addIcon.newCategory;
+                    self.addIconCall();
+                });
+            }else 
+                self.addIconCall();
+        }
+        ,addCategoryCall(name,category,type,cb){
+            httpCall("/category/"+type,"POST",{"name":name,"category":category},(data)=>{
+                cb();
+            });
+        }
+        ,addIconCall(){
+            console.log(1);
+            httpFormData("/icons","#icon-form",{'category':this.addIcon.category},(data)=>{
+                alert(data.msg);
+                location.reload();
+            });
         }
         ,subCategoryModal(isEdit,category,upperCategory){
             this.addCategory.isEdit = isEdit;

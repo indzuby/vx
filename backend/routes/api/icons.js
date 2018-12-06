@@ -396,9 +396,9 @@ function iconSave(icon,res,isEdit){
 		}else {
 			result.code = 0;
 			if(isEdit)
-				result.msg = "폰트가 수정되었습니다.";
+				result.msg = "아이콘이 수정되었습니다.";
 			else
-				result.msg = "폰트가 등록되었습니다.";
+				result.msg = "아이콘이 등록되었습니다.";
 		}
 		res.json(result);
 	})
