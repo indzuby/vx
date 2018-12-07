@@ -150,22 +150,32 @@ router.post('/',upload.fields([{ name: 'downloadPng' }, { name: 'downloadSvg' }]
 						});
 					}
 					,function(cb3){
-						var icon = db.icon({
-							'name' : png.originalname.replace(".png","")
-							,'category' : req.body.category
-							,'order' : count
-							,'downloadPng' : pngUrl
-							,'downloadSvg' : null
-						})
-						count ++;
-						icon.save(function(err){
-							if(err)
-								cb3(new Error(png.filename+" icon upload error"));
-							else 
-								cb3(null)
+						db.icon.find({'name' : png.originalname.replace(".png","")}).exec(function(err,data){
+							var icon;
+							if(!err && data.length!==0) {
+								icon = data[0];
+								console.log(icon);
+								icon.downloadPng = pngUrl;
+							}else {
+								icon = db.icon({
+									'name' : png.originalname.replace(".png","")
+									,'category' : req.body.category
+									,'order' : count
+									,'downloadPng' : pngUrl
+									,'downloadSvg' : null
+								})
+								count ++;
+							}
+							icon.save(function(err){
+								if(err)
+									cb3(new Error(png.filename+" icon upload error"));
+								else 
+									cb3(null)
+							})
 						})
 					}
 					,function(err){
+						console.log(err);
 						if(err){
 							errList.push(err);
 						}
