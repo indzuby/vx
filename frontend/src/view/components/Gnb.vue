@@ -89,6 +89,7 @@
                 case "OSUX":
                     $("#osux").addClass("active");
                     break;
+                case "MultiUpload":
                 case "Icons":
                     $("#icons").addClass("active");
                     break;

@@ -13,7 +13,7 @@ const upload = multer({
         cb(null, iconPath);
       },
       filename: function (req, file, cb) {
-        cb(null, new Date().valueOf()+"_"+file.fieldname+ path.extname(file.originalname));
+        cb(null, new Date().valueOf()+"_"+file.originalname+ path.extname(file.originalname));
       }
     }),
   });
@@ -115,133 +115,169 @@ router.get('/',function(req,res,next){
 	});
 })
 router.post('/',upload.fields([{ name: 'downloadPng' }, { name: 'downloadSvg' }]),function(req,res,next){
+	var type = 'ICONS';
+	var result ={code: 0,msg:''};
+	var errList = [];
+	async.waterfall([
+		function(cb){
+			db.icon.find({'category':req.body.category}).sort({
+				"order" : 1	
+			}).limit(1).exec(function(err,data){
+				var count = 0;
+				if(!err && data.length>0) {
+					count = data[0].order + 1;
+				}
+				cb(null,count);
+			});
+		}
+		,function(count,cb){
+			async.forEachOf(req.files.downloadPng,function(file,i,cb2){
+				var png = req.files.downloadPng[i];
+				var pngUrl = "/api/"+iconPath+png.filename;
+				var svg = req.files.downloadSvg[i];
+				var svgUrl = "/api/"+iconPath+svg.filename;
+				var order = count+1;
+				async.waterfall([
+					function(cb3){
+						var file = db.file({
+							'name' : png.path
+							,'url' : pngUrl
+							,'type' : type
+						})
+						file.save(function(err){
+							if(err)
+								cb3(new Error(png.filename+" file upload error"));
+							else 
+								cb3(null);
+						});
+					}
+					,function(cb3){
+						var file = db.file({
+							'name' : svg.path
+							,'url' : svgUrl
+							,'type' : type
+						})
+						file.save(function(err){
+							if(err)
+								cb3(new Error(svg.filename+" file upload error"));
+							else 
+								cb3(null);
+						});
+					}
+					,function(cb3){
+						var icon = db.icon({
+							'name' : png.originalname.replace(".png","")
+							,'category' : req.body.category
+							,'order' : order
+							,'downloadPng' : pngUrl
+							,'downloadSvg' : svgUrl
+						})
+						order ++;
+						icon.save(function(err){
+							if(err)
+								cb3(new Error(svg.filename+" icon upload error"));
+							else 
+								cb3(null)
+						})
+					}
+					,function(err){
+						if(err){
+							errList.push(err);
+						}
+						cb2(null);
+					}
+				]);
+			}
+			,function(err){
+				result.code = 0;
+				result.msg = "icon 업로드에 성공하였습니다."
+				result.data = errList;
+				res.json(result);
+			})
+		},function(err){
+			
+		}
+	])
+});
+router.post('/edit',upload.fields([{ name: 'downloadPng' }, { name: 'downloadSvg' }]),function(req,res,next){
 	var isEdit = false;
 	var type = 'ICONS';
 	var result ={code: 0,msg:''};
-	if(req.body.icon_id!==undefined && req.body.icon_id!==undefined && req.body.icon_id!==''){
-		isEdit = true;
-	}
-
-	console.log(isEdit);
-	if(isEdit){
-		async.waterfall([
-			function(cb){
-				db.icon.findById(req.body.icon_id,function(err,icon){
-					if(err) {
-						cb(err)
-					}else {
-						icon.name = req.body.name;
-						icon.category = req.body.category;
-						icon.order = parseInt(req.body.order);
-						cb(null,icon);
-					}
-				});
-			},function(icon,cb){
-				if(req.files.downloadPng!==null && req.files.downloadPng!==undefined){
-					var url = "/api/"+iconPath+req.files.downloadPng[0].filename;
-					if(icon.downloadPng!==null && icon.downloadPng!==undefined && icon.downloadPng!==''){
-						fileDelete(icon.downloadPng,function(err){
-							if(err){
-								cb(err);
-							}else {
-								icon.downloadPng = url;
-								var file = db.file({
-									'name' : req.files.downloadPng[0].path
-									,'url' : url
-									,'type' : type
-								})
-								file.save(function(err){
-									if(err)
-										cb(err);
-									else 
-										cb(null,icon);
-								});
-							}
-						});
-					}
+	async.waterfall([
+		function(cb){
+			db.icon.findById(req.body.icon_id,function(err,icon){
+				if(err) {
+					cb(err)
 				}else {
+					icon.name = req.body.name;
+					icon.category = req.body.category;
+					icon.order = parseInt(req.body.order);
 					cb(null,icon);
 				}
-			}
-			,function(icon,cb){
-				if(req.files.downloadSvg!==null && req.files.downloadSvg!==undefined){
-					var url = "/api/"+iconPath+req.files.downloadSvg[0].filename;
-					if(icon.downloadSvg!==null && icon.downloadSvg!==undefined && icon.downloadSvg!==''){
-						fileDelete(icon.downloadSvg,function(err){
-							if(err){
-								cb(err);
-							}else {
-								icon.downloadSvg = url;
-								var file = db.file({
-									'name' : req.files.downloadSvg[0].path
-									,'url' : url
-									,'type' : type
-								})
-								file.save(function(err){
-									if(err)
-										cb(err);
-									else 
-										cb(null,icon);
-								});
-							}
-						});
-					}
-				}else {
-					cb(null,icon);
-				}
-			}
-			,function(icon,cb){
-				iconSave(icon,res,isEdit);
-			}
-			,function(err){
-				result.code = 4002;
-				result.msg = "등록중 에러가 발생하였습니다. 새로고침 후 다시 시도해주세요.";
-				result.json(result);	
-			}
-		])
-		
-	}else {
-		db.icon.find({
-			'category' : req.body.category
-		}).sort({
-			"order" : -1
-		}).limit(1).exec(function(err,data){
-			var count = 0 ;
-			if(data!=null && data.length>0){
-				count = data[0].order;
-			}
-			var newIcon = db.icon({
-				'name' : req.body.name
-				,'category' : req.body.category
-				,'order':parseInt(count)+1
-			})
-			if(req.files.downloadPng===null || req.files.downloadPng===undefined){
-				result.code = 4008;
-				result.msg = "아이콘 이미지를 반드시 등록해주세요.";
-				res.json(result);
-			}else {
+			});
+		},function(icon,cb){
+			if(req.files.downloadPng!==null && req.files.downloadPng!==undefined){
 				var url = "/api/"+iconPath+req.files.downloadPng[0].filename;
-				newIcon.downloadPng = url;
-				var file = db.file({
-					'name' : req.files.downloadPng[0].path
-					,'url' : url
-					,'type' : type
-				})
-				file.save(function(err){});
+				if(icon.downloadPng!==null && icon.downloadPng!==undefined && icon.downloadPng!==''){
+					fileDelete(icon.downloadPng,function(err){
+						if(err){
+							cb(err);
+						}else {
+							icon.downloadPng = url;
+							var file = db.file({
+								'name' : req.files.downloadPng[0].path
+								,'url' : url
+								,'type' : type
+							})
+							file.save(function(err){
+								if(err)
+									cb(err);
+								else 
+									cb(null,icon);
+							});
+						}
+					});
+				}
+			}else {
+				cb(null,icon);
 			}
+		}
+		,function(icon,cb){
 			if(req.files.downloadSvg!==null && req.files.downloadSvg!==undefined){
 				var url = "/api/"+iconPath+req.files.downloadSvg[0].filename;
-				newIcon.downloadSvg = url;
-				var file = db.file({
-					'name' : req.files.downloadSvg[0].path
-					,'url' : url
-					,'type' : type
-				})
-				file.save(function(err){});
+				if(icon.downloadSvg!==null && icon.downloadSvg!==undefined && icon.downloadSvg!==''){
+					fileDelete(icon.downloadSvg,function(err){
+						if(err){
+							cb(err);
+						}else {
+							icon.downloadSvg = url;
+							var file = db.file({
+								'name' : req.files.downloadSvg[0].path
+								,'url' : url
+								,'type' : type
+							})
+							file.save(function(err){
+								if(err)
+									cb(err);
+								else 
+									cb(null,icon);
+							});
+						}
+					});
+				}
+			}else {
+				cb(null,icon);
 			}
-			iconSave(newIcon,res,isEdit);
-		})
-	}
+		}
+		,function(icon,cb){
+			iconSave(icon,res,isEdit);
+		}
+		,function(err){
+			result.code = 4002;
+			result.msg = "등록중 에러가 발생하였습니다. 새로고침 후 다시 시도해주세요.";
+			result.json(result);	
+		}
+	])
 })
 router.get('/package',function(req,res,next){
     var result ={code: 0,data:{icon:''},msg:''};

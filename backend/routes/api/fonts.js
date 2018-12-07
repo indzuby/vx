@@ -14,7 +14,7 @@ const upload = multer({
       cb(null, fontPath);
     },
     filename: function (req, file, cb) {
-      cb(null, new Date().valueOf()+"_"+file.fieldname+ path.extname(file.originalname));
+      cb(null, new Date().valueOf()+"_"+file.originalname+ path.extname(file.originalname));
     }
   }),
 });

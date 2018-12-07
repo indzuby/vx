@@ -5,6 +5,7 @@ import Signup from '@/view/home/Signup'
 import Home from '@/view/home/Home'
 import AboutOSUX from '@/view/osux/About'
 import IconsMain from '@/view/icons/Main'
+import MultiUpload from '@/view/icons/MultiUpload'
 import FontsMain from '@/view/fonts/Main'
 import GUIMain from '@/view/gui/Main'
 import MotionMain from '@/view/motion/Main'
@@ -80,6 +81,12 @@ export default new Router({
       path : '/ChangePermission',
       name : 'ChangePermission',
       component : ChangePermission
+    }
+    ,
+    {
+      path : '/MultiUpload',
+      name : 'MultiUpload',
+      component : MultiUpload
     }
   ]
 })

@@ -21,7 +21,7 @@ export default {
     }
     ,methods:{
         editIcon(){
-            this.$emit("editIcon",true,this.icon);
+            this.$emit("editIcon",this.icon);
             this.show = false;
         }
     }
@@ -45,8 +45,9 @@ export default {
     .icon-item{
         display: inline-block;
         width : calc(12.5% - 40px);
+        vertical-align: top;
+        height: 105px;
         margin-right: 40px;
-        margin-bottom: 40px;
         cursor: pointer;
         text-align: center
     }

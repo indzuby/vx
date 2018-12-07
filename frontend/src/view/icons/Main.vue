@@ -25,9 +25,9 @@
                     <div class="btn-gray uploadIcons" v-b-modal="'add-package-modal'">
                         <p class="text">UPLOAD ICON PACKAGE</p>
                     </div>
-                <div class="add-btn" v-b-modal="'add-icon-modal'" v-if="isAdmin" @click="editIcon(false)">
+                <a href="/MultiUpload"><div class="add-btn" v-b-modal="'add-icon-modal'" v-if="isAdmin">
                     <img src="/static/images/add.png">
-                </div>
+                </div></a>
                 <div class="icon-container" style="margin-top: 163px;">
                     <div v-for="category in categories" :key="category._id" class="category-item" :id="category._id">
                         <div v-for="sub in category.categories" :key="sub._id" class="sub-category-item" :id="sub._id">
@@ -98,6 +98,8 @@
                 label-for="font_order">
                     <b-form-input id="font_order" v-model="addIcon.order" type="text" placeholder="Enter order number" size="sm" name="order"></b-form-input>
                   </b-form-group>
+                 
+                 
                   <b-form-group horizontal
                 :label-cols="3"
                 label-size="sm"
@@ -113,6 +115,8 @@
                     <b-form-file id="downloadSvg" v-model="addIcon.downloadSvg" size="sm" plain accept=".svg" name="downloadSvg"></b-form-file>
                   </b-form-group>
                 <input v-model="addIcon.icon_id" type="hidden"  name="icon_id">
+
+                
 
                 <b-button type="button" @click="addIconSubmit" variant="primary">Save</b-button>
                 <b-button type="reset" variant="info">Cacnel</b-button>
@@ -160,7 +164,7 @@
                   
                 <b-button type="submit" variant="primary">Save</b-button>
                 <b-button type="reset" variant="info">Cacnel</b-button>
-                <b-button type="reset" variant="danger" class="pull-right" v-if="addCategory.isEdit" @click="deleteCategory">Remove</b-button>
+                <b-button type="reset" variant="danger" class="pull-right" @click="deleteCategory">Remove</b-button>
             </b-form>
             </div>
         </b-modal>
@@ -351,7 +355,7 @@ export default {
             // this.$refs.addCategoryModal.hide();
             this.$refs.addPackageModal.hide();
         }
-        ,editIcon(isEdit,icon){
+        ,editIcon(icon){
             this.addIcon.isEdit = isEdit;
             if(isEdit){
                 console.log(icon);
@@ -404,7 +408,7 @@ export default {
         }
         ,addIconCall(){
             console.log(1);
-            httpFormData("/icons","#icon-form",{'category':this.addIcon.category},(data)=>{
+            httpFormData("/icons/edit","#icon-form",{'category':this.addIcon.category},(data)=>{
                 alert(data.msg);
                 location.reload();
             });
