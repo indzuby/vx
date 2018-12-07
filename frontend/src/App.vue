@@ -3,7 +3,7 @@
         <Gnb v-if="gnb"/>
     <router-view/>
       <div id="copyright">
-        Copyright© 2018 Samsung All rights reserved. | For questions, please <a href="mailto:seohee17.kim@samsung.com">click here</a>
+        Copyright© 2018 Samsung All rights reserved. | For questions, please <a @click="mail">click here</a>
       </div>
   </div>
 </template>
@@ -46,6 +46,8 @@ export default {
           if (this.$route.name !=="Login" && this.$route.name !=="Signup" && !this.$session.exists()) {
               location.href="/login";
           }
+        },mail(){
+            prompt('Send to ','seohee17.kim@samsung.com');
         }
     }
 }

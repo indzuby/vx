@@ -165,6 +165,7 @@
         display: none;
         position: absolute;
         top : 38px;
+        padding-top: 10px;
     }
     ul.sub-nav li{
         font-size: 12px; 

@@ -240,6 +240,7 @@ a:hover{
     float : right;
 }
 .popover{        
+    font-family: inherit;
     box-shadow: 2.5px 4.3px 13px 0 rgba(31, 31, 31, 0.21);
     height : 38px;
     border-radius: 16px;

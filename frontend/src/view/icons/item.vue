@@ -3,7 +3,7 @@
         <img :src="preview" :id="icon._id">
         <p>{{icon.name}}</p>
         <b-popover :target="icon._id"  triggers="click" :show.sync="show">
-            <a v-if="icon.downloadPng!=null" :href="icon.downloadPng" :download="icon.name"><span>Png</span></a>
+            <a v-if="icon.downloadPng!=null" :href="icon.downloadPng" :download="icon.name"><span>Png</span></a>|
             <a v-if="icon.downloadSvg!=null" :href="icon.downloadSvg" :download="icon.name"><span>Svg</span></a> 
             <span v-if="isAdmin" @click="editIcon" v-b-modal="'add-icon-modal'">|<span> Edit</span></span>
         </b-popover>
