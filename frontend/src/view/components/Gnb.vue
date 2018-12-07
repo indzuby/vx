@@ -48,9 +48,9 @@
                     <img src="/static/images/profile.png" height="48px" width="auto">
                 </template>
                 <div class="profile-drop">
-                    <a href="/changePassword"><p>비밀번호 변경</p></a>
+                    <a href="/changePassword"><p>Change Password</p></a>
                     <a href="/changePermission"><p v-if="isAdmin">관리자 권한 부여</p></a>
-                    <p @click="logout">로그아웃</p>
+                    <p @click="logout">Logout</p>
                 </div>
             </b-dropdown>
             
@@ -105,7 +105,7 @@
             }
          },logout(){
              this.$session.destroy();
-             alert("로그아웃 되었습니다.");
+             alert("Logout successful");
              location.href="/Login";
          }
      }
