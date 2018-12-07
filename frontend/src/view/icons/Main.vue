@@ -94,7 +94,6 @@
                 :label-cols="3"
                 label-size="sm"
                 label="Order"
-                v-show="addIcon.isEdit"
                 label-for="font_order">
                     <b-form-input id="font_order" v-model="addIcon.order" type="text" placeholder="Enter order number" size="sm" name="order"></b-form-input>
                   </b-form-group>
@@ -120,7 +119,7 @@
 
                 <b-button type="button" @click="addIconSubmit" variant="primary">Save</b-button>
                 <b-button type="reset" variant="info">Cacnel</b-button>
-                <b-button type="reset" variant="danger" class="pull-right" v-if="addIcon.isEdit" @click="deleteIcon">Remove</b-button>
+                <b-button type="reset" variant="danger" class="pull-right" @click="deleteIcon">Remove</b-button>
             </b-form>
             </div>
         </b-modal>
@@ -288,10 +287,7 @@ export default {
                 return "새로운 카테고리를 추가합니다.";
         }
         ,iconEdit(){
-            if(this.addIcon.isEdit)
-                return "아이콘를 수정합니다.";
-            else
-                return "새로운 아이콘를 추가합니다.";
+            return "아이콘를 수정합니다.";
         }
     }
     ,mounted:function(){
@@ -342,7 +338,6 @@ export default {
                 ,downloadPng: null
                 ,downloadSvg: null
                 ,name : null
-                ,isEdit : false
             };
             this.addCategory = {
                 name : null
@@ -356,28 +351,25 @@ export default {
             this.$refs.addPackageModal.hide();
         }
         ,editIcon(icon){
-            this.addIcon.isEdit = isEdit;
-            if(isEdit){
-                console.log(icon);
-                this.addIcon.upperCategory = null;
-                for(var i in this.categories) {
-                    var category = this.categories[i];
-                    for(var j in category.categories){
-                        var sub = category.categories[j];
-                        if(sub.name == icon.category) {
-                            this.addIcon.upperCategory = category.name;
-                            break ;
-                        }
-                        if(this.addIcon.upperCategory!=null)
-                            break;
+            console.log(icon);
+            this.addIcon.upperCategory = null;
+            for(var i in this.categories) {
+                var category = this.categories[i];
+                for(var j in category.categories){
+                    var sub = category.categories[j];
+                    if(sub.name == icon.category) {
+                        this.addIcon.upperCategory = category.name;
+                        break ;
                     }
+                    if(this.addIcon.upperCategory!=null)
+                        break;
                 }
-                this.addIcon.category = icon.category;
-                this.addIcon.name = icon.name;
-                this.addIcon.icon_id = icon._id;
-                this.addIcon.order = icon.order;
-            }else 
-                this.onReset();
+            }
+            this.addIcon.category = icon.category;
+            this.addIcon.name = icon.name;
+            this.addIcon.icon_id = icon._id;
+            this.addIcon.order = icon.order;
+        
 
         }
         ,addIconSubmit(){

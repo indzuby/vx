@@ -1,11 +1,11 @@
 <template>
     <div class="icon-item" :class="padding">
-        <img :src="icon.downloadPng" :id="icon._id">
+        <img :src="preview" :id="icon._id">
         <p>{{icon.name}}</p>
         <b-popover :target="icon._id"  triggers="click" :show.sync="show">
-            <a :href="icon.downloadPng" :download="icon.name"><span>Png</span></a> |
-            <a :href="icon.downloadSvg" :download="icon.name"><span>Svg</span></a> 
-            <span v-if="isAdmin" @click="editIcon" v-b-modal="'add-icon-modal'">| <span>Edit</span></span>
+            <a v-if="icon.downloadPng!=null" :href="icon.downloadPng" :download="icon.name"><span>Png</span></a>
+            <a v-if="icon.downloadSvg!=null" :href="icon.downloadSvg" :download="icon.name"><span>Svg</span></a> 
+            <span v-if="isAdmin" @click="editIcon" v-b-modal="'add-icon-modal'">|<span> Edit</span></span>
         </b-popover>
     </div>
     
@@ -36,6 +36,10 @@ export default {
                 return "right-0";
             }
             return "right";
+        },preview(){
+            if(this.icon.downloadPng==null)
+                return this.icon.downloadSvg;
+            return this.icon.downloadPng;
         }
     }
 }

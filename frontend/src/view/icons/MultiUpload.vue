@@ -1,6 +1,6 @@
 <template>
     <div class="window-container">
-        <b-alert show variant="danger">형식에 맞는 파일을 입력해주세요.</b-alert>
+        <b-alert show variant="danger">형식에 맞는 파일을 입력해주세요.<br>PNG SVG 두 파일 모두 업로드해주세요</b-alert>
         <b-form @reset="onReset" id="icon-form" method="POST" enctype="multipart/form-data">
                 <b-form-group horizontal
             :label-cols="3"
@@ -178,6 +178,7 @@ export default {
             });
         }
         ,addIconCall(){
+
             httpFormData("/icons","#icon-form",{'category':this.category},(data)=>{
                 alert(data.msg);
                 location.reload();
