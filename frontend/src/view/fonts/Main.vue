@@ -171,6 +171,11 @@
             </b-form>
             </div>
         </b-modal>
+        <div class="right-floating">
+            <img src="/static/images/anchor_small up.png" @click="floatingEvent('up')">
+            <img src="/static/images/anchor_big.png" @click="floatingEvent('top')">
+            <img src="/static/images/anchor_small down.png" @click="floatingEvent('down')">
+        </div>
     </div>
     
 </template>
@@ -368,6 +373,16 @@ export default {
             httpCall("/fonts","get",{"keyword":this.keyword},(res)=>{
                 this.categories = res.data;
             })
+        }
+        ,floatingEvent(type){
+            if(type === 'up'){
+
+                $('html, body').animate({scrollTop: $(document).scrollTop()-450}, 'fast');
+            }else if(type=='top') {
+                $('html, body').animate({scrollTop: 0}, 'fast');
+            }else if(type=='down'){
+                $('html, body').animate({scrollTop: $(document).scrollTop()+450}, 'fast');
+            }
         }
     }
 }
